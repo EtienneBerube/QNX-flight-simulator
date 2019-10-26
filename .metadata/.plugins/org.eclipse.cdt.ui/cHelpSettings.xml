@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<cHelpSettings>
+<project name="firstQnxProject">
+<provider id="com.qnx.tools.ide.qde.ui.help.CompletionContributorID">
+<book enabled="true" title="QNX Help Documentation"/>
+</provider>
+<provider id="org.eclipse.cdt.ui.provider1"/>
+<provider id="org.eclipse.linuxtools.cdt.libhover.provider">
+<book enabled="true" title="Gestures lib ref Documentation"/>
+<book enabled="true" title="Input Events lib ref Documentation"/>
+<book enabled="true" title="LibImage lib ref Documentation"/>
+<book enabled="true" title="Neutrino Addon lib ref Documentation"/>
+<book enabled="true" title="Neutrino Audio lib ref Documentation"/>
+<book enabled="true" title="Building Embedded Systems"/>
+<book enabled="true" title="Boot Optimization Guide"/>
+<book enabled="true" title="Neutrino C lib ref Documentation"/>
+<book enabled="true" title="QNX Neutrino QDB Dev Guide Documentation"/>
+<book enabled="true" title="OpenWF Display Configuration Developer's Guide"/>
+<book enabled="true" title="strpattern lib Documentation"/>
+</provider>
+</project>
+</cHelpSettings>

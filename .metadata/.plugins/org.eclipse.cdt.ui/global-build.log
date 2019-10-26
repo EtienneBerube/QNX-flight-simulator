@@ -1,0 +1,122 @@
+17:32:34 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 
+Building file: ../src/Flight Simulator.cpp
+Invoking: QCC Compiler
+qcc  -o src/Flight Simulator.o ../src/Flight Simulator.cpp -V5.4.0,gcc_ntox86_64 -w1 -c -O0 -Wp,-MMD,src/Flight Simulator.d -Wp,-MT,src/Flight Simulator.o
+src/subdir.mk:15: recipe for target 'src/Flight Simulator.o' failed
+cc: Can't specify -P, -C, -E, -c or -S with -o and have multiple files
+make: *** [src/Flight Simulator.o] Error 1
+17:32:48 **** Incremental Build of configuration x86_64-debug for project firstQnxProject ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+17:34:05 **** Incremental Build of configuration x86_64-debug for project firstQnxProject ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+17:35:12 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 
+Building file: ../src/Flight Simulator.cpp
+Invoking: QCC Compiler
+qcc  -o src/Flight Simulator.o ../src/Flight Simulator.cpp -V5.4.0,gcc_ntox86_64 -w1 -c -O0 -Wp,-MMD,src/Flight Simulator.d -Wp,-MT,src/Flight Simulator.o
+src/subdir.mk:15: recipe for target 'src/Flight Simulator.o' failed
+cc: Can't specify -P, -C, -E, -c or -S with -o and have multiple files
+make: *** [src/Flight Simulator.o] Error 1
+17:36:19 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 
+Building file: ../src/Flight Simulator.cpp
+Invoking: QCC Compiler
+qcc  -o src/Flight Simulator.o ../src/Flight Simulator.cpp -V5.4.0,gcc_ntox86_64 -w1 -c -O0 -Wp,-MMD,src/Flight Simulator.d -Wp,-MT,src/Flight Simulator.o
+cc: Can't specify -P, -C, -E, -c or -S with -o and have multiple files
+src/subdir.mk:15: recipe for target 'src/Flight Simulator.o' failed
+make: *** [src/Flight Simulator.o] Error 1
+17:38:26 **** Incremental Build of configuration x86_64-debug for project firstQnxProject ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+17:39:43 **** Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'build/x86_64-debug/src/Flight.o', needed by 'build/x86_64-debug/Flight'.  Stop.
+17:39:57 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'build/x86_64-debug/src/Flight.o', needed by 'build/x86_64-debug/Flight'.  Stop.
+17:40:58 **** Incremental Build of configuration x86_64-debug for project firstQnxProject ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+17:41:02 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'build/x86_64-debug/src/Flight.o', needed by 'build/x86_64-debug/Flight'.  Stop.
+17:41:47 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'build/x86_64-debug/src/Flight.o', needed by 'build/x86_64-debug/Flight'.  Stop.
+17:42:03 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'build/x86_64-debug/src/Flight.o', needed by 'build/x86_64-debug/Flight'.  Stop.
+17:42:19 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
+make -j7 all 
+make: *** No rule to make target 'Flight Simulator', needed by 'all'.  Stop.
+17:44:31 **** Clean-only build of configuration Default for project FlightSimulator ****
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make clean 
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Cx86 -fMakefile clean
+make[1]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co -fMakefile clean 
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/bin/rm -f  FlightSimulator  *.pinfo *.o *.err *.map mapfile *.sym *.i   
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co-g -fMakefile clean
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+/bin/rm -f  FlightSimulator_g  *.pinfo *.o *.err *.map mapfile *.sym *.i   
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+make[1]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+17:44:31 **** Build of configuration Default for project FlightSimulator ****
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make all 
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Cx86 -fMakefile all
+make[1]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co -fMakefile all 
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/qcc -Vgcc_ntox86 -c -Wc,-Wall  -O2   -DNDEBUG    -I. -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86 -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator -I/Users/Deano/qnx/target/qnx7/usr/include     -DBUILDENV_qss   /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/FlightSimulator.cc 
+/bin/rm -f  /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o/FlightSimulator
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/qcc -Vgcc_ntox86  -lang-c++     -lang-c++  -o /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o/FlightSimulator    FlightSimulator.o  -L. -L/Users/Deano/qnx/target/qnx7/x86/lib -L/Users/Deano/qnx/target/qnx7/x86/usr/lib -Wl,--rpath-link,. -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/lib -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/usr/lib        
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co-g -fMakefile all
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/qcc -Vgcc_ntox86 -c -Wc,-Wall         -I. -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86 -I/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator -I/Users/Deano/qnx/target/qnx7/usr/include    -g    -DVARIANT_g -DBUILDENV_qss   /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/FlightSimulator.cc 
+/bin/rm -f  /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g/FlightSimulator_g
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/qcc -Vgcc_ntox86  -lang-c++     -lang-c++  -o /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g/FlightSimulator_g    FlightSimulator.o  -L. -L/Users/Deano/qnx/target/qnx7/x86/lib -L/Users/Deano/qnx/target/qnx7/x86/usr/lib -Wl,--rpath-link,. -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/lib -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/usr/lib      -g     
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+make[1]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+17:45:55 **** Incremental Build of configuration Default for project FlightSimulator ****
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make all 
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Cx86 -fMakefile all
+make[1]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co -fMakefile all 
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co-g -fMakefile all
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+make[1]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+17:47:29 **** Incremental Build of configuration Default for project FlightSimulator ****
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make all 
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Cx86 -fMakefile all
+make[1]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co -fMakefile all 
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o'
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/make -j 1 -Co-g -fMakefile all
+make[2]: Entering directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+/bin/rm -f  /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g/FlightSimulator_g
+/Users/Deano/qnx/host/darwin/x86_64/usr/bin/qcc -Vgcc_ntox86  -lang-c++     -lang-c++  -o /Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g/FlightSimulator_g    FlightSimulator.o  -L. -L/Users/Deano/qnx/target/qnx7/x86/lib -L/Users/Deano/qnx/target/qnx7/x86/usr/lib -Wl,--rpath-link,. -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/lib -Wl,--rpath-link,/Users/Deano/qnx/target/qnx7/x86/usr/lib      -g     
+make[2]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86/o-g'
+make[1]: Leaving directory '/Users/Deano/Documents/GitHub/QNX-flight-simulator/FlightSimulator/x86'
+17:49:20 **** Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/FlightSimulator.o  
+17:49:32 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+17:49:45 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/FlightSimulator.o  

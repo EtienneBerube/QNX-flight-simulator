@@ -1,0 +1,6 @@
+17:40:58 **** Incremental Build of configuration x86_64-debug for project firstQnxProject ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+
+17:40:58 Build Finished (took 73ms)
+
