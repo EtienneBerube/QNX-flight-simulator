@@ -11,7 +11,11 @@
 class Radar {
 public:
 	Radar();
+	void getAirplanes();
 	virtual ~Radar();
+
+private:
+	int airplanes[];
 };
 
 #endif /* RADAR_H_ */
