@@ -12,6 +12,7 @@ void setupRadar();
 void setupUserCLI();
 void setupSimulation();
 void setupTimers();
+void startTimers();
 
 
 //Global stuff
@@ -76,13 +77,54 @@ void setupTimers(){
 	radar_event.sigev_priority = getprio(0);
 	radar_event.sigev_code = MY_PULSE_CODE;
 
-	timer_create(CLOCK_REALTIME, &event, &timer_id);
+	timer_create(CLOCK_REALTIME, &radar_event, &radar_timer);
 
 	radar_itime.it_value.tv_sec = 15;
 	radar_itime.it_interval.tv_sec = 15;
-	timer_settime(radar_timer, 0, &itime, NULL);
 
+	//Setting up the display
+	display_event.sigev_notify = SIGEV_PULSE;
+	display_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+	display_event.sigev_priority = getprio(0);
+	display_event.sigev_code = MY_PULSE_CODE;
 
+	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
+
+	display_itime.it_value.tv_sec = 15;
+	display_itime.it_interval.tv_sec = 15;
+
+	//Setting up environment simulation
+	simulation_event.sigev_notify = SIGEV_PULSE;
+	simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+	simulation_event.sigev_priority = getprio(0);
+	simulation_event.sigev_code = MY_PULSE_CODE;
+
+	timer_create(CLOCK_REALTIME, &simulation_event, &simulation_timer);
+
+	simulation_itime.it_value.tv_sec = 15;
+	simulation_itime.it_interval.tv_sec = 15;
+
+	//Setting up history
+	history_event.sigev_notify = SIGEV_PULSE;
+	history_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+	history_event.sigev_priority = getprio(0);
+	history_event.sigev_code = MY_PULSE_CODE;
+
+	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
+
+	history_itime.it_value.tv_sec = 15;
+	history_itime.it_interval.tv_sec = 15;
+
+	//When done, start
+	startTimers();
+
+}
+
+void startTimers(){
+	timer_settime(radar_timer, 0, &radar_itime, NULL);
+	timer_settime(display_timer, 0, &display_itime, NULL);
+	timer_settime(simulation_timer, 0, &simulation_itime, NULL);
+	timer_settime(history_timer, 0, &history_itime, NULL);
 }
 
 void setupRadar(){
