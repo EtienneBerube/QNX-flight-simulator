@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="com.qnx.tools.ide.qde.ui.QDELaunch">
+<booleanAttribute key="auto_pick_program" value="true"/>
 <booleanAttribute key="com.qnx.tools.ide.apsinfo.ui.launch.boolean_enable" value="false"/>
 <stringAttribute key="com.qnx.tools.ide.apsinfo.ui.launch.string_partion_name" value=""/>
 <booleanAttribute key="com.qnx.tools.ide.coverage.ui.launch.CLEAN_OLD_DATA" value="true"/>
@@ -47,13 +48,26 @@
 <stringAttribute key="com.qnx.tools.ide.profiler2.core.targetFile" value="/tmp/prof${random}.ptrace"/>
 <booleanAttribute key="com.qnx.tools.ide.profiler2.core.targetFileDelete" value="true"/>
 <booleanAttribute key="com.qnx.tools.ide.profiler2.core.targetFilePipe" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.CLEAN_TARGET" value="true"/>
 <stringAttribute key="com.qnx.tools.ide.qde.core.DIR_UPLOAD" value="/tmp"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.DO_NOT_UPLOAD_LIBS" value="false"/>
 <booleanAttribute key="com.qnx.tools.ide.qde.core.DO_UPLOAD" value="true"/>
+<intAttribute key="com.qnx.tools.ide.qde.core.NUM_UPLOAD_LIBS" value="0"/>
 <listAttribute key="com.qnx.tools.ide.qde.core.SOLIB_PATH"/>
 <listAttribute key="com.qnx.tools.ide.qde.core.SOLIB_PATH_SAVE"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.STRIP_BEFORE_UPLOAD" value="true"/>
 <stringAttribute key="com.qnx.tools.ide.qde.core.TARGET_ATTR" value="192.168.2.128"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.all.com.qnx.tools.ide.apsinfo.ui.launch.ApsLaunch" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.all.com.qnx.tools.ide.qde.prio" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.SystemProfiler.neutrino.ui.launch.logging" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.coverage.ui.CoverageLaunch" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.mat.ui.QDEMATLaunch" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.profiler2.ui.launch" value="false"/>
 <booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.qde.debug" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.qde.internal.ui.NoTool" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.testrunner" value="false"/>
 <booleanAttribute key="com.qnx.tools.ide.qde.core.TOOL.run.com.qnx.tools.ide.valgrind.ui.launch.ValgrindLaunch" value="false"/>
+<booleanAttribute key="com.qnx.tools.ide.qde.core.USE_UNIQ_NAME" value="false"/>
 <booleanAttribute key="com.qnx.tools.ide.valgrind.ui.launch.boolean_start_symbol_server" value="true"/>
 <booleanAttribute key="com.qnx.tools.ide.valgrind.ui.launch.boolean_timestamp" value="false"/>
 <booleanAttribute key="com.qnx.tools.ide.valgrind.ui.launch.boolean_trace_signals" value="false"/>
@@ -66,13 +80,17 @@
 <stringAttribute key="com.qnx.tools.ide.valgrind.ui.launch.string_symbol_server_host" value=""/>
 <stringAttribute key="com.qnx.tools.ide.valgrind.ui.launch.string_verbosity_level" value="none"/>
 <listAttribute key="org.eclipse.cdt.dsf.gdb.SOLIB_PATH"/>
+<intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="1"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="gdb"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
 <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
 <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="main"/>
 <stringAttribute key="org.eclipse.cdt.launch.PLATFFORM" value="qnx"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value=""/>
 <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="FlightSimulator"/>
 <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="AUTO"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR.run" value="AUTO"/>
 <stringAttribute key="org.eclipse.cdt.launch.WORKING_DIRECTORY" value=""/>
 <stringAttribute key="org.eclipse.cdt.testsrunner.launch.TESTS_RUNNER" value="org.eclipse.cdt.testsrunner.gtest"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
@@ -139,4 +157,5 @@
 <booleanAttribute key="org.eclipse.linuxtools.valgrind.memcheck.MEMCHECK_TRACKORIGINS" value="false"/>
 <booleanAttribute key="org.eclipse.linuxtools.valgrind.memcheck.MEMCHECK_UNDEF" value="true"/>
 <stringAttribute key="process_factory_id" value="org.eclipse.cdt.testsrunner.TestingProcessFactory"/>
+<booleanAttribute key="verify_libs" value="true"/>
 </launchConfiguration>
