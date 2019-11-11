@@ -4,18 +4,14 @@
  *  Created on: Oct 26, 2019
  *      Author: Deano
  */
+#include "Flight.h"
 
-#ifndef RADAR_H_
-#define RADAR_H_
+Flight* getAirplanesFromTestFile();
+Flight* scanAirZone();
+void writeLogOfPlanes();
 
-class Radar {
-public:
-	Radar();
-	void getAirplanes();
-	virtual ~Radar();
 
-private:
-	int airplanes[];
-};
 
-#endif /* RADAR_H_ */
+
+
+

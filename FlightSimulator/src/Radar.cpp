@@ -6,21 +6,20 @@
  */
 
 #include "Radar.h"
+//#include "Flight.h"
+#include "TestCase.h"
 
-Radar::Radar() {
-	// TODO Auto-generated constructor stub
-airplanes = new int [TestCase::airplane_schedule.size()];
-
-}
 /*
  * Function which reads the information of planes from the TestCase file
- * and converts it into an array of flights
+ * and converts it into a list of flights
  * for easier manipulations
  * */
-Radar::getAirplanes(){
-	const int totalNumberOfFlights = TestCase::airplane_schedule.size() / 8;
+Flight* getAirplanesFromTestFile(){
+
+	const int totalNumberOfData = sizeof(TestCase::airplane_schedule);
 	const int TOTAL_NUMBER_INFO_PER_PLANE = 7;
-	int airplaneSchedules[] = TestCase::airplane_schedule;
+	Flight* currentFlight = nullptr;
+	Flight* headOfList = nullptr;
 	const int ID = 0;
 	const int SPEED_X = 1;
 	const int SPEED_Y = 2;
@@ -32,29 +31,43 @@ Radar::getAirplanes(){
 	int id, speedx, speedy,speedz, positionx,positiony, positionz, enterTime;
 
 
-
-	for (int i, flight = 0; i < airplaneSchedule.size(); i++){
+	for (int i = 0; i < totalNumberOfData ; i++){
 
 		switch (i % TOTAL_NUMBER_INFO_PER_PLANE){
-			case ID: id = airplaneSchedule[i]; break;
-			case SPEED_X : speedx = airplaneSchedule[i]; break;
-			case SPEED_Y : speedy = airplaneSchedule[i]; break;
-			case SPEED_Z : speedz = airplaneSchedule[i]; break;
-			case POSITION_X : positionx = airplaneSchedule[i]; break;
-			case POSITION_Y : positiony = airplaneSchedule[i]; break;
-			case POSITION_Z : positionz = airplaneSchedule[i]; break;
+			case ID: id = TestCase::airplane_schedule[i]; break;
+			case SPEED_X : speedx = TestCase::airplane_schedule[i]; break;
+			case SPEED_Y : speedy = TestCase::airplane_schedule[i]; break;
+			case SPEED_Z : speedz = TestCase::airplane_schedule[i]; break;
+			case POSITION_X : positionx = TestCase::airplane_schedule[i]; break;
+			case POSITION_Y : positiony = TestCase::airplane_schedule[i]; break;
+			case POSITION_Z : positionz = TestCase::airplane_schedule[i]; break;
 			case START_TIME : {
-			enterTime = airplaneSchedule[i];
-			airplanes[flight++] = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
-				}break;
+
+			enterTime = TestCase::airplane_schedule[i];
+			Flight* newFlight = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
+
+			//First Time
+			if (currentFlight == nullptr){
+				// assigns the head of List to keep track of it
+				headOfList = newFlight;
+				currentFlight = newFlight;
+			}else {
+				//Create the chain in the list
+				currentFlight->setNextFlight(newFlight);
+
+				//Moves to the last element
+				currentFlight = newFlight;
+			}
+
+			}
+			break;
 			}
 		}
 
-	}
-
-
-
-Radar::~Radar() {
-	// TODO Auto-generated destructor stub
+	return headOfList;
 }
+
+
+
+
 
