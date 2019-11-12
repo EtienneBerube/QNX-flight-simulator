@@ -67,6 +67,65 @@ Flight* getAirplanesFromTestFile(){
 	return headOfList;
 }
 
+// Assume the Air Space is 10, should probably change that value
+Flight* scanAirZone(Flight currentHead){
+	const int airFieldDistance = 10;
+	Flight* currentFlight = nullptr;
+	Flight* headOfPlaneInAirSpace = nullptr;
+	Flight* currentFlightInAirSpace = nullptr;
+
+
+		currentFlight = &currentHead;
+
+		while (currentFlight->getNextFlight() != nullptr){
+
+			if(currentFlight->getFlightDistance() <= airFieldDistance){
+
+				if(headOfPlaneInAirSpace != nullptr){
+					//Gets the head of the list
+					headOfPlaneInAirSpace = currentFlight;
+					currentFlightInAirSpace = currentFlight;
+				}
+				//Adds the flight in the airspace to the list of Flight in AirSpace
+				currentFlightInAirSpace->setNextFlight(currentFlight);
+				currentFlightInAirSpace = currentFlight;
+			}
+
+			currentFlight = currentFlight->getNextFlight();
+		}
+
+return headOfPlaneInAirSpace;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -16,16 +16,16 @@ Flight::Flight() {
 
 // Main Constructor
 Flight::Flight(int id, int speedInX, int speedInY, int speedInZ, int positionInX, int positionInY, int positionInZ, int startTime){
-this->id = id;
-this->speed_x = speedInX;
-this->speed_y = speedInY;
-this->speed_z = speedInZ;
-this->position_x = positionInX;
-this->position_y = positionInY;
-this->position_z = positionInZ;
-this->entryTime = startTime;
-this-> nextFlightInTheList = nullptr;
-calculateFlightDistance();
+	this->id = id;
+	this->speed_x = speedInX;
+	this->speed_y = speedInY;
+	this->speed_z = speedInZ;
+	this->position_x = positionInX;
+	this->position_y = positionInY;
+	this->position_z = positionInZ;
+	this->entryTime = startTime;
+	this-> nextFlightInTheList = nullptr;
+	calculateFlightDistance();
 }
 
 //Assigns the next flight in the list
@@ -86,11 +86,11 @@ void Flight::increaseSpeedBy(int amount){
 
 	if (this -> speed_y != 0){
 		this -> speed_y += amount;
-		}
+	}
 
 	if (this -> speed_z != 0){
 		this -> speed_z += amount;
-		}
+	}
 }
 
 /*
@@ -107,11 +107,11 @@ void Flight::decreaseSpeedBy(int amount){
 
 	if (this -> speed_y != 0){
 		this -> speed_y -= amount;
-		}
+	}
 
 	if (this -> speed_z != 0){
 		this -> speed_z -= amount;
-		}
+	}
 }
 
 /*

@@ -7,8 +7,8 @@
 #include "Flight.h"
 
 Flight* getAirplanesFromTestFile();
-Flight* scanAirZone();
-void writeLogOfPlanes();
+Flight* scanAirZone(Flight); // TODO Implement
+void writeLogOfPlanes(); // TODO Implement
 
 
 
