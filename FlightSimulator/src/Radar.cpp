@@ -95,38 +95,11 @@ Flight* scanAirZone(Flight currentHead){
 		}
 
 return headOfPlaneInAirSpace;
+Radar::getThreadRunnable(void* context){
+	return ((Radar *)context)->hello();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Radar::~Radar() {
+	// TODO Auto-generated destructor stub
+}
 
