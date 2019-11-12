@@ -1,9 +1,30 @@
-18:10:45 **** Build of configuration x86_64-debug for project FlightSimulator ****
+19:54:17 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
 make -j7 all 
-qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
-qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/TestCase.d,-MT,build/x86_64-debug/src/TestCase.o -o build/x86_64-debug/src/TestCase.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/TestCase.cpp
-qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/Radar_test.o  
+src/Radar.cpp: In function 'Flight* scanAirZone(Flight)':
+src/Radar.cpp:100:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:16:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupComponents()':
+src/FlightSimulator.cpp:39:6: warning: unused variable 'chid' [-Wunused-variable]
+  int chid =
+      ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:50:24: error: 'thread' was not declared in this scope
+  pthread_setschedprio( thread, 2 );
+                        ^
+src/FlightSimulator.cpp: In function 'void setupUserCLI()':
+src/FlightSimulator.cpp:59:24: error: 'thread' was not declared in this scope
+  pthread_setschedprio( thread, 2 );
+                        ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
 
-18:10:45 Build Finished (took 208ms)
+19:54:18 Build Finished (took 399ms)
 
