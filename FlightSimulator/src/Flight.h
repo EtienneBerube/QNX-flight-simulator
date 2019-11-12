@@ -22,7 +22,7 @@ public:
 	void setNextFlight(Flight *);
 	Flight* getNextFlight();
 
-	void updateFlightPosition(); //TODO Implement
+	void updateFlightPosition(); //TODO Implement inHoldingPattern
 	void calculateFlightDistance();
 	int getFlightDistance();
 
