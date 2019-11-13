@@ -133,7 +133,7 @@ void setupRadar(){
 
 	//TODO add run() function in radar
 	pthread_create( &radar_thread, &attr, &dummyFunction, NULL);
-	pthread_setschedprio( thread, 2 );
+	pthread_setschedprio( radar_thread, 2 );
 }
 
 void setupUserCLI(){
@@ -142,5 +142,5 @@ void setupUserCLI(){
 
 	//TODO add run() function in CLI
 	pthread_create( &cli_thread, &attr, &dummyFunction, NULL);
-	pthread_setschedprio( thread, 2 );
+	pthread_setschedprio( cli_thread, 2 );
 }

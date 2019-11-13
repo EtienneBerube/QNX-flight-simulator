@@ -15,10 +15,7 @@ public:
 	Radar();
 	void getAirplanes();
 	virtual ~Radar();
-	void* getThreadRunnable(void *context);
+	void* getThreadRunnable(void*);
 	void executeRadar();
 
-
-
-
-
+};
