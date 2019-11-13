@@ -10,10 +10,14 @@
 
 #include <vector>
 #include "Flight.h"
+#include <pthread.h>
 
 class AirplaneDB{
 public:
-	AirplaneDB(std::vector<Flight>*);
+	AirplaneDB();
+	void init();
+	void lockDB();
+	void unlockDB();
 	std::vector<FLight>* getPlanes();
 private:
 	std::vector<Flight>* flights;
