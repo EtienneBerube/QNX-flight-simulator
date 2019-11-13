@@ -17,6 +17,7 @@ public:
 	std::vector<FLight>* getPlanes();
 private:
 	std::vector<Flight>* flights;
+	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 };
 
 
