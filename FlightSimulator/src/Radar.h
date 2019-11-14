@@ -5,17 +5,18 @@
  *      Author: Deano
  */
 #include "Flight.h"
+#include <vector>
 
-Flight* getAirplanesFromTestFile();
-Flight* scanAirZone(Flight); // TODO Implement
-void writeLogOfPlanes(); // TODO Implement
 
 class Radar {
 public:
 	Radar();
 	void getAirplanes();
 	virtual ~Radar();
-	void* getThreadRunnable(void*);
+	void getThreadRunnable(void*);
 	void executeRadar();
+	void scanAirZone(std::vector<Flight*>); // TODO Implement
+	void writeLogOfPlanes(); // TODO Implement
+const int static RADAR_AREA = 100000;
 
 };

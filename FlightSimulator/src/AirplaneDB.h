@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Flight.h"
+#include "TestCase.h"
 #include <pthread.h>
 
 class AirplaneDB{
@@ -18,9 +19,9 @@ public:
 	void init();
 	void lockDB();
 	void unlockDB();
-	std::vector<FLight>* getPlanes();
+	std::vector<FLight*> getPlanees();
 private:
-	std::vector<Flight>* flights;
+	std::vector<Flight*> flights;
 	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 };
 
