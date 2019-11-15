@@ -25,7 +25,7 @@ Flight::Flight(int id, int speedInX, int speedInY, int speedInZ, int positionInX
 	this->position_z = positionInZ;
 	this->entryTime = startTime;
 	calculateFlightDistance();
-	this -> id == -1 ? this -> unidentifiedFlight = true : this->unidentifiedFlight = true;
+	this -> id == -1 ? this -> unidentifiedFlight = true : this->unidentifiedFlight = false;
 }
 
 int Flight::getEntryTime(){
