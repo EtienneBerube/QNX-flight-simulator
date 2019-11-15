@@ -22,7 +22,7 @@ public:
 	void setNextFlight(Flight *);
 	Flight* getNextFlight();
 
-	void updateFlightPosition(); //TODO Implement inHoldingPattern
+	void updateFlightPosition();
 	void calculateFlightDistance();
 	int getFlightDistance();
 	int getEntryTime();
@@ -45,7 +45,14 @@ public:
 private:
 	bool inHoldingPattern = false;
 	bool unidentifiedFlight = false;
+
 	int id, speed_x, speed_y, speed_z, position_x, position_y, position_z, entryTime, distance;
+
+	struct Positions {
+		int x, y, z;
+		int radius = 1000;
+		bool goingForward = true;
+	}inHoldingPatternPosition;
 };
 
 #endif /* SRC_FLIGHT_H_ */

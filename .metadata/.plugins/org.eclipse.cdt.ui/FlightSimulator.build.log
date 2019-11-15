@@ -1,5 +1,6 @@
-20:12:30 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+21:05:02 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
 make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
 src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
@@ -80,9 +81,9 @@ src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
   SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
                                                                       ^
 cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
-Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
 make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
 make: *** Waiting for unfinished jobs....
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
 src/Display.cpp: In member function 'void Display::displayCurrentState()':
 src/Display.cpp:33:30: error: request for member 'getPlanes' in '((Display*)this)->Display::planeDB', which is of pointer type 'AirplaneDB*' (maybe you meant to use '->' ?)
    for (auto& plane : planeDB.getPlanes()){
@@ -91,5 +92,5 @@ Makefile:58: recipe for target 'build/x86_64-debug/src/Display.o' failed
 cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
 make: *** [build/x86_64-debug/src/Display.o] Error 1
 
-20:12:31 Build Finished (took 599ms)
+21:05:02 Build Finished (took 557ms)
 

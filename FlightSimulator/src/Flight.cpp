@@ -45,7 +45,11 @@ void Flight::calculateFlightDistance(){
 
 
 int Flight::getFlightDistance(){
-	return distance;
+	if (!inHoldingPattern) return distance;
+	else{
+		int subTotal = (this->inHoldingPatternPosition.x * this->inHoldingPatternPosition.x) + (this->inHoldingPatternPosition.y * this->inHoldingPatternPosition.y) + (this->inHoldingPatternPosition.z * this->inHoldingPatternPosition.z);
+		return (int) sqrt(subTotal);
+	}
 }
 
 /*
@@ -56,8 +60,34 @@ int Flight::getFlightDistance(){
  */
 void Flight::updateFlightPosition(){
 
-	//TODO Implement inHoldingPattern
+	// inHoldingPattern follows this formula (x - h)^2 + (y - k)^2 = r^2
 	if (inHoldingPattern){
+		int relativeRadiusForward = this->position_x + this->inHoldingPatternPosition.radius;
+		int relativeRadiusBackwards = this->position_x - this->inHoldingPatternPosition.radius;
+
+		if(this->inHoldingPatternPosition.goingForward){
+
+			if(this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x) >= relativeRadiusForward){
+				this->inHoldingPatternPosition.goingForward = false;
+			}else{
+				this->inHoldingPatternPosition.x += this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x);
+				int difference = this->inHoldingPatternPosition.x - this->position_x;
+				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
+			}
+
+		}else{
+
+			if(this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x) <= relativeRadiusBackwards){
+				this->inHoldingPatternPosition.goingForward = true;
+			}else{
+				this->inHoldingPatternPosition.x -= this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x);
+				int difference = this->inHoldingPatternPosition.x - this->position_x;
+				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
+			}
+
+		}
 
 	}else {
 		this  -> position_x += this-> timeInterval * this -> speed_x;
@@ -129,10 +159,16 @@ void Flight::decreaseAltitudeBy(int amount){
 }
 
 void Flight::enterHoldingPattern(){
+	this->inHoldingPatternPosition.x = this->position_x;
+	this->inHoldingPatternPosition.y = this->position_y;
+	this->inHoldingPatternPosition.z = this->position_z;
 	this -> inHoldingPattern = true;
 }
 
 void Flight::leaveHoldingPattern(){
+	this->position_x = this->inHoldingPatternPosition.x;
+	this->position_y = this->inHoldingPatternPosition.y;
+	this->position_z = this->inHoldingPatternPosition.z;
 	this -> inHoldingPattern = false;
 }
 
@@ -147,12 +183,21 @@ void Flight::changeDirection(){
 }
 
 void Flight::changeFlightPosition(int position_x, int position_y){
-	this -> position_x = position_x;
-	this -> position_y = position_y;
+	if(!inHoldingPattern){
+		this -> position_x = position_x;
+		this -> position_y = position_y;
+	}else {
+		this->inHoldingPatternPosition.x = position_x;
+		this->inHoldingPatternPosition.y = position_y;
+	}
 }
 
 void Flight::changeFlightElevation(int position_z){
-	this-> position_z = position_z;
+	if(inHoldingPattern){
+		this->inHoldingPatternPosition.z = position_z;
+	}else{
+		this-> position_z = position_z;
+	}
 }
 
 /*
@@ -161,9 +206,17 @@ void Flight::changeFlightElevation(int position_z){
  *
  */
 std::string Flight::projectFlightPosition(int time){
-	int projectedPosition_x = this -> position_x + (time * this -> speed_x);
-	int projectedPosition_y = this -> position_y + (time * this -> speed_y);
-	int projectedPosition_z = this -> position_y + (time * this -> speed_z);
+	int projectedPosition_x, projectedPosition_y, projectedPosition_z;
+
+	if(inHoldingPattern){
+		projectedPosition_x = this -> inHoldingPatternPosition.x + (time * this -> speed_x);
+		projectedPosition_y = this -> inHoldingPatternPosition.y + (time * this -> speed_y);
+		projectedPosition_z = this -> inHoldingPatternPosition.z + (time * this -> speed_z);
+	}else{
+		projectedPosition_x = this -> position_x + (time * this -> speed_x);
+		projectedPosition_y = this -> position_y + (time * this -> speed_y);
+		projectedPosition_z = this -> position_y + (time * this -> speed_z);
+	}
 
 	std::string projectedPosition = "(" + std::to_string(projectedPosition_x) + ", " + std::to_string(projectedPosition_y) + ", " + std::to_string(projectedPosition_z) + ')';
 
@@ -176,10 +229,19 @@ std::string Flight::projectFlightPosition(int time){
  *
  */
 std::string Flight::getCurrentFlightStatus(){
-	std::string record = "Flight ID: " + std::to_string(this->id) + ", ";
-	record += "Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + ", ";
-	record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
-	record += "In Holding Pattern: " + inHoldingPattern ? "Yes" : "No";
+	std::string record;
+	if (inHoldingPattern){
+		record = "Flight ID: " + std::to_string(this->id) + ", ";
+		record += "Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + ", ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "In Holding Pattern: Yes";
+
+	}else{
+		record = "Flight ID: " + std::to_string(this->id) + ", ";
+		record += "Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + ", ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "In Holding Pattern: No";
+	}
 
 	return record;
 }
