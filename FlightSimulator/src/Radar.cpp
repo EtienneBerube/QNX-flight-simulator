@@ -16,7 +16,7 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 
 	for (Flight* currentFlight : flights){
 		if (currentFlight->getFlightDistance() <= Radar::RADAR_AREA){
-
+			flightsInAirSpace.push_back(currentFlight);
 		}
 	}
 

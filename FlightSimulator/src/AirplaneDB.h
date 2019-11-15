@@ -19,9 +19,11 @@ public:
 	void init();
 	void lockDB();
 	void unlockDB();
-	std::vector<FLight*> getPlanees();
+	std::vector<Flight*> getPlanes();
 private:
 	std::vector<Flight*> flights;
+	void sortThePlanes();
+
 	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 };
 

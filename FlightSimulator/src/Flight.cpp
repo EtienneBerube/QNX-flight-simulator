@@ -24,18 +24,12 @@ Flight::Flight(int id, int speedInX, int speedInY, int speedInZ, int positionInX
 	this->position_y = positionInY;
 	this->position_z = positionInZ;
 	this->entryTime = startTime;
-	this-> nextFlightInTheList = nullptr;
 	calculateFlightDistance();
+	this -> id == -1 ? this -> unidentifiedFlight = true : this->unidentifiedFlight = true;
 }
 
-//Assigns the next flight in the list
-void Flight::setNextFlight(Flight * nextFlight){
-	this -> nextFlightInTheList = nextFlight;
-}
-
-//Getting the next flight
-Flight* Flight::getNextFlight(){
-	return this -> nextFlightInTheList;
+int Flight::getEntryTime(){
+	return this->entryTime;
 }
 
 /*

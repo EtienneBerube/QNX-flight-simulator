@@ -7,7 +7,7 @@
 #include "AirplaneDB.h"
 
 
-std::vector<Flight> AirplaneDB::getPlanes(){
+std::vector<Flight*> AirplaneDB::getPlanes(){
 	return flights;
 }
 
@@ -23,13 +23,12 @@ void AirplaneDB::unlockDB(){
  * Function which reads the information of planes from the TestCase file
  * and converts it into a list of flights
  * for easier manipulations initializes the database of flights
- * */
+ *
+ */
 void AirplaneDB::init(){
 
 	const int totalNumberOfData = sizeof(TestCase::airplane_schedule);
 	const int TOTAL_NUMBER_INFO_PER_PLANE = 7;
-	Flight* currentFlight = nullptr;
-	Flight* headOfList = nullptr;
 	const int ID = 0;
 	const int SPEED_X = 1;
 	const int SPEED_Y = 2;
@@ -58,4 +57,26 @@ void AirplaneDB::init(){
 				break;
 			}
 	}
+
+	sortThePlanes();
 }
+
+
+/*
+ * Function which is used to sort the planes in the database by their entry time
+ * a struct is used to deal with the custom objects
+ *
+ */
+void AirplaneDB::sortThePlanes(){
+
+	if (flights.size() <= 1) return;
+
+	struct{
+		bool operator ()(Flight* a, Flight* b) const {
+			return a->getEntryTime() < b-> getEntryTime();
+		}
+	} flightSorting;
+
+	std::sort(flights.begin(),flights.end(), flightSorting);
+}
+

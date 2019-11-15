@@ -25,6 +25,7 @@ public:
 	void updateFlightPosition(); //TODO Implement inHoldingPattern
 	void calculateFlightDistance();
 	int getFlightDistance();
+	int getEntryTime();
 
 	void increaseSpeedBy(int);
 	void decreaseSpeedBy(int);
@@ -42,8 +43,8 @@ public:
 	virtual ~Flight();
 
 private:
-	Flight* nextFlightInTheList;
 	bool inHoldingPattern = false;
+	bool unidentifiedFlight = false;
 	int id, speed_x, speed_y, speed_z, position_x, position_y, position_z, entryTime, distance;
 };
 
