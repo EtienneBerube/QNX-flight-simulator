@@ -10,6 +10,10 @@
 	<item value="0" key="org.eclipse.cdt.uiformatter_page.white_space.c_view.inner"/>
 	<item value="6" key="formatter_page.modify_dialog_tab_page.last_focus_index"/>
 	<item value="13" key="org.eclipse.cdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<section name="RefactoringWizard.preview">
+		<item value="600" key="width"/>
+		<item value="400" key="height"/>
+	</section>
 	<section name="org.eclipse.cdt.internal.ui.browser.opentype.OpenTypeActionSettings">
 		<item value="true" key="show_enums"/>
 		<item value="true" key="show_unions"/>

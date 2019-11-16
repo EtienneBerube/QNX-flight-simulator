@@ -24,7 +24,7 @@ Flight::Flight(int id, int speedInX, int speedInY, int speedInZ, int positionInX
 	this->position_y = positionInY;
 	this->position_z = positionInZ;
 	this->entryTime = startTime;
-	calculateFlightDistance();
+	calculateFlightDistanceFromOriginPoint();
 	this -> id == -1 ? this -> unidentifiedFlight = true : this->unidentifiedFlight = false;
 }
 
@@ -38,9 +38,30 @@ int Flight::getEntryTime(){
  * The formula used to calculate distance is sqrt( (x2-x1)^2 + (y2-x1)^2 + (z2-z1)^2)
  *
  */
-void Flight::calculateFlightDistance(){
-	int subTotal = (position_x * position_x) + (position_y * position_y) + (position_z * position_z);
-	distance = (int) sqrt(subTotal);
+void Flight::calculateFlightDistanceFromOriginPoint(){
+	if(inHoldingPattern){
+		int subTotal = (this->inHoldingPatternPosition.x * this->inHoldingPatternPosition.x) + (this->inHoldingPatternPosition.y * this->inHoldingPatternPosition.y) + (this->inHoldingPatternPosition.z * this->inHoldingPatternPosition.z);
+		this->distance = (int) sqrt(subTotal);
+	}else{
+		int subTotal = (position_x * position_x) + (position_y * position_y) + (position_z * position_z);
+		this->distance = (int) sqrt(subTotal);
+	}
+}
+
+int Flight::calculateFlightDistanceFromAPoint(int x, int y, int z){
+	if(inHoldingPattern){
+		int diff_x = x - this->inHoldingPatternPosition.x;
+		int diff_y = y - this->inHoldingPatternPosition.y;
+		int diff_z = z - this->inHoldingPatternPosition.z;
+		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y)+(diff_z*diff_z);
+		return (int) sqrt(totalSquared);
+	}else{
+		int diff_x = x - this->position_x;
+		int diff_y = y - this->position_y;
+		int diff_z = z - this->position_z;
+		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y)+(diff_z*diff_z);
+		return (int) sqrt(totalSquared);
+	}
 }
 
 

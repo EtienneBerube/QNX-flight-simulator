@@ -19,11 +19,10 @@ public:
 	Flight();
 	Flight(int, int,int,int,int,int,int,int);
 
-	void setNextFlight(Flight *);
-	Flight* getNextFlight();
-
 	void updateFlightPosition();
-	void calculateFlightDistance();
+	void calculateFlightDistanceFromOriginPoint();
+	int calculatateFlightDistanceFromAPoint(int, int, int);
+
 	int getFlightDistance();
 	int getEntryTime();
 
