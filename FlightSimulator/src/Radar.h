@@ -17,14 +17,16 @@ public:
 	virtual ~Radar();
 	void getThreadRunnable(void*);
 	void executeRadar();
-	void scanAirZone(std::vector<Flight*>); // TODO Implement
+	void scanAirZone(std::vector<Flight*>); // TODO Add other features
 	std::vector<Flight*> scanFromAPoint(int, int, int, std::vector<Flight*>);
-	void writeLogOfPlaneInAirSpace(); // TODO Implement
+	void writeLogOfPlaneInAirSpace();
+
+	std::vector<Flight*> getPlanesFlyingTooLow();
 
 
 
 	std::vector<Flight*> flightsInAirSpace;
 	std::vector<Flight*> lostFlights;
 	const int static RADAR_AREA = 100000;
-
+	const int static MIN_FLYING_ALTITUDE = 1000;
 };

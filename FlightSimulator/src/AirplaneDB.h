@@ -13,6 +13,7 @@
 #include "TestCase.h"
 #include <pthread.h>
 
+
 class AirplaneDB{
 public:
 	AirplaneDB();
@@ -20,6 +21,7 @@ public:
 	void lockDB();
 	void unlockDB();
 	std::vector<Flight*> getPlanes();
+
 private:
 	std::vector<Flight*> flights;
 	void sortThePlanes();

@@ -1,6 +1,5 @@
-18:57:48 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+19:18:18 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
 make -j7 all 
-qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
 src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
  Display Display;
@@ -82,7 +81,6 @@ src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
 cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
 Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
 make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
-make: *** Waiting for unfinished jobs....
 
-18:57:49 Build Finished (took 713ms)
+19:18:19 Build Finished (took 452ms)
 

@@ -99,13 +99,13 @@ int Flight::calculatateFlightDistanceFromAPoint(int x, int y, int z){
 		int diff_x = x - this->inHoldingPatternPosition.x;
 		int diff_y = y - this->inHoldingPatternPosition.y;
 		int diff_z = z - this->inHoldingPatternPosition.z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y)+(diff_z*diff_z);
+		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
 		return (int) sqrt(totalSquared);
 	}else{
 		int diff_x = x - this->position_x;
 		int diff_y = y - this->position_y;
 		int diff_z = z - this->position_z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y)+(diff_z*diff_z);
+		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
 		return (int) sqrt(totalSquared);
 	}
 }
