@@ -20,6 +20,7 @@ public:
 	void init();
 	void lockDB();
 	void unlockDB();
+	void updateFlightsPosition();
 	std::vector<Flight*> getPlanes();
 
 private:

@@ -30,7 +30,7 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 /*
  * Function which returns the planes in the airSpace flying lower than the min flying altitude
  */
-std::vector<Flight*> getPlanesFlyingTooLow(){
+std::vector<Flight*> Radar::getPlanesFlyingTooLow(){
 	std::vector<Flight*> planesFlyingTooLow;
 
 	for (Flight* flight : flightsInAirSpace){

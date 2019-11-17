@@ -56,7 +56,7 @@ string radar_file_url = "smtg";
 
 //Startup routine
 int main() {
-	cout << "Hello World!!! NICE" << endl; // prints Hello World!!!
+	cout << "Flight Simulator Start" << endl; // prints Hello World!!!
 	char* cwd;
 	char buff[PATH_MAX + 1];
 
