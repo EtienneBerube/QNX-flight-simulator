@@ -23,6 +23,16 @@ public:
 	void calculateFlightDistanceFromOriginPoint();
 	int calculatateFlightDistanceFromAPoint(int, int, int);
 
+	int getPositionX();
+	int getPositionY();
+	int getPositionZ();
+	int getSpeedX();
+	int getSpeedY();
+	int getSpeedZ();
+	int getId();
+	std::string getIdString();
+	std::string getHoldingPatternStatus();
+
 	int getFlightDistance();
 	int getEntryTime();
 
@@ -41,12 +51,14 @@ public:
 
 	virtual ~Flight();
 
-private:
-	bool inHoldingPattern = false;
-	bool unidentifiedFlight = false;
 
+
+
+private:
 	int id, speed_x, speed_y, speed_z, position_x, position_y, position_z, entryTime, distance;
 
+	bool inHoldingPattern = false;
+	bool unidentifiedFlight = false;
 	struct Positions {
 		int x, y, z;
 		int radius = 1000;

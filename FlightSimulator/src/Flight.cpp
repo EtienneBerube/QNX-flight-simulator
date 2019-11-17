@@ -32,6 +32,46 @@ int Flight::getEntryTime(){
 	return this->entryTime;
 }
 
+int Flight::getPositionX(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.x : this-> position_x;
+}
+
+int Flight::getPositionY(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.y : this-> position_y;
+}
+
+int Flight::getPositionZ(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this-> position_z;
+}
+
+int Flight::getSpeedX(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.x : this->speed_x;
+}
+
+int Flight::getSpeedY(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.y : this->speed_y;
+}
+
+int Flight::getSpeedZ(){
+	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this->speed_z;
+}
+
+int Flight::getId(){
+	return this->id;
+}
+
+
+std::string Flight::getIdString(){
+	return (this->unidentifiedFlight) ? "UNKNOWN" : std::to_string(this->id);
+}
+
+std::string Flight:: getHoldingPatternStatus(){
+//	if (inHoldingPattern) return "YES";
+//	else return "NO";
+	return (inHoldingPattern)? "YES": "NO";
+}
+
+
 /*
  * This function calculates a linear distance between the plane and the radar
  * The radar is always assumed to be at position (0,0,0)
@@ -48,7 +88,13 @@ void Flight::calculateFlightDistanceFromOriginPoint(){
 	}
 }
 
-int Flight::calculateFlightDistanceFromAPoint(int x, int y, int z){
+
+/*
+ * Function used to calculate how far the aircraft is from a point in time and space
+ * It uses the appropriate coordinated depending on whether the aircraft is in holding pattern or not
+ *
+ */
+int Flight::calculatateFlightDistanceFromAPoint(int x, int y, int z){
 	if(inHoldingPattern){
 		int diff_x = x - this->inHoldingPatternPosition.x;
 		int diff_y = y - this->inHoldingPatternPosition.y;
@@ -252,13 +298,13 @@ std::string Flight::projectFlightPosition(int time){
 std::string Flight::getCurrentFlightStatus(){
 	std::string record;
 	if (inHoldingPattern){
-		record = "Flight ID: " + std::to_string(this->id) + ", ";
+		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
 		record += "Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + ", ";
 		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
 		record += "In Holding Pattern: Yes";
 
 	}else{
-		record = "Flight ID: " + std::to_string(this->id) + ", ";
+		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
 		record += "Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + ", ";
 		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
 		record += "In Holding Pattern: No";

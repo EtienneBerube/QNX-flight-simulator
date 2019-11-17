@@ -30,16 +30,16 @@ void Display::displayCurrentState(){
 	 t.add("Entry time");
 	 t.endOfRow();
 
-	 for (auto& plane : planeDB.getPlanes()){
-		 t.add(plane->id);
-		 t.add(plane->position_x);
-		 t.add(plane->position_y);
-		 t.add(plane->position_z);
-		 t.add(plane->speed_x);
-		 t.add(plane->speed_y);
-		 t.add(plane->speed_z);
-		 t.add(plane->inHoldingPattern);
-		 t.add(plane->entryTime);
+	 for (auto& plane : planeDB->getPlanes()){
+		 t.add(plane->getIdString());
+		 t.add(std::to_string(plane->getPositionX()));
+		 t.add(std::to_string(plane->getPositionY()));
+		 t.add(std::to_string(plane->getPositionZ()));
+		 t.add(std::to_string(plane->getSpeedX()));
+		 t.add(std::to_string(plane->getSpeedY()));
+		 t.add(std::to_string(plane->getSpeedZ()));
+		 t.add(plane->getHoldingPatternStatus());
+		 t.add(std::to_string(plane->getEntryTime()));
 		 t.endOfRow();
 	 }
 
