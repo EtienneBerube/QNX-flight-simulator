@@ -5,7 +5,11 @@
  *      Author: etienne
  */
 #include "AirplaneDB.h"
+#include "TestCase.h"
 
+AirplaneDB::AirplaneDB(){
+	init();
+}
 
 std::vector<Flight*> AirplaneDB::getPlanes(){
 	return flights;

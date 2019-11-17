@@ -24,12 +24,14 @@ int displayChannelReceiveID;
 int historyChannelReceiveID;
 int simulationChannelReceiveID;
 
+AirplaneDB airplaneDB;
+
 Radar radar;
 timer_t radar_timer;
 struct sigevent radar_event;
 struct itimerspec radar_itime;
 
-Display Display;
+Display display(&airplaneDB);
 timer_t display_timer;
 struct sigevent display_event;
 struct itimerspec display_itime;
@@ -68,10 +70,7 @@ int main() {
 }
 
 void setupCommChannels(){
-	int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
-	int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
-	int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
-	int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+
 }
 
 void setupTimersAndThreads(){
@@ -79,38 +78,20 @@ void setupTimersAndThreads(){
 	setupDisplay();
 	setupRadar();
 
-
-	//Setting up environment simulation
-	simulation_event.sigev_notify = SIGEV_PULSE;
-	simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
-	simulation_event.sigev_priority = getprio(0);
-	simulation_event.sigev_code = MY_PULSE_CODE;
-
-	timer_create(CLOCK_REALTIME, &simulation_event, &simulation_timer);
-
-	simulation_itime.it_value.tv_sec = 15;
-	simulation_itime.it_interval.tv_sec = 15;
-
-	//Setting up history
-	history_event.sigev_notify = SIGEV_PULSE;
-	history_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
-	history_event.sigev_priority = getprio(0);
-	history_event.sigev_code = MY_PULSE_CODE;
-
-	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
-
-	history_itime.it_value.tv_sec = 15;
-	history_itime.it_interval.tv_sec = 15;
+	//TODO add your shit here
 
 	//When done, start
 	startTimers();
 
 }
 
-void setupDisplay(){
-	pthread_attr attr;
+void runDisplay(sigval value){
+	display.displayCurrentState();
+}
 
-	SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+void setupDisplay(){
+
+	SIGEV_THREAD_INIT( &display_event, runDisplay, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
@@ -118,16 +99,21 @@ void setupDisplay(){
 	display_itime.it_interval.tv_sec = 5;
 }
 
-void setupRadar(){
-	pthread_attr attr;
+void runRadar(sigval value){
+	radar.executeRadar();
+}
 
-	SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+void setupRadar(){
+
+	SIGEV_THREAD_INIT( &radar_event, runRadar, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
 	display_itime.it_value.tv_sec = 15;
 	display_itime.it_interval.tv_sec = 15;
 }
+
+
 
 void startTimers(){
 	timer_settime(radar_timer, 0, &radar_itime, NULL);
