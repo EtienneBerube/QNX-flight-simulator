@@ -5,6 +5,7 @@
  *      Author: Deano
  */
 #include "Flight.h"
+#include "AirplaneDB.h"
 #include <ctime>
 #include <vector>
 #include <fstream>
@@ -14,6 +15,7 @@
 class Radar {
 public:
 	Radar();
+	Radar(AirplaneDB*);
 	virtual ~Radar();
 	void getThreadRunnable(void*);
 	void executeRadar();
@@ -29,4 +31,7 @@ public:
 	std::vector<Flight*> lostFlights;
 	const int static RADAR_AREA = 100000;
 	const int static MIN_FLYING_ALTITUDE = 1000;
+
+private:
+	AirplaneDB* airplaneDB;
 };

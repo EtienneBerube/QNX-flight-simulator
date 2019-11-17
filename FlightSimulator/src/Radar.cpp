@@ -7,6 +7,7 @@
 
 #include "Radar.h"
 #include "TestCase.h"
+#include "AirplaneDB.h"
 
 
 /*
@@ -14,6 +15,10 @@
  * IF not, the air planes are put in a not hit list
  *
  */
+
+Radar::Radar(AirplaneDB *airplaneDB){
+	this->airplaneDB = airplaneDB;
+}
 void Radar::scanAirZone(std::vector<Flight*> flights){
 	flightsInAirSpace.clear();
 	lostFlights.clear();
@@ -27,10 +32,18 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 }
 
 
+void Radar::executeRadar(){
+	//TODO populate
+}
+
+Radar::Radar(){
+	//Empty
+}
+
 /*
  * Function which returns the planes in the airSpace flying lower than the min flying altitude
  */
-std::vector<Flight*> getPlanesFlyingTooLow(){
+std::vector<Flight*> Radar::getPlanesFlyingTooLow(){
 	std::vector<Flight*> planesFlyingTooLow;
 
 	for (Flight* flight : flightsInAirSpace){
