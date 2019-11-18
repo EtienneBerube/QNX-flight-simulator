@@ -105,7 +105,7 @@ void Radar::displayPlanesAboutToCrash(){
 			if(firstFlight == secondFlight) continue;
 			else if(secondFlight->calculateDistanceOnXYPlane(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
 				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
-					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
 				}
 			}
 
