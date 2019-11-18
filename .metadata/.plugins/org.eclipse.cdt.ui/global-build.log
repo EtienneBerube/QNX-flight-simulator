@@ -15476,3 +15476,27 @@ src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
 cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
 Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
 make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+16:08:26 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/TestCase.d,-MT,build/x86_64-debug/src/TestCase.o -o build/x86_64-debug/src/TestCase.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/TestCase.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+16:08:44 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+16:09:39 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
