@@ -45,7 +45,7 @@ struct sigevent simulation_event;
 struct itimerspec simulation_itime;
 
 
-void* dummyFunction(void* arg){
+void dummyFunction(void* arg){
 	cout << "thread exec" << endl;
 }
 
@@ -91,7 +91,7 @@ void runDisplay(sigval value){
 
 void setupDisplay(){
 
-	SIGEV_THREAD_INIT( &display_event, runDisplay, 0, NULL );
+	SIGEV_THREAD_INIT( &display_event, &runDisplay, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
@@ -105,7 +105,7 @@ void runRadar(sigval value){
 
 void setupRadar(){
 
-	SIGEV_THREAD_INIT( &radar_event, runRadar, 0, NULL );
+	SIGEV_THREAD_INIT( &radar_event, &runRadar, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
