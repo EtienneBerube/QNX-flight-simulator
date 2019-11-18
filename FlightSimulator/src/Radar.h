@@ -21,10 +21,9 @@ public:
 	void executeRadar();
 	void scanAirZone(std::vector<Flight*>); // TODO Add other features
 	std::vector<Flight*> scanFromAPoint(int, int, int, std::vector<Flight*>);
-	void writeLogOfPlaneInAirSpace();
+	void writeLogOfPlaneInAirSpace();//TODO Remove this cause Etienne wrote it
 	void displayPlanesAboutToCrash();
-
-	std::vector<Flight*> getPlanesFlyingTooLow();
+	void displayPlanesFlyingTooLow();
 
 
 

@@ -25,7 +25,7 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 	lostFlights.clear();
 
 	for (Flight* currentFlight : flights){
-		if (currentFlight->getFlightDistance() <= Radar::RADAR_AREA) flightsInAirSpace.push_back(currentFlight);
+		if (currentFlight->getFlightDistance() <= Raqdar::RADAR_AREA) flightsInAirSpace.push_back(currentFlight);
 		else lostFlights.push_back(currentFlight);
 	}
 
@@ -34,7 +34,10 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 
 
 void Radar::executeRadar(){
-	//TODO populate
+	this->scanAirZone(this->airplaneDB->getPlanes());
+	this->displayPlanesAboutToCrash();
+	this->displayPlanesFlyingTooLow();
+
 }
 
 Radar::Radar(){
@@ -42,18 +45,17 @@ Radar::Radar(){
 }
 
 /*
- * Function which returns the planes in the airSpace flying lower than the min flying altitude
+ * Function which displays the planes in the airSpace flying lower than the min flying altitude
  */
-std::vector<Flight*> Radar::getPlanesFlyingTooLow(){
+void Radar::displayPlanesFlyingTooLow(){
 	std::vector<Flight*> planesFlyingTooLow;
 
 	for (Flight* flight : flightsInAirSpace){
 		if(flight->getPositionZ() <= Radar::MIN_FLYING_ALTITUDE){
-			planesFlyingTooLow.push_back(flight);
+			std::cout << "Plane with ID: " << flight->getIdString() << " is flying too low."<< std::endl;
 		}
 	}
 
-	return planesFlyingTooLow;
 }
 
 
