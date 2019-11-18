@@ -45,17 +45,6 @@ struct sigevent simulation_event;
 struct itimerspec simulation_itime;
 
 
-void dummyFunction(void* arg){
-	cout << "thread exec" << endl;
-}
-
-//TODO add other threads
-pthread_t radar_thread;
-pthread_t cli_thread;
-
-string radar_file_url = "smtg";
-
-
 //Startup routine
 int main() {
 	cout << "Hello World!!! NICE" << endl; // prints Hello World!!!
@@ -67,10 +56,6 @@ int main() {
 	    printf( "My working directory is %s.\n", cwd );
 	}
 	return 0;
-}
-
-void setupCommChannels(){
-
 }
 
 void setupTimersAndThreads(){
@@ -112,8 +97,6 @@ void setupRadar(){
 	display_itime.it_value.tv_sec = 15;
 	display_itime.it_interval.tv_sec = 15;
 }
-
-
 
 void startTimers(){
 	timer_settime(radar_timer, 0, &radar_itime, NULL);
