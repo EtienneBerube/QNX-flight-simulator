@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "Display.h"
 #include "Radar.h"
+#include "History.h"
 
 using namespace std;
 #define MY_PULSE_CODE 0x01
@@ -36,6 +37,7 @@ timer_t display_timer;
 struct sigevent display_event;
 struct itimerspec display_itime;
 
+History history(&airplaneDB);
 timer_t history_timer;
 struct sigevent history_event;
 struct itimerspec history_itime;
@@ -43,17 +45,6 @@ struct itimerspec history_itime;
 timer_t simulation_timer;
 struct sigevent simulation_event;
 struct itimerspec simulation_itime;
-
-
-void* dummyFunction(void* arg){
-	cout << "thread exec" << endl;
-}
-
-//TODO add other threads
-pthread_t radar_thread;
-pthread_t cli_thread;
-
-string radar_file_url = "smtg";
 
 
 //Startup routine
@@ -67,10 +58,6 @@ int main() {
 	    printf( "My working directory is %s.\n", cwd );
 	}
 	return 0;
-}
-
-void setupCommChannels(){
-
 }
 
 void setupTimersAndThreads(){
@@ -91,7 +78,7 @@ void runDisplay(sigval value){
 
 void setupDisplay(){
 
-	SIGEV_THREAD_INIT( &display_event, runDisplay, 0, NULL );
+	SIGEV_THREAD_INIT( &display_event, &runDisplay, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
@@ -105,7 +92,7 @@ void runRadar(sigval value){
 
 void setupRadar(){
 
-	SIGEV_THREAD_INIT( &radar_event, runRadar, 0, NULL );
+	SIGEV_THREAD_INIT( &radar_event, &runRadar, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
@@ -113,7 +100,18 @@ void setupRadar(){
 	display_itime.it_interval.tv_sec = 15;
 }
 
+void runHistory(){
+	history.saveState();
+}
 
+void setupHistory(){
+	SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+
+	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
+
+	display_itime.it_value.tv_sec = 60;
+	display_itime.it_interval.tv_sec = 60;
+}
 
 void startTimers(){
 	timer_settime(radar_timer, 0, &radar_itime, NULL);
