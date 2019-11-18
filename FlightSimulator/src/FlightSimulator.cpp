@@ -49,7 +49,7 @@ struct itimerspec simulation_itime;
 
 //Startup routine
 int main() {
-	cout << "Hello World!!! NICE" << endl; // prints Hello World!!!
+	cout << "Flight Simulator Start Deano" << endl; // prints Hello World!!!
 	char* cwd;
 	char buff[PATH_MAX + 1];
 

@@ -22,6 +22,8 @@ public:
 	void updateFlightPosition();
 	void calculateFlightDistanceFromOriginPoint();
 	int calculatateFlightDistanceFromAPoint(int, int, int);
+	int calculateDistanceOnXYPlane(int, int);
+	int calculateAltitudeBetweenPlanes(int);
 
 	int getPositionX();
 	int getPositionY();

@@ -8,6 +8,6 @@ com.qnx.tools.ide.qde.debug.core.descriptorType.default\:firstQnxProject/activeL
 com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/Flight\ Simulator/activeLaunchMode=run
 com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/Flight\ Simulator/activeLaunchTarget=com.qnx.tools.ide.target.qconn\:test
 com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/FlightSimulator/activeLaunchMode=run
-com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/FlightSimulator/activeLaunchTarget=com.qnx.tools.ide.target.qconn\:192.168.2.128
+com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/FlightSimulator/activeLaunchTarget=com.qnx.tools.ide.target.qconn\:QNX
 configDescList=com.qnx.tools.ide.qde.debug.core.descriptorType.project\:P/FlightSimulator
 eclipse.preferences.version=1

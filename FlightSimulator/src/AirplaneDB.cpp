@@ -84,3 +84,11 @@ void AirplaneDB::sortThePlanes(){
 	std::sort(flights.begin(),flights.end(), flightSorting);
 }
 
+/*
+ * Function which will run every 2 seconds, to update the position of all the planes.
+ */
+void AirplaneDB::updateFlightsPosition(){
+	//LAMBDA EXPRESSION
+	auto updatePlanePosition = [](Flight* n) {n->updateFlightPosition();};
+	std::for_each(flights.begin(),flights.end(), updatePlanePosition);
+}
