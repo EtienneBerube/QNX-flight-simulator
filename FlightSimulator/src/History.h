@@ -9,18 +9,21 @@
 #define SRC_HISTORY_H_
 
 #include "AirplaneDB.h"
-
-#include <iostream>
+#include "Radar.h"
+#include <ctime>
+#include <vector>
 #include <fstream>
+#include <sstream>
+#include <iostream>
 
 
 class History{
 	public:
-		History(AirplaneDB*);
+		History(Radar*);
 		void saveState();
 	private:
-		string uri = "logs/";
-		AirplaneDB* airplaneDB;
+		std::string uri = "logs/";
+		Radar* radar;
 };
 
 #endif /* SRC_HISTORY_H_ */

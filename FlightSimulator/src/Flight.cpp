@@ -122,19 +122,30 @@ int Flight::calculateAltitudeBetweenPlanes(int z){
  * It uses the appropriate coordinated depending on whether the aircraft is in holding pattern or not
  *
  */
-int Flight::calculatateFlightDistanceFromAPoint(int x, int y, int z){
+bool Flight::scanFlightFromAPoint(int x, int y, int z){
+
 	if(inHoldingPattern){
-		int diff_x = x - this->inHoldingPatternPosition.x;
-		int diff_y = y - this->inHoldingPatternPosition.y;
-		int diff_z = z - this->inHoldingPatternPosition.z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
-		return (int) sqrt(totalSquared);
+
+//		int diff_x = x - this->inHoldingPatternPosition.x;
+//		int diff_y = y - this->inHoldingPatternPosition.y;
+//		int diff_z = z - this->inHoldingPatternPosition.z;
+//		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
+//		return (int) sqrt(totalSquared);
+
+		if( (this->inHoldingPatternPosition.x >= (x*5280) && this->inHoldingPatternPosition.x <= (x+100)*5280) && this->inHoldingPatternPosition.y <= (y +100)*5280 && this->inHoldingPatternPosition.y >= (y*5280) && this->inHoldingPatternPosition.z >= (z + 15000) && this->inHoldingPatternPosition.z >= (z + 40000))
+			return true;
+		else return false;
+
 	}else{
-		int diff_x = x - this->position_x;
-		int diff_y = y - this->position_y;
-		int diff_z = z - this->position_z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
-		return (int) sqrt(totalSquared);
+//		int diff_x = x - this->position_x;
+//		int diff_y = y - this->position_y;
+//		int diff_z = z - this->position_z;
+//		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
+//		return (int) sqrt(totalSquared);
+
+		if( (this->position_x >= (x*5280) && this->position_x <= (x+100)*5280) && this->position_y <= (y +100)*5280 && this->position_y >= (y)*5280 && this->position_z >= (z + 15000) && this->position_z >= (z + 40000))
+				return true;
+			else return false;
 	}
 }
 

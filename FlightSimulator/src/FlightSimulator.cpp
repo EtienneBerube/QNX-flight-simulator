@@ -37,7 +37,7 @@ timer_t display_timer;
 struct sigevent display_event;
 struct itimerspec display_itime;
 
-History history(&airplaneDB);
+History history(&radar);
 timer_t history_timer;
 struct sigevent history_event;
 struct itimerspec history_itime;
@@ -100,7 +100,7 @@ void setupRadar(){
 	display_itime.it_interval.tv_sec = 15;
 }
 
-void runHistory(){
+void runHistory(sigval value){
 	history.saveState();
 }
 

@@ -25,8 +25,10 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 	lostFlights.clear();
 
 	for (Flight* currentFlight : flights){
-		if (currentFlight->getFlightDistance() <= Radar::RADAR_AREA) flightsInAirSpace.push_back(currentFlight);
-		else lostFlights.push_back(currentFlight);
+		if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::MIN_RADAR_HEIGHT && currentFlight->getPositionZ() <= Radar::MAX_RADAR_HEIGHT) {
+			flightsInAirSpace.push_back(currentFlight);
+
+		}		else lostFlights.push_back(currentFlight);
 	}
 
 	//TODO IF lostFlights.size != 0, notify operator!!!!
@@ -69,32 +71,12 @@ std::vector<Flight*> Radar::scanFromAPoint (int x, int y, int z, std::vector<Fli
 	std::vector<Flight*> flightsCloseToAPoint;
 
 	for (Flight* currentFlight: flights){
-		if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+		if (currentFlight->scanFlightFromAPoint(x,y,z)) flightsCloseToAPoint.push_back(currentFlight);
 	}
 	return flightsCloseToAPoint;
 }
 
 
-/*
- * Function which will write the status of the airfield
- * AKA the status of flights present in the airfield at a specific point in time in a file
- * The file has the name of the current date and time
- *
- */
-void Radar::writeLogOfPlaneInAirSpace(){
-	std::time_t currentTime = std::time(nullptr);
-	std::stringstream currentTimeInString;
-	currentTimeInString << currentTime;
-	std::string logFileName = currentTimeInString.str();
-
-	std::fstream airSpaceLog;
-	airSpaceLog.open(logFileName);
-
-	for (Flight* flight: flightsInAirSpace){
-		airSpaceLog << flight->getCurrentFlightStatus();
-	}
-	airSpaceLog.close();
-}
 
 void Radar::displayPlanesAboutToCrash(){
 
@@ -117,10 +99,6 @@ void Radar::displayPlanesAboutToCrash(){
 
 
 
-
-void Radar::getThreadRunnable(void* context){
-//	((Radar *)context)->hello(); //Add function to run here
-}
 
 Radar::~Radar() {
 	// TODO Auto-generated destructor stub

@@ -15745,3 +15745,844 @@ make: *** Waiting for unfinished jobs....
 make -j7 all 
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+15:21:16 **** Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:16:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:23: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight: flightsInAirSpace){
+                       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:22:29 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:16:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:23: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight: flightsInAirSpace){
+                       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/History.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+15:38:39 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp:10:1: error: prototype for 'History::History(AirplaneDB*)' does not match any in class 'History'
+ History::History(AirplaneDB* db){
+ ^
+In file included from src/History.cpp:8:0:
+src/History.h:19:7: error: candidates are: constexpr History::History(History&&)
+ class History{
+       ^
+src/History.h:19:7: error:                 constexpr History::History(const History&)
+src/History.h:21:3: error:                 History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:30: error: expected unqualified-id before ')' token
+  for (Flight* flight: radar->){
+                              ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/FlightSimulator.cpp:40:28: error: no matching function for call to 'History::History(AirplaneDB*)'
+ History history(&airplaneDB);
+                            ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:21:3: note: candidate: History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.h:21:3: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'Radar*'
+src/History.h:19:7: note: candidate: constexpr History::History(const History&)
+ class History{
+       ^
+src/History.h:19:7: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'const History&'
+src/History.h:19:7: note: candidate: constexpr History::History(History&&)
+src/History.h:19:7: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'History&&'
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:40:37 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp:10:1: error: prototype for 'History::History(AirplaneDB*)' does not match any in class 'History'
+ History::History(AirplaneDB* db){
+ ^
+In file included from src/History.cpp:8:0:
+src/History.h:19:7: error: candidates are: constexpr History::History(History&&)
+ class History{
+       ^
+src/History.h:19:7: error:                 constexpr History::History(const History&)
+src/History.h:21:3: error:                 History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:30: error: 'class Radar' has no member named 'get'
+  for (Flight* flight: radar->get){
+                              ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/FlightSimulator.cpp:40:28: error: no matching function for call to 'History::History(AirplaneDB*)'
+ History history(&airplaneDB);
+                            ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:21:3: note: candidate: History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.h:21:3: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'Radar*'
+src/History.h:19:7: note: candidate: constexpr History::History(const History&)
+ class History{
+       ^
+src/History.h:19:7: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'const History&'
+src/History.h:19:7: note: candidate: constexpr History::History(History&&)
+src/History.h:19:7: note:   no known conversion for argument 1 from 'AirplaneDB*' to 'History&&'
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/History.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+15:41:02 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp:10:1: error: prototype for 'History::History(AirplaneDB*)' does not match any in class 'History'
+ History::History(AirplaneDB* db){
+ ^
+In file included from src/History.cpp:8:0:
+src/History.h:19:7: error: candidates are: constexpr History::History(History&&)
+ class History{
+       ^
+src/History.h:19:7: error:                 constexpr History::History(const History&)
+src/History.h:21:3: error:                 History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:30: error: 'class Radar' has no member named 'get'
+  for (Flight* flight: radar->get){
+                              ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:42:19 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp:10:1: error: prototype for 'History::History(AirplaneDB*)' does not match any in class 'History'
+ History::History(AirplaneDB* db){
+ ^
+In file included from src/History.cpp:8:0:
+src/History.h:19:7: error: candidates are: constexpr History::History(History&&)
+ class History{
+       ^
+src/History.h:19:7: error:                 constexpr History::History(const History&)
+src/History.h:21:3: error:                 History::History(Radar*)
+   History(Radar*);
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:42:40 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp:10:1: error: prototype for 'History::History(AirplaneDB*)' does not match any in class 'History'
+ History::History(AirplaneDB* db){
+ ^
+In file included from src/History.cpp:8:0:
+src/History.h:19:7: error: candidates are: constexpr History::History(History&&)
+ class History{
+       ^
+src/History.h:19:7: error:                 constexpr History::History(const History&)
+src/History.h:21:3: error:                 History::History(Radar*)
+   History(Radar*);
+   ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:34: error: 'class History' has no member named 'uri'
+  std::string logFileName = this->uri + currentTimeInString.str();
+                                  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:43:16 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:34: error: 'class History' has no member named 'uri'
+  std::string logFileName = this->uri + currentTimeInString.str();
+                                  ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:24:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+15:44:06 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp: In member function 'void Radar::writeLogOfPlaneInAirSpace()':
+src/Radar.cpp:86:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/Radar.cpp:90:15: error: aggregate 'std::__1::fstream airSpaceLog' has incomplete type and cannot be defined
+  std::fstream airSpaceLog;
+               ^
+In file included from src/History.cpp:8:0:
+src/History.h:27:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:18:34: error: 'class History' has no member named 'uri'
+  std::string logFileName = this->uri + currentTimeInString.str();
+                                  ^
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:12:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:12:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:27:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/History.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+15:44:17 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:12:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:12:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+src/Radar.cpp: In member function 'void Radar::writeLogOfPlaneInAirSpace()':
+src/Radar.cpp:86:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/Radar.cpp:90:15: error: aggregate 'std::__1::fstream airSpaceLog' has incomplete type and cannot be defined
+  std::fstream airSpaceLog;
+               ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:44:29 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:12:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:12:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+src/Radar.cpp: In member function 'void Radar::writeLogOfPlaneInAirSpace()':
+src/Radar.cpp:86:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/Radar.cpp:90:15: error: aggregate 'std::__1::fstream airSpaceLog' has incomplete type and cannot be defined
+  std::fstream airSpaceLog;
+               ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:44:54 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+15:45:34 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** Waiting for unfinished jobs....
+15:46:03 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:46:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:49:49 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** Waiting for unfinished jobs....
+15:50:10 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+In file included from src/History.h:12:0,
+                 from src/FlightSimulator.cpp:7:
+src/Radar.h:15:7: error: redefinition of 'class Radar'
+ class Radar {
+       ^
+In file included from src/FlightSimulator.cpp:6:0:
+src/Radar.h:15:7: error: previous definition of 'class Radar'
+ class Radar {
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:51:04 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/History.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+15:52:07 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+15:52:09 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+16:38:57 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/TestCase.d,-MT,build/x86_64-debug/src/TestCase.o -o build/x86_64-debug/src/TestCase.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/TestCase.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/History.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+16:39:38 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+16:42:03 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/History.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+16:45:38 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:72:68: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                                    ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+16:48:24 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:73:68: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                                    ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+16:50:50 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp: In member function 'void Radar::scanAirZone(std::__1::vector<Flight*>)':
+src/Radar.cpp:28:158: error: expected unqualified-id before ')' token
+   if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::) {
+                                                                                                                                                              ^
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:74:68: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                                    ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+16:51:22 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:74:68: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                                    ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+16:54:36 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:74:53: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->scanFlightFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                     ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+17:07:12 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'std::__1::vector<Flight*> Radar::scanFromAPoint(int, int, int, std::__1::vector<Flight*>)':
+src/Radar.cpp:74:53: error: 'RADAR_AREA' is not a member of 'Radar'
+   if (currentFlight->scanFlightFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+                                                     ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+17:09:18 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/History.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+17:09:23 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.

@@ -52,7 +52,7 @@ void AirplaneDB::init(){
 				case SPEED_Z : speedz = TestCase::airplane_schedule[i]; break;
 				case POSITION_X : positionx = TestCase::airplane_schedule[i]; break;
 				case POSITION_Y : positiony = TestCase::airplane_schedule[i]; break;
-				case POSITION_Z : positionz = TestCase::airplane_schedule[i]; break;
+				case POSITION_Z : positionz = TestCase::airplane_schedule[i]+ 15000; break;
 				case START_TIME : {
 				enterTime = TestCase::airplane_schedule[i];
 				Flight* newFlight = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
