@@ -1,11 +1,7 @@
-16:09:39 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+12:57:34 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
 make -j7 all 
-qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
-src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
-src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
- }
- ^
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
 
-16:09:40 Build Finished (took 492ms)
+12:57:35 Build Finished (took 634ms)
 

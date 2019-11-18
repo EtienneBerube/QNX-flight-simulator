@@ -8,6 +8,7 @@
 #include "Radar.h"
 #include "TestCase.h"
 #include "AirplaneDB.h"
+#include <iostream>
 
 
 /*
@@ -92,6 +93,27 @@ void Radar::writeLogOfPlaneInAirSpace(){
 	}
 	airSpaceLog.close();
 }
+
+void Radar::displayPlanesAboutToCrash(){
+
+	for (Flight* firstFlight : flightsInAirSpace){
+		int xPositionFirstFlight = firstFlight->getPositionX();
+		int yPositionFirstFlight = firstFlight->getPositionY();
+		int altitudeFirstFlight = firstFlight->getPositionZ();
+
+		for (Flight* secondFlight: flightsInAirSpace){
+			if(firstFlight == secondFlight) continue;
+			else if(secondFlight->calculateDistanceOnXYPlane(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+				}
+			}
+
+		}
+ }
+}
+
+
 
 
 void Radar::getThreadRunnable(void* context){

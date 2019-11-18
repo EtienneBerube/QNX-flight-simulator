@@ -15500,3 +15500,213 @@ src/FlightSimulator.cpp:50:1: warning: no return statement in function returning
  }
  ^
 qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+22:04:55 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+22:05:23 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+12:08:08 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+12:28:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/Flight.cpp: In member function 'int Flight::calculateDistanceOnXYPlane(int, int)':
+src/Flight.cpp:95:9: warning: 'something' is used uninitialized in this function [-Wuninitialized]
+  return something;
+         ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** Waiting for unfinished jobs....
+12:34:07 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:35:50 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+12:35:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:36:29 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:98:29: error: 'flights' was not declared in this scope
+  for (Flight* firstFlight : flights){
+                             ^
+src/Radar.cpp:101:7: error: redeclaration of 'int yPositionFirstFlight'
+   int yPositionFirstFlight = firstFlight->getPositionZ();
+       ^
+src/Radar.cpp:100:7: note: 'int yPositionFirstFlight' previously declared here
+   int yPositionFirstFlight = firstFlight->getPositionY();
+       ^
+src/Radar.cpp:103:30: error: unable to deduce 'auto&&' from 'flights'
+   for (Flight* secondFlight: flights){
+                              ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:36:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:101:7: error: redeclaration of 'int yPositionFirstFlight'
+   int yPositionFirstFlight = firstFlight->getPositionZ();
+       ^
+src/Radar.cpp:100:7: note: 'int yPositionFirstFlight' previously declared here
+   int yPositionFirstFlight = firstFlight->getPositionY();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:37:16 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+12:51:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:23: error: expected unqualified-id before ')' token
+     if(secondFlight-> )
+                       ^
+src/Radar.cpp:107:4: error: expected primary-expression before '}' token
+    }
+    ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+12:53:23 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:53: error: 'altitudeFirstPlane' was not declared in this scope
+     if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstPlane) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+                                                     ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:53:33 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:53: error: 'altitudeFirstPlane' was not declared in this scope
+     if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstPlane) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+                                                     ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:54:38 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+12:56:25 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:107:1: error: 'cout' is not a member of 'std'
+ std::cout<< "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+ ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:56:41 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:107:6: error: 'cout' is not a member of 'std'
+      std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:57:34 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
