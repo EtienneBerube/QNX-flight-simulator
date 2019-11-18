@@ -99,3 +99,6 @@ translations/*.qm
 .metadata/*
 
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
+
+# Clion misc
+*.idea
