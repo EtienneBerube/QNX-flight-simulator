@@ -89,6 +89,34 @@ void Flight::calculateFlightDistanceFromOriginPoint(){
 }
 
 
+int Flight::calculateDistanceOnXYPlane(int x, int y){
+	int calculatedDistance;
+
+	if (inHoldingPattern){
+		int diffInX = x - this->inHoldingPatternPosition.x;
+		int diffInY = y - this->inHoldingPatternPosition.y;
+		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		calculatedDistance = (int) sqrt(totalSquared);
+	}else {
+		int diffInX = x - this->position_x;
+		int diffInY = y - this->position_y;
+		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		calculatedDistance = (int) sqrt(totalSquared);
+
+	}
+
+	return calculatedDistance;
+}
+
+int Flight::calculateAltitudeBetweenPlanes(int z){
+	if(inHoldingPattern){
+		return (z < this->inHoldingPatternPosition.z)? this->inHoldingPatternPosition.z - z: z - this->inHoldingPatternPosition.z;
+
+	}else {
+		return (z < this->position_z)? this->position_z  - z: z - this->position_z;
+	}
+}
+
 /*
  * Function used to calculate how far the aircraft is from a point in time and space
  * It uses the appropriate coordinated depending on whether the aircraft is in holding pattern or not

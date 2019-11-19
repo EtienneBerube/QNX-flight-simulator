@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "Display.h"
 #include "Radar.h"
+#include "History.h"
 
 using namespace std;
 #define MY_PULSE_CODE 0x01
@@ -36,6 +37,7 @@ timer_t display_timer;
 struct sigevent display_event;
 struct itimerspec display_itime;
 
+History history(&airplaneDB);
 timer_t history_timer;
 struct sigevent history_event;
 struct itimerspec history_itime;
@@ -47,7 +49,7 @@ struct itimerspec simulation_itime;
 
 //Startup routine
 int main() {
-	cout << "Hello World!!! NICE" << endl; // prints Hello World!!!
+	cout << "Flight Simulator Start Deano" << endl; // prints Hello World!!!
 	char* cwd;
 	char buff[PATH_MAX + 1];
 
@@ -96,6 +98,19 @@ void setupRadar(){
 
 	display_itime.it_value.tv_sec = 15;
 	display_itime.it_interval.tv_sec = 15;
+}
+
+void runHistory(){
+	history.saveState();
+}
+
+void setupHistory(){
+	SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+
+	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
+
+	display_itime.it_value.tv_sec = 60;
+	display_itime.it_interval.tv_sec = 60;
 }
 
 void startTimers(){

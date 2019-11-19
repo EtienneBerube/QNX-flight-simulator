@@ -13332,3 +13332,2416 @@ src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
 cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
 Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
 make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+23:16:50 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+src/AirplaneDB.cpp:83:39: error: no 'void AirplaneDB::updateFlightPosition()' member function declared in class 'AirplaneDB'
+ void AirplaneDB::updateFlightPosition(){
+                                       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/AirplaneDB.o' failed
+make: *** [build/x86_64-debug/src/AirplaneDB.o] Error 1
+make: *** Waiting for unfinished jobs....
+src/Radar.cpp: In function 'std::__1::vector<Flight*> getPlanesFlyingTooLow()':
+src/Radar.cpp:36:24: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight : flightsInAirSpace){
+                        ^
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+23:17:05 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/AirplaneDB.cpp: In lambda function:
+src/AirplaneDB.cpp:84:74: error: passing 'const Flight' as 'this' argument discards qualifiers [-fpermissive]
+  auto updatePlanePosition = [](const Flight* n) {n->updateFlightPosition();};
+                                                                          ^
+In file included from src/AirplaneDB.h:12:0,
+                 from src/AirplaneDB.cpp:7:
+src/Flight.h:22:7: note:   in call to 'void Flight::updateFlightPosition()'
+  void updateFlightPosition();
+       ^
+src/AirplaneDB.cpp: In member function 'void AirplaneDB::updateFlightsPosition()':
+src/AirplaneDB.cpp:85:62: error: no matching function for call to 'for_each(<unresolved overloaded function type>, <unresolved overloaded function type>, AirplaneDB::updateFlightsPosition()::<lambda(const Flight*)>&)'
+  std::for_each(flights.begin,flights.end, updatePlanePosition);
+                                                              ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__bit_reference:15:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/vector:266,
+                 from src/AirplaneDB.h:11,
+                 from src/AirplaneDB.cpp:7:
+/Users/Deano/qnx/target/qnx7/usr/include/c++/v1/algorithm:850:1: note: candidate: template<class _InputIterator, class _Function> _Function std::__1::for_each(_InputIterator, _InputIterator, _Function)
+ for_each(_InputIterator __first, _InputIterator __last, _Function __f)
+ ^
+/Users/Deano/qnx/target/qnx7/usr/include/c++/v1/algorithm:850:1: note:   template argument deduction/substitution failed:
+src/AirplaneDB.cpp:85:62: note:   couldn't deduce template parameter '_InputIterator'
+  std::for_each(flights.begin,flights.end, updatePlanePosition);
+                                                              ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/AirplaneDB.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/AirplaneDB.o] Error 1
+make: *** Waiting for unfinished jobs....
+src/Radar.cpp: In function 'std::__1::vector<Flight*> getPlanesFlyingTooLow()':
+src/Radar.cpp:36:24: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight : flightsInAirSpace){
+                        ^
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+23:17:29 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+src/AirplaneDB.cpp: In member function 'void AirplaneDB::updateFlightsPosition()':
+src/AirplaneDB.cpp:85:62: error: no matching function for call to 'for_each(<unresolved overloaded function type>, <unresolved overloaded function type>, AirplaneDB::updateFlightsPosition()::<lambda(Flight*)>&)'
+  std::for_each(flights.begin,flights.end, updatePlanePosition);
+                                                              ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__bit_reference:15:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/vector:266,
+                 from src/AirplaneDB.h:11,
+                 from src/AirplaneDB.cpp:7:
+/Users/Deano/qnx/target/qnx7/usr/include/c++/v1/algorithm:850:1: note: candidate: template<class _InputIterator, class _Function> _Function std::__1::for_each(_InputIterator, _InputIterator, _Function)
+ for_each(_InputIterator __first, _InputIterator __last, _Function __f)
+ ^
+/Users/Deano/qnx/target/qnx7/usr/include/c++/v1/algorithm:850:1: note:   template argument deduction/substitution failed:
+src/AirplaneDB.cpp:85:62: note:   couldn't deduce template parameter '_InputIterator'
+  std::for_each(flights.begin,flights.end, updatePlanePosition);
+                                                              ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/AirplaneDB.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/AirplaneDB.o' failed
+make: *** Waiting for unfinished jobs....
+src/Radar.cpp: In function 'std::__1::vector<Flight*> getPlanesFlyingTooLow()':
+src/Radar.cpp:36:24: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight : flightsInAirSpace){
+                        ^
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+23:18:07 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+src/Radar.cpp: In function 'std::__1::vector<Flight*> getPlanesFlyingTooLow()':
+src/Radar.cpp:36:24: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight : flightsInAirSpace){
+                        ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+23:19:56 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+14:14:57 **** Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+14:44:24 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:50:21 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:50:30 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:50:41 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:51:28 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:51:54 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:51:57 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:52:27 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:53:12 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:53:56 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:54:12 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:57:01 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:57:51 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:58:11 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:58:24 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+15:59:00 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+15:59:04 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+16:00:12 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+16:00:46 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp:32:9: error: no matching function for call to 'Display::Display()'
+ Display Display;
+         ^
+In file included from src/FlightSimulator.cpp:5:0:
+src/Display.h:15:2: note: candidate: Display::Display(AirplaneDB*)
+  Display(AirplaneDB*); //TODO add planeDB
+  ^
+src/Display.h:15:2: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(const Display&)
+ class Display{
+       ^
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/Display.h:13:7: note: candidate: constexpr Display::Display(Display&&)
+src/Display.h:13:7: note:   candidate expects 1 argument, 0 provided
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:48:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/FlightSimulator.cpp: In function 'void setupCommChannels()':
+src/FlightSimulator.cpp:71:6: warning: unused variable 'radarChannelReceiveID' [-Wunused-variable]
+  int radarChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:72:6: warning: unused variable 'displayChannelReceiveID' [-Wunused-variable]
+  int displayChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:73:6: warning: unused variable 'historyChannelReceiveID' [-Wunused-variable]
+  int historyChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp:74:6: warning: unused variable 'simulationChannelReceiveID' [-Wunused-variable]
+  int simulationChannelReceiveID = ChannelCreate(_NTO_CHF_FIXED_PRIORITY);
+      ^
+src/FlightSimulator.cpp: In function 'void setupTimersAndThreads()':
+src/FlightSimulator.cpp:85:46: error: 'ND_LOCAL_NODE' was not declared in this scope
+  simulation_event.sigev_coid = ConnectAttach(ND_LOCAL_NODE, 0, radarChannelReceiveID, _NTO_SIDE_CHANNEL, 0);
+                                              ^
+src/FlightSimulator.cpp:86:45: error: 'getprio' was not declared in this scope
+  simulation_event.sigev_priority = getprio(0);
+                                             ^
+src/FlightSimulator.cpp: In function 'void setupDisplay()':
+src/FlightSimulator.cpp:111:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:113:2: error: invalid conversion from 'void (*)(void*)' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+  ^
+src/FlightSimulator.cpp:113:67: error: 'display' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                   ^
+src/FlightSimulator.cpp:113:76: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &display_event, &Display::getThreadRunnable, &display, attr );
+                                                                            ^
+src/FlightSimulator.cpp: In function 'void setupRadar()':
+src/FlightSimulator.cpp:122:2: error: 'pthread_attr' was not declared in this scope
+  pthread_attr attr;
+  ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp:124:2: error: cannot convert 'void (Radar::*)(void*)' to 'void (*)(sigval)' in assignment
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+  ^
+src/FlightSimulator.cpp:124:70: error: 'attr' was not declared in this scope
+  SIGEV_THREAD_INIT( &radar_event, &Radar::getThreadRunnable, &radar, attr );
+                                                                      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+16:08:26 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/TestCase.d,-MT,build/x86_64-debug/src/TestCase.o -o build/x86_64-debug/src/TestCase.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/TestCase.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+16:08:44 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+16:09:39 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+22:04:55 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+22:05:23 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+12:08:08 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+make: Nothing to be done for 'all'.
+12:28:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/Flight.cpp: In member function 'int Flight::calculateDistanceOnXYPlane(int, int)':
+src/Flight.cpp:95:9: warning: 'something' is used uninitialized in this function [-Wuninitialized]
+  return something;
+         ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** Waiting for unfinished jobs....
+12:34:07 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:35:50 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+12:35:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp:96:6: error: redefinition of 'void Radar::writeLogOfPlaneInAirSpace()'
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+src/Radar.cpp:81:6: note: 'void Radar::writeLogOfPlaneInAirSpace()' previously defined here
+ void Radar::writeLogOfPlaneInAirSpace(){
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:36:29 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:98:29: error: 'flights' was not declared in this scope
+  for (Flight* firstFlight : flights){
+                             ^
+src/Radar.cpp:101:7: error: redeclaration of 'int yPositionFirstFlight'
+   int yPositionFirstFlight = firstFlight->getPositionZ();
+       ^
+src/Radar.cpp:100:7: note: 'int yPositionFirstFlight' previously declared here
+   int yPositionFirstFlight = firstFlight->getPositionY();
+       ^
+src/Radar.cpp:103:30: error: unable to deduce 'auto&&' from 'flights'
+   for (Flight* secondFlight: flights){
+                              ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:36:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:101:7: error: redeclaration of 'int yPositionFirstFlight'
+   int yPositionFirstFlight = firstFlight->getPositionZ();
+       ^
+src/Radar.cpp:100:7: note: 'int yPositionFirstFlight' previously declared here
+   int yPositionFirstFlight = firstFlight->getPositionY();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:37:16 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+12:51:53 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:23: error: expected unqualified-id before ')' token
+     if(secondFlight-> )
+                       ^
+src/Radar.cpp:107:4: error: expected primary-expression before '}' token
+    }
+    ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+12:53:23 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:53: error: 'altitudeFirstPlane' was not declared in this scope
+     if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstPlane) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+                                                     ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:53:33 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:106:53: error: 'altitudeFirstPlane' was not declared in this scope
+     if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstPlane) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+                                                     ^
+src/Radar.cpp:101:7: warning: unused variable 'altitudeFirstFlight' [-Wunused-variable]
+   int altitudeFirstFlight = firstFlight->getPositionZ();
+       ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:54:38 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+12:56:25 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:107:1: error: 'cout' is not a member of 'std'
+ std::cout<< "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+ ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:56:41 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+src/Radar.cpp: In member function 'void Radar::displayPlanesAboutToCrash()':
+src/Radar.cpp:107:6: error: 'cout' is not a member of 'std'
+      std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with "<< secondFlight->getIdString() << std::endl;
+      ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+12:57:34 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+13:23:07 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+13:37:21 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+13:53:32 **** Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+src/Radar.cpp: In member function 'void Radar::scanAirZone(std::__1::vector<Flight*>)':
+src/Radar.cpp:28:45: error: 'Raqdar' has not been declared
+   if (currentFlight->getFlightDistance() <= Raqdar::RADAR_AREA) flightsInAirSpace.push_back(currentFlight);
+                                             ^
+src/FlightSimulator.cpp: In function 'void* dummyFunction(void*)':
+src/FlightSimulator.cpp:50:1: warning: no return statement in function returning non-void [-Wreturn-type]
+ }
+ ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Radar.o' failed
+make: *** [build/x86_64-debug/src/Radar.o] Error 1
+make: *** Waiting for unfinished jobs....
+13:53:50 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  

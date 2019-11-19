@@ -8,6 +8,7 @@
 #include "Radar.h"
 #include "TestCase.h"
 #include "AirplaneDB.h"
+#include <iostream>
 
 
 /*
@@ -33,7 +34,10 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 
 
 void Radar::executeRadar(){
-	//TODO populate
+	this->scanAirZone(this->airplaneDB->getPlanes());
+	this->displayPlanesAboutToCrash();
+	this->displayPlanesFlyingTooLow();
+
 }
 
 Radar::Radar(){
@@ -41,18 +45,17 @@ Radar::Radar(){
 }
 
 /*
- * Function which returns the planes in the airSpace flying lower than the min flying altitude
+ * Function which displays the planes in the airSpace flying lower than the min flying altitude
  */
-std::vector<Flight*> Radar::getPlanesFlyingTooLow(){
+void Radar::displayPlanesFlyingTooLow(){
 	std::vector<Flight*> planesFlyingTooLow;
 
 	for (Flight* flight : flightsInAirSpace){
 		if(flight->getPositionZ() <= Radar::MIN_FLYING_ALTITUDE){
-			planesFlyingTooLow.push_back(flight);
+			std::cout << "Plane with ID: " << flight->getIdString() << " is flying too low."<< std::endl;
 		}
 	}
 
-	return planesFlyingTooLow;
 }
 
 
@@ -92,6 +95,27 @@ void Radar::writeLogOfPlaneInAirSpace(){
 	}
 	airSpaceLog.close();
 }
+
+void Radar::displayPlanesAboutToCrash(){
+
+	for (Flight* firstFlight : flightsInAirSpace){
+		int xPositionFirstFlight = firstFlight->getPositionX();
+		int yPositionFirstFlight = firstFlight->getPositionY();
+		int altitudeFirstFlight = firstFlight->getPositionZ();
+
+		for (Flight* secondFlight: flightsInAirSpace){
+			if(firstFlight == secondFlight) continue;
+			else if(secondFlight->calculateDistanceOnXYPlane(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+				}
+			}
+
+		}
+ }
+}
+
+
 
 
 void Radar::getThreadRunnable(void* context){
