@@ -6,11 +6,9 @@
 #define QNX_FLIGHT_SIMULATOR_POLLINGSERVER_H
 
 
-
 class PollingServer {
 
 };
-
 
 
 #endif //QNX_FLIGHT_SIMULATOR_POLLINGSERVER_H

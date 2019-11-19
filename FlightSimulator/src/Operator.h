@@ -6,25 +6,54 @@
 #define QNX_FLIGHT_SIMULATOR_OPERATOR_H
 
 #include <iostream>
+#include <map>
+#include <vector>
+#include <queue>
+
 using std::cout;
-using std::unordered_map;
+using std::map;
 using std::string;
+using std::vector;
+using std::queue;
+using std::pair;
+
+
+enum CommandCode {
+//    Aircraft specific command
+            changeAltitude,
+    increaseSpeed,
+    decreaseSpeed,
+    changeDirection,
+    enterHoldingPattern,
+    leaveHoldingPattern,
+    reportCurrentPositionVelocity,
+//    Internal system
+            addAircraft,
+    deleteAircraft,
+    setPosition,
+    setElevation,
+    setVelocity,
+
+//    Broadcoast
+//  Enter/Leave Holding
+            reportAircraftIdentification,
+};
 
 
 class Operator {
 public:
-    void executeCommand(string);
-    string parseCommand(string);
-    commandCode hashIt(string const&);
+    CommandCode parseCommand(string);
+
+    static CommandCode hashIt(string const &);
+
+//    Command queue that holds a map of commandCode and its list of arguments
+    queue<map<CommandCode, vector<string>>> getCommandQueue();
+
+    void addCommandToQueue(CommandCode, const vector<string>&);
 
 private:
-    enum commandCode;
+    queue<map<CommandCode, vector<string>>> commandQueue;
 };
-
-
-
-
-
 
 
 #endif //QNX_FLIGHT_SIMULATOR_OPERATOR_H

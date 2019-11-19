@@ -2,75 +2,58 @@
 // Created by kbelebinda on 11/18/2019.
 //
 
+#include <utility>
+#include <vector>
+#include <queue>
 #include "Operator.h"
 
+CommandCode Operator::parseCommand(string userInput) {
+    string userInputCopy;
+    userInputCopy = std::move(userInput);
+    string delimiter = "|";
 
-void Operator::executeCommand(commandCode command, string[] args) {
+    size_t pos = userInputCopy.find(delimiter);
 
-    switch (command) {
-        case changeAltitude:
-            break;
-        case increaseSpeed:
-            break;
-        case decreaseSpeed:
-            break;
-        case changeDirection:
-            break;
-        case enterHoldingPattern:
-            break;
-        case leaveHoldingPattern:
-            break;
-        case reportCurrentPositionVelocity:
-            break;
+    string commands;
+    vector<string> args;
 
-        case addAircraft:
-            break;
-        case deleteAircraft:
-            break;
-        case setPosition:
-            break;
-        case setElevation:
-            break;
-        case setVelocity:
-            break;
+    commands = userInputCopy.substr(0, pos);
 
-//        TODO: Broadcast-specific enums?
-        case reportAircraftIdentification:
-            break;
+    userInputCopy.erase(0, pos + delimiter.length());
+
+    string delimiter_args = " ";
+    string substring;
+
+    while ((pos = userInputCopy.find(delimiter_args)) != string::npos) {
+        substring = userInputCopy.substr(0, pos);
+
+        args.push_back(substring);
+
+        userInputCopy.erase(0, pos + delimiter.length());
     }
 
+    args.push_back(userInputCopy);
 
+    CommandCode commandCode = hashIt(commands);
+
+    addCommandToQueue(commandCode, args);
+
+    return commandCode;
 }
 
-string Operator::parseCommand(string) {
-    string command = "";
-    string[] args = new string[]
+void Operator::addCommandToQueue(CommandCode command, const vector<string>& args) {
+    map<CommandCode, vector<string>> commandArgumentsPair;
+
+    commandArgumentsPair.insert(pair<CommandCode, vector<string >>(command, args));
+
+    commandQueue.push(commandArgumentsPair);
 }
 
+queue<map<CommandCode, vector<string>>> Operator::getCommandQueue() {
+    return commandQueue;
+}
 
-enum command_code {
-//    Aircraft specific command
-    changeAltitude,
-    increaseSpeed,
-    decreaseSpeed,
-    changeDirection,
-    enterHoldingPattern,
-    leaveHoldingPattern,
-    reportCurrentPositionVelocity,
-//    Internal system
-    addAircraft,
-    deleteAircraft,
-    setPosition,
-    setElevation,
-    setVelocity,
-
-//    Broadcoast
-//  Enter/Leave Holding
-    reportAircraftIdentification,
-};
-
-
-command_code Operator::hashIt(const string &command) {
+CommandCode Operator::hashIt(const string &command) {
 //    TODO: Lower command string before the comparison
     if (command == "change altitude") {
         return changeAltitude;
@@ -99,5 +82,4 @@ command_code Operator::hashIt(const string &command) {
     } else if (command == "report aircraft identification") {
         return reportAircraftIdentification;
     }
-
 }
