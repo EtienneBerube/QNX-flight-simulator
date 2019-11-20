@@ -36,7 +36,7 @@ public:
 	const int static MIN_RADAR_HEIGHT = 15000;
 	const int static MAX_RADAR_HEIGHT = 40000;
 	const int static MIN_FLYING_ALTITUDE = 15000;
-	const int static MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES = 3;
+	const int static MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES = 3 * 5280;
 	const int static MIN_VERTICAL_DISTANCE_BETWEEN_PLANES = 1000;
 
 private:
