@@ -21,17 +21,21 @@ void History::saveState(){
 	std::time_t currentTime = std::time(nullptr);
 	std::stringstream currentTimeInString;
 	currentTimeInString << currentTime;
-	std::string logFileName = this->uri + currentTimeInString.str();
+	std::string logFileName = currentTimeInString.str();
 
-	std::fstream airSpaceLog;
-	airSpaceLog.open(logFileName);
+	std::ofstream myfile;
+    myfile.open (logFileName + ".txt", std::ostream::out);
 
-	for (Flight* flight: radar->flightsInAirSpace){
-		airSpaceLog << flight->getCurrentFlightStatus() << std::endl;
-	}
-	airSpaceLog.close();
+	  if (myfile.is_open()){
+		for (Flight* flight: radar->flightsInAirSpace){
+//			airSpaceLog << flight->getCurrentFlightStatus() << std::endl;
+			myfile << flight->getCurrentFlightStatus() << std::endl;
+		}
+	}else std::cout << "\n CANNOT OPEN FILE TO WRITE LOG" << std::endl;
+	myfile.close();
 
 	std::cout << "***History Generated***" << std::endl;
 }
+
 
 

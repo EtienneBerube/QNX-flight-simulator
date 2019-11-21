@@ -8,6 +8,7 @@
 #include "Flight.h"
 #include "math.h"
 #include <string>
+#include <iostream>
 
 Flight::Flight() {
 
@@ -89,20 +90,19 @@ void Flight::calculateFlightDistanceFromOriginPoint(){
 }
 
 
-int Flight::calculateDistanceOnXYPlane(int x, int y){
+int Flight::calculateDistanceOnXYPlaneFrom(int x, int y){
 	int calculatedDistance;
 
 	if (inHoldingPattern){
 		int diffInX = x - this->inHoldingPatternPosition.x;
 		int diffInY = y - this->inHoldingPatternPosition.y;
-		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		long long int totalSquared = pow(diffInX,2) + pow(diffInY,2);
 		calculatedDistance = (int) sqrt(totalSquared);
 	}else {
 		int diffInX = x - this->position_x;
 		int diffInY = y - this->position_y;
-		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		long long int totalSquared = pow(diffInX,2) + pow(diffInY,2);
 		calculatedDistance = (int) sqrt(totalSquared);
-
 	}
 
 	return calculatedDistance;
@@ -335,17 +335,19 @@ std::string Flight::projectFlightPosition(int time){
  *
  */
 std::string Flight::getCurrentFlightStatus(){
-	std::string record;
+	std::string record = "";
 	if (inHoldingPattern){
-		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
-		record += "Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + ", ";
-		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "Flight ID: ";
+		record += (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id);
+		record += ", Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + "), ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + "), ";
 		record += "In Holding Pattern: Yes";
 
 	}else{
-		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
-		record += "Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + ", ";
-		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "Flight ID: ";
+		record += (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id);
+		record += ", Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + "), ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + "), ";
 		record += "In Holding Pattern: No";
 	}
 

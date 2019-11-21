@@ -12,6 +12,8 @@
 #include "Radar.h"
 #include <ctime>
 #include <vector>
+#include <cstring>
+
 #include <fstream>
 #include <sstream>
 #include <iostream>

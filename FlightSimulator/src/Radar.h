@@ -27,6 +27,7 @@ public:
 	std::vector<Flight*> scanFromAPoint(int, int, int, std::vector<Flight*>);
 	void displayPlanesAboutToCrash();
 	void displayPlanesFlyingTooLow();
+	void displayPlanesAboutToCrash(std::vector<Flight*>);
 
 
 	std::vector<Flight*> flightsInAirSpace;

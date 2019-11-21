@@ -15,6 +15,7 @@ void setupRadar();
 void setupUserCLI();
 void setupSimulation();
 void setupDisplay();
+void setupHistory();
 void setupTimersAndThreads();
 void startTimers();
 
@@ -69,6 +70,7 @@ void setupTimersAndThreads(){
 
 	setupDisplay();
 	setupRadar();
+	setupHistory();
 
 	//TODO add your shit here
 
@@ -114,14 +116,14 @@ void setupHistory(){
 
 	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
 
-	history_itime.it_value.tv_sec = 60;
-	history_itime.it_interval.tv_sec = 60;
+	history_itime.it_value.tv_sec = 10;
+	history_itime.it_interval.tv_sec = 10;
 }
 
 void startTimers(){
 	timer_settime(radar_timer, 0, &radar_itime, NULL);
 	timer_settime(display_timer, 0, &display_itime, NULL);
 //	timer_settime(simulation_timer, 0, &simulation_itime, NULL);
-//	timer_settime(history_timer, 0, &history_itime, NULL);
+	timer_settime(history_timer, 0, &history_itime, NULL);
 }
 

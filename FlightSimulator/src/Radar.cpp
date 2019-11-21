@@ -69,8 +69,6 @@ void Radar::displayPlanesFlyingTooLow(){
 
 }
 
-
-
 /*
  * Function which will be used if the operator wants to scan from a particular airspace
  * By airspace, we mean another point in time and space other than (0,0,0)
@@ -96,7 +94,7 @@ void Radar::displayPlanesAboutToCrash(){
 
 		for (Flight* secondFlight: flightsInAirSpace){
 			if(firstFlight == secondFlight) continue;
-			else if(secondFlight->calculateDistanceOnXYPlane(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+			else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
 				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
 					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
 				}else continue;
@@ -104,6 +102,40 @@ void Radar::displayPlanesAboutToCrash(){
 
 		}
  }
+}
+
+
+/*
+ * For debugging purposes
+ */
+void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
+
+    for (Flight* firstFlight : fuckingFlights){
+        int xPositionFirstFlight = firstFlight->getPositionX();
+        int yPositionFirstFlight = firstFlight->getPositionY();
+        int altitudeFirstFlight = firstFlight->getPositionZ();
+
+
+        for (Flight* secondFlight: fuckingFlights){
+            int distanceBetweenTwoPlanes = secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight);
+
+            if(firstFlight == secondFlight) continue;
+
+            else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+                if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+
+                    std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+                    std::cout << "Distance between the two planes are " << distanceBetweenTwoPlanes << std::endl;
+                    std::cout << "min Distance between the two planes required is  " << Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES << std::endl;
+//                    if (distanceBetweenTwoPlanes == -2147483648){
+//
+//                    }
+
+                }else continue;
+            }
+
+        }
+    }
 }
 
 
