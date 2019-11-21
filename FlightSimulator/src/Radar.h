@@ -31,7 +31,6 @@ public:
 
 
 	std::vector<Flight*> flightsInAirSpace;
-	std::vector<Flight*> lostFlights;
 	const int static RADAR_WIDTH = 100 * 5280;
 	const int static RADAR_LENGTH = 100 * 5280;
 	const int static MIN_RADAR_HEIGHT = 15000;

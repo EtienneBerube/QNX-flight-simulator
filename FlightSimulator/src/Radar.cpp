@@ -20,6 +20,8 @@
 Radar::Radar(AirplaneDB *airplaneDB){
 	this->airplaneDB = airplaneDB;
 }
+
+
 void Radar::scanAirZone(std::vector<Flight*> flights){
 	flightsInAirSpace.clear();
 	lostFlights.clear();
@@ -28,10 +30,8 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 		if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::MIN_RADAR_HEIGHT && currentFlight->getPositionZ() <= Radar::MAX_RADAR_HEIGHT) {
 			flightsInAirSpace.push_back(currentFlight);
 
-		}		else lostFlights.push_back(currentFlight);
+		}
 	}
-
-	//TODO IF lostFlights.size != 0, notify operator!!!!
 }
 
 
@@ -51,9 +51,11 @@ void Radar::executeRadar(){
 
 }
 
+
 Radar::Radar(){
 	//Empty
 }
+
 
 /*
  * Function which displays the planes in the airSpace flying lower than the min flying altitude
@@ -134,7 +136,6 @@ void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
         }
     }
 }
-
 
 
 
