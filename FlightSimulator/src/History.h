@@ -24,7 +24,6 @@ class History{
 		History(Radar*);
 		void saveState();
 	private:
-		std::string uri = "logs/";
 		Radar* radar;
 };
 

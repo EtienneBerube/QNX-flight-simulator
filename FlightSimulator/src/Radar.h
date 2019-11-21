@@ -23,11 +23,11 @@ public:
 	virtual ~Radar();
 	void getThreadRunnable(void*);
 	void executeRadar();
-	void scanAirZone(std::vector<Flight*>); // TODO Add other features
+	void scanAirZone(std::vector<Flight*>);
 	std::vector<Flight*> scanFromAPoint(int, int, int, std::vector<Flight*>);
 	void displayPlanesAboutToCrash();
 	void displayPlanesFlyingTooLow();
-	void displayPlanesAboutToCrash(std::vector<Flight*>);
+	void displayPlanesAboutToCrash(std::vector<Flight*>); // TODO : To remove, this was used for debugging purposes only
 
 
 	std::vector<Flight*> flightsInAirSpace;

@@ -127,9 +127,6 @@ void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
                     std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
                     std::cout << "Distance between the two planes are " << distanceBetweenTwoPlanes << std::endl;
                     std::cout << "min Distance between the two planes required is  " << Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES << std::endl;
-//                    if (distanceBetweenTwoPlanes == -2147483648){
-//
-//                    }
 
                 }else continue;
             }

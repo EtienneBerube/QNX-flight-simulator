@@ -99,6 +99,7 @@ void AirplaneDB::sortThePlanes(){
 	std::sort(flights.begin(),flights.end(), flightSorting);
 }
 
+
 /*
  * Function which will run every 2 seconds, to update the position of all the planes.
  */

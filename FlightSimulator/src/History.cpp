@@ -18,16 +18,12 @@ History::History(Radar *radar) {
  *
  */
 void History::saveState() {
-//	std::time_t currentTime = std::time(nullptr);
-//	std::stringstream currentTimeInString;
-//	currentTimeInString << currentTime;
-    std::string logFileName = "Airspace_Log";//currentTimeInString.str();
 
+    std::string logFileName = "Airspace_Log";
     std::ofstream myfile;
     myfile.open(logFileName + ".txt", std::ostream::out | std::ofstream::app);
 
     if (myfile.is_open()) {
-
         myfile << "\n\n\n~~~SAVING NEW AIRSPACE STATE~~~" << std::endl;
 
         if (radar->flightsInAirSpace.size() == 0) {
