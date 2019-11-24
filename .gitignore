@@ -101,3 +101,5 @@ translations/*.qm
 .metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi
 
 FlightSimulator/.DS_Store
+
+.DS_Store
