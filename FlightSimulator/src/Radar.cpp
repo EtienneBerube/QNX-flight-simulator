@@ -20,6 +20,8 @@
 Radar::Radar(AirplaneDB *airplaneDB){
 	this->airplaneDB = airplaneDB;
 }
+
+
 void Radar::scanAirZone(std::vector<Flight*> flights){
 	flightsInAirSpace.clear();
 	lostFlights.clear();
@@ -28,23 +30,32 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 		if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::MIN_RADAR_HEIGHT && currentFlight->getPositionZ() <= Radar::MAX_RADAR_HEIGHT) {
 			flightsInAirSpace.push_back(currentFlight);
 
-		}		else lostFlights.push_back(currentFlight);
+		}
 	}
-
-	//TODO IF lostFlights.size != 0, notify operator!!!!
 }
 
 
 void Radar::executeRadar(){
+	std::cout << "***Executing radar***" << std::endl;
+	std::cout << &this->airplaneDB->mutex << std::endl;
+
+
+	this->airplaneDB->lockDB();
+
 	this->scanAirZone(this->airplaneDB->getPlanes());
+
+	this->airplaneDB->unlockDB();
+
 	this->displayPlanesAboutToCrash();
 	this->displayPlanesFlyingTooLow();
 
 }
 
+
 Radar::Radar(){
 	//Empty
 }
+
 
 /*
  * Function which displays the planes in the airSpace flying lower than the min flying altitude
@@ -59,8 +70,6 @@ void Radar::displayPlanesFlyingTooLow(){
 	}
 
 }
-
-
 
 /*
  * Function which will be used if the operator wants to scan from a particular airspace
@@ -87,16 +96,46 @@ void Radar::displayPlanesAboutToCrash(){
 
 		for (Flight* secondFlight: flightsInAirSpace){
 			if(firstFlight == secondFlight) continue;
-			else if(secondFlight->calculateDistanceOnXYPlane(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+			else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
 				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
 					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
-				}
+				}else continue;
 			}
 
 		}
  }
 }
 
+
+/*
+ * For debugging purposes
+ */
+void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
+
+    for (Flight* firstFlight : fuckingFlights){
+        int xPositionFirstFlight = firstFlight->getPositionX();
+        int yPositionFirstFlight = firstFlight->getPositionY();
+        int altitudeFirstFlight = firstFlight->getPositionZ();
+
+
+        for (Flight* secondFlight: fuckingFlights){
+            int distanceBetweenTwoPlanes = secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight);
+
+            if(firstFlight == secondFlight) continue;
+
+            else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+                if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+
+                    std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+                    std::cout << "Distance between the two planes are " << distanceBetweenTwoPlanes << std::endl;
+                    std::cout << "min Distance between the two planes required is  " << Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES << std::endl;
+
+                }else continue;
+            }
+
+        }
+    }
+}
 
 
 

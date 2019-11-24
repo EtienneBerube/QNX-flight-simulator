@@ -22,7 +22,7 @@ public:
 	void updateFlightPosition();
 	void calculateFlightDistanceFromOriginPoint();
 	bool scanFlightFromAPoint(int, int, int);
-	int calculateDistanceOnXYPlane(int, int);
+	int calculateDistanceOnXYPlaneFrom(int, int);
 	int calculateAltitudeBetweenPlanes(int);
 
 	int getPositionX();

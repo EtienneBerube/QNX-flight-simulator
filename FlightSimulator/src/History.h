@@ -12,6 +12,8 @@
 #include "Radar.h"
 #include <ctime>
 #include <vector>
+#include <cstring>
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -22,7 +24,6 @@ class History{
 		History(Radar*);
 		void saveState();
 	private:
-		std::string uri = "logs/";
 		Radar* radar;
 };
 
