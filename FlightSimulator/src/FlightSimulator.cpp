@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include "Display.h"
 #include "Radar.h"
+#include "History.h"
 
 using namespace std;
 #define MY_PULSE_CODE 0x01
@@ -14,6 +15,7 @@ void setupRadar();
 void setupUserCLI();
 void setupSimulation();
 void setupDisplay();
+void setupHistory();
 void setupTimersAndThreads();
 void startTimers();
 
@@ -26,7 +28,7 @@ int simulationChannelReceiveID;
 
 AirplaneDB airplaneDB;
 
-Radar radar;
+Radar radar(&airplaneDB);
 timer_t radar_timer;
 struct sigevent radar_event;
 struct itimerspec radar_itime;
@@ -36,6 +38,7 @@ timer_t display_timer;
 struct sigevent display_event;
 struct itimerspec display_itime;
 
+History history(&radar);
 timer_t history_timer;
 struct sigevent history_event;
 struct itimerspec history_itime;
@@ -45,20 +48,9 @@ struct sigevent simulation_event;
 struct itimerspec simulation_itime;
 
 
-void* dummyFunction(void* arg){
-	cout << "thread exec" << endl;
-}
-
-//TODO add other threads
-pthread_t radar_thread;
-pthread_t cli_thread;
-
-string radar_file_url = "smtg";
-
-
 //Startup routine
 int main() {
-	cout << "Hello World!!! NICE" << endl; // prints Hello World!!!
+	cout << "Flight Simulator Start Deano" << endl; // prints Hello World!!!
 	char* cwd;
 	char buff[PATH_MAX + 1];
 
@@ -66,17 +58,19 @@ int main() {
 	if( cwd != NULL ) {
 	    printf( "My working directory is %s.\n", cwd );
 	}
-	return 0;
-}
 
-void setupCommChannels(){
+	cout << "Starting project" << endl;
 
+	setupTimersAndThreads();
+
+	while(true);
 }
 
 void setupTimersAndThreads(){
 
 	setupDisplay();
 	setupRadar();
+	setupHistory();
 
 	//TODO add your shit here
 
@@ -91,7 +85,7 @@ void runDisplay(sigval value){
 
 void setupDisplay(){
 
-	SIGEV_THREAD_INIT( &display_event, runDisplay, 0, NULL );
+	SIGEV_THREAD_INIT( &display_event, &runDisplay, 0, NULL );
 
 	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
 
@@ -105,20 +99,31 @@ void runRadar(sigval value){
 
 void setupRadar(){
 
-	SIGEV_THREAD_INIT( &radar_event, runRadar, 0, NULL );
+	SIGEV_THREAD_INIT( &radar_event, &runRadar, 0, NULL );
 
-	timer_create(CLOCK_REALTIME, &display_event, &display_timer);
+	timer_create(CLOCK_REALTIME, &radar_event, &radar_timer);
 
-	display_itime.it_value.tv_sec = 15;
-	display_itime.it_interval.tv_sec = 15;
+	radar_itime.it_value.tv_sec = 15;
+	radar_itime.it_interval.tv_sec = 15;
 }
 
+void runHistory(sigval value){
+	history.saveState();
+}
 
+void setupHistory(){
+	SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+
+	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
+
+	history_itime.it_value.tv_sec = 10;
+	history_itime.it_interval.tv_sec = 10;
+}
 
 void startTimers(){
 	timer_settime(radar_timer, 0, &radar_itime, NULL);
 	timer_settime(display_timer, 0, &display_itime, NULL);
-	timer_settime(simulation_timer, 0, &simulation_itime, NULL);
+//	timer_settime(simulation_timer, 0, &simulation_itime, NULL);
 	timer_settime(history_timer, 0, &history_itime, NULL);
 }
 

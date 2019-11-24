@@ -13,7 +13,6 @@
 class Display{
 public:
 	Display(AirplaneDB*); //TODO add planeDB
-	static void getThreadRunnable(void *context);
 	void displayCurrentState();
 private:
 	AirplaneDB *planeDB;

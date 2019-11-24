@@ -6,9 +6,22 @@
  */
 #include "AirplaneDB.h"
 #include "TestCase.h"
+#include <iostream>
 
 AirplaneDB::AirplaneDB(){
+	pthread_mutexattr_t attr;
+	pthread_mutexattr_init(&attr);
+	pthread_mutexattr_setpshared(&attr, PTHREAD_PROCESS_SHARED);
+	pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+
+	pthread_mutex_init(&this->mutex, &attr);
 	init();
+}
+
+AirplaneDB::~AirplaneDB(){
+	for(auto &plane: this->flights){
+		delete(plane);
+	}
 }
 
 std::vector<Flight*> AirplaneDB::getPlanes(){
@@ -16,10 +29,12 @@ std::vector<Flight*> AirplaneDB::getPlanes(){
 }
 
 void AirplaneDB::lockDB(){
+	std::cout<<"LOCK MUTEX"<<std::endl;
 	pthread_mutex_lock( &mutex);
 }
 
 void AirplaneDB::unlockDB(){
+	std::cout<<"UNLOCK MUTEX"<<std::endl;
 	pthread_mutex_unlock( &mutex);
 }
 
@@ -31,8 +46,8 @@ void AirplaneDB::unlockDB(){
  */
 void AirplaneDB::init(){
 
-	const int totalNumberOfData = sizeof(TestCase::airplane_schedule);
-	const int TOTAL_NUMBER_INFO_PER_PLANE = 7;
+	const int totalNumberOfData = sizeof(TestCase::airplane_schedule)/sizeof(TestCase::airplane_schedule[0]);
+	const int TOTAL_NUMBER_INFO_PER_PLANE = 8;
 	const int ID = 0;
 	const int SPEED_X = 1;
 	const int SPEED_Y = 2;
@@ -52,7 +67,7 @@ void AirplaneDB::init(){
 				case SPEED_Z : speedz = TestCase::airplane_schedule[i]; break;
 				case POSITION_X : positionx = TestCase::airplane_schedule[i]; break;
 				case POSITION_Y : positiony = TestCase::airplane_schedule[i]; break;
-				case POSITION_Z : positionz = TestCase::airplane_schedule[i]; break;
+				case POSITION_Z : positionz = TestCase::airplane_schedule[i]+ 15000; break;
 				case START_TIME : {
 				enterTime = TestCase::airplane_schedule[i];
 				Flight* newFlight = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
@@ -84,3 +99,12 @@ void AirplaneDB::sortThePlanes(){
 	std::sort(flights.begin(),flights.end(), flightSorting);
 }
 
+
+/*
+ * Function which will run every 2 seconds, to update the position of all the planes.
+ */
+void AirplaneDB::updateFlightsPosition(){
+	//LAMBDA EXPRESSION
+	auto updatePlanePosition = [](Flight* n) {n->updateFlightPosition();};
+	std::for_each(flights.begin(),flights.end(), updatePlanePosition);
+}

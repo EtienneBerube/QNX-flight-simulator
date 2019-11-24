@@ -1,9 +1,0 @@
-com.qnx.tools.ide.coverage.fullCoveredIndication=false
-com.qnx.tools.ide.coverage.fullCoveredIndicationColor=78,143,0
-com.qnx.tools.ide.coverage.notCoveredIndication=false
-com.qnx.tools.ide.coverage.partialCoveredIndication=false
-com.qnx.tools.ide.coverage.partialCoveredIndicationColor=146,144,0
-eclipse.preferences.version=1
-org.eclipse.cdt.ui.occurrenceIndicationColor=4,50,255
-org.eclipse.cdt.ui.writeOccurrenceIndicationColor=146,144,0
-overviewRuler_migration=migrated_3.1

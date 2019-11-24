@@ -1,6 +1,0 @@
-17:42:19 **** Incremental Build of configuration x86_64-debug for project Flight Simulator ****
-make -j7 all 
-make: *** No rule to make target 'Flight Simulator', needed by 'all'.  Stop.
-
-17:42:19 Build Finished (took 71ms)
-

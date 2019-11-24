@@ -8,6 +8,7 @@
 #include "Radar.h"
 #include "TestCase.h"
 #include "AirplaneDB.h"
+#include <iostream>
 
 
 /*
@@ -19,43 +20,56 @@
 Radar::Radar(AirplaneDB *airplaneDB){
 	this->airplaneDB = airplaneDB;
 }
+
+
 void Radar::scanAirZone(std::vector<Flight*> flights){
 	flightsInAirSpace.clear();
 	lostFlights.clear();
 
 	for (Flight* currentFlight : flights){
-		if (currentFlight->getFlightDistance() <= Radar::RADAR_AREA) flightsInAirSpace.push_back(currentFlight);
-		else lostFlights.push_back(currentFlight);
-	}
+		if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::MIN_RADAR_HEIGHT && currentFlight->getPositionZ() <= Radar::MAX_RADAR_HEIGHT) {
+			flightsInAirSpace.push_back(currentFlight);
 
-	//TODO IF lostFlights.size != 0, notify operator!!!!
+		}
+	}
 }
 
 
 void Radar::executeRadar(){
-	//TODO populate
+	std::cout << "***Executing radar***" << std::endl;
+	std::cout << &this->airplaneDB->mutex << std::endl;
+
+
+	this->airplaneDB->lockDB();
+
+	this->scanAirZone(this->airplaneDB->getPlanes());
+
+	this->airplaneDB->unlockDB();
+
+	this->displayPlanesAboutToCrash();
+	this->displayPlanesFlyingTooLow();
+
 }
+
 
 Radar::Radar(){
 	//Empty
 }
 
+
 /*
- * Function which returns the planes in the airSpace flying lower than the min flying altitude
+ * Function which displays the planes in the airSpace flying lower than the min flying altitude
  */
-std::vector<Flight*> Radar::getPlanesFlyingTooLow(){
+void Radar::displayPlanesFlyingTooLow(){
 	std::vector<Flight*> planesFlyingTooLow;
 
 	for (Flight* flight : flightsInAirSpace){
 		if(flight->getPositionZ() <= Radar::MIN_FLYING_ALTITUDE){
-			planesFlyingTooLow.push_back(flight);
+			std::cout << "Plane with ID: " << flight->getIdString() << " is flying too low."<< std::endl;
 		}
 	}
 
-	return planesFlyingTooLow;
 }
-
-
 
 /*
  * Function which will be used if the operator wants to scan from a particular airspace
@@ -66,37 +80,64 @@ std::vector<Flight*> Radar::scanFromAPoint (int x, int y, int z, std::vector<Fli
 	std::vector<Flight*> flightsCloseToAPoint;
 
 	for (Flight* currentFlight: flights){
-		if (currentFlight->calculatateFlightDistanceFromAPoint(x,y,z) <= Radar::RADAR_AREA) flightsCloseToAPoint.push_back(currentFlight);
+		if (currentFlight->scanFlightFromAPoint(x,y,z)) flightsCloseToAPoint.push_back(currentFlight);
 	}
 	return flightsCloseToAPoint;
 }
 
 
+
+void Radar::displayPlanesAboutToCrash(){
+
+	for (Flight* firstFlight : flightsInAirSpace){
+		int xPositionFirstFlight = firstFlight->getPositionX();
+		int yPositionFirstFlight = firstFlight->getPositionY();
+		int altitudeFirstFlight = firstFlight->getPositionZ();
+
+		for (Flight* secondFlight: flightsInAirSpace){
+			if(firstFlight == secondFlight) continue;
+			else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+				if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+					std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+				}else continue;
+			}
+
+		}
+ }
+}
+
+
 /*
- * Function which will write the status of the airfield
- * AKA the status of flights present in the airfield at a specific point in time in a file
- * The file has the name of the current date and time
- *
+ * For debugging purposes
  */
-void Radar::writeLogOfPlaneInAirSpace(){
-	std::time_t currentTime = std::time(nullptr);
-	std::stringstream currentTimeInString;
-	currentTimeInString << currentTime;
-	std::string logFileName = currentTimeInString.str();
+void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
 
-	std::fstream airSpaceLog;
-	airSpaceLog.open(logFileName);
+    for (Flight* firstFlight : fuckingFlights){
+        int xPositionFirstFlight = firstFlight->getPositionX();
+        int yPositionFirstFlight = firstFlight->getPositionY();
+        int altitudeFirstFlight = firstFlight->getPositionZ();
 
-	for (Flight* flight: flightsInAirSpace){
-		airSpaceLog << flight->getCurrentFlightStatus();
-	}
-	airSpaceLog.close();
+
+        for (Flight* secondFlight: fuckingFlights){
+            int distanceBetweenTwoPlanes = secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight);
+
+            if(firstFlight == secondFlight) continue;
+
+            else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+                if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+
+                    std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+                    std::cout << "Distance between the two planes are " << distanceBetweenTwoPlanes << std::endl;
+                    std::cout << "min Distance between the two planes required is  " << Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES << std::endl;
+
+                }else continue;
+            }
+
+        }
+    }
 }
 
 
-void Radar::getThreadRunnable(void* context){
-//	((Radar *)context)->hello(); //Add function to run here
-}
 
 Radar::~Radar() {
 	// TODO Auto-generated destructor stub
