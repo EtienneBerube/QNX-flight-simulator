@@ -15745,3 +15745,124 @@ make: *** Waiting for unfinished jobs....
 make -j7 all 
 qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
 qcc -lang-c++ -Vgcc_ntox86_64 -o build/x86_64-debug/FlightSimulator   build/x86_64-debug/src/Flight.o build/x86_64-debug/src/FlightSimulator.o build/x86_64-debug/src/TestCase.o build/x86_64-debug/src/Radar.o build/x86_64-debug/src/AirplaneDB.o build/x86_64-debug/src/Display.o build/x86_64-debug/src/Radar_test.o build/x86_64-debug/src/Flight_test.o  
+20:50:48 **** Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/TestCase.d,-MT,build/x86_64-debug/src/TestCase.o -o build/x86_64-debug/src/TestCase.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/TestCase.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight_test.d,-MT,build/x86_64-debug/src/Flight_test.o -o build/x86_64-debug/src/Flight_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight_test.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/operatorDriver.d,-MT,build/x86_64-debug/src/operatorDriver.o -o build/x86_64-debug/src/operatorDriver.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/operatorDriver.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/PollingServer.d,-MT,build/x86_64-debug/src/PollingServer.o -o build/x86_64-debug/src/PollingServer.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/PollingServer.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Display.d,-MT,build/x86_64-debug/src/Display.o -o build/x86_64-debug/src/Display.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Display.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/AirplaneDB.d,-MT,build/x86_64-debug/src/AirplaneDB.o -o build/x86_64-debug/src/AirplaneDB.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/AirplaneDB.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Operator.d,-MT,build/x86_64-debug/src/Operator.o -o build/x86_64-debug/src/Operator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Operator.cpp
+src/Flight.cpp:67:6: error: redefinition of 'void Flight::setSpeedX(int)'
+ void Flight::setSpeedX(int speedZ) {
+      ^
+src/Flight.cpp:59:6: note: 'void Flight::setSpeedX(int)' previously defined here
+ void Flight::setSpeedX(int speedX) {
+      ^
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar.d,-MT,build/x86_64-debug/src/Radar.o -o build/x86_64-debug/src/Radar.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar.cpp
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Flight.o] Error 1
+make: *** Waiting for unfinished jobs....
+Makefile:58: recipe for target 'build/x86_64-debug/src/Flight.o' failed
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+src/operatorDriver.cpp: In function 'int main()':
+src/operatorDriver.cpp:17:17: warning: unused variable 'commandCode' [-Wunused-variable]
+     CommandCode commandCode = anOperator->parseCommand(commandString);
+                 ^
+src/Operator.cpp:13:6: error: prototype for 'void Operator::executeCommand(CommandCode, const std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >&, Flight&, AirplaneDB&)' does not match any in class 'Operator'
+ void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &flight, AirplaneDB &airplaneDb) {
+      ^
+In file included from src/Operator.cpp:8:0:
+src/Operator.h:55:10: error: candidate is: void Operator::executeCommand(CommandCode, const std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >&)
+     void executeCommand(CommandCode, const vector<string>&);
+          ^
+src/operatorDriver.cpp: In function 'std::__1::string getCommandString(CommandCode)':
+src/operatorDriver.cpp:78:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+src/Operator.cpp: In static member function 'static CommandCode Operator::hashIt(const string&)':
+src/Operator.cpp:200:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Operator.o' failed
+make: *** [build/x86_64-debug/src/Operator.o] Error 1
+20:52:46 **** Incremental Build of configuration x86_64-debug for project FlightSimulator ****
+make -j7 all 
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Flight.d,-MT,build/x86_64-debug/src/Flight.o -o build/x86_64-debug/src/Flight.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Flight.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/FlightSimulator.d,-MT,build/x86_64-debug/src/FlightSimulator.o -o build/x86_64-debug/src/FlightSimulator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/FlightSimulator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Operator.d,-MT,build/x86_64-debug/src/Operator.o -o build/x86_64-debug/src/Operator.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Operator.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/History.d,-MT,build/x86_64-debug/src/History.o -o build/x86_64-debug/src/History.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/History.cpp
+qcc -lang-c++ -Vgcc_ntox86_64 -c -Wp,-MMD,build/x86_64-debug/src/Radar_test.d,-MT,build/x86_64-debug/src/Radar_test.o -o build/x86_64-debug/src/Radar_test.o  -Wall -fmessage-length=0 -g -O0 -fno-builtin  src/Radar_test.cpp
+In file included from src/History.cpp:8:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+src/History.cpp: In member function 'void History::saveState()':
+src/History.cpp:16:20: error: aggregate 'std::__1::stringstream currentTimeInString' has incomplete type and cannot be defined
+  std::stringstream currentTimeInString;
+                    ^
+src/History.cpp:18:28: error: 'uri' was not declared in this scope
+  std::string logFileName = uri + currentTimeInString.str();
+                            ^
+src/History.cpp:23:23: error: 'flightsInAirSpace' was not declared in this scope
+  for (Flight* flight: flightsInAirSpace){
+                       ^
+In file included from src/FlightSimulator.cpp:7:0:
+src/History.h:22:3: error: 'string' does not name a type
+   string uri = "logs/";
+   ^
+In file included from /Users/Deano/qnx/target/qnx7/usr/include/sys/storage.h:33:0,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/pthread.h:49,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__mutex_base:17,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/mutex:176,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/__locale:18,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/ios:216,
+                 from /Users/Deano/qnx/target/qnx7/usr/include/c++/v1/iostream:38,
+                 from src/FlightSimulator.cpp:1:
+src/FlightSimulator.cpp: In function 'void setupHistory()':
+src/FlightSimulator.cpp:108:2: error: invalid conversion from 'void (*)()' to 'void (*)(sigval)' [-fpermissive]
+  SIGEV_THREAD_INIT( &history_event, &runHistory, 0, NULL );
+  ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/FlightSimulator.o' failed
+make: *** [build/x86_64-debug/src/FlightSimulator.o] Error 1
+make: *** Waiting for unfinished jobs....
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/History.o' failed
+make: *** [build/x86_64-debug/src/History.o] Error 1
+src/Operator.cpp:13:6: error: prototype for 'void Operator::executeCommand(CommandCode, const std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >&, Flight&, AirplaneDB&)' does not match any in class 'Operator'
+ void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &flight, AirplaneDB &airplaneDb) {
+      ^
+In file included from src/Operator.cpp:8:0:
+src/Operator.h:55:10: error: candidate is: void Operator::executeCommand(CommandCode, const std::__1::vector<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > >&)
+     void executeCommand(CommandCode, const vector<string>&);
+          ^
+src/Operator.cpp: In static member function 'static CommandCode Operator::hashIt(const string&)':
+src/Operator.cpp:200:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+cc: /Users/Deano/qnx/host/darwin/x86_64/usr/lib/gcc/x86_64-pc-nto-qnx7.0.0/5.4.0/cc1plus error 1
+make: *** [build/x86_64-debug/src/Operator.o] Error 1
+Makefile:58: recipe for target 'build/x86_64-debug/src/Operator.o' failed
