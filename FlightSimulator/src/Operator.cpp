@@ -24,15 +24,9 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
 	airplaneDb.lockDB();
 
     string flightId = args[0];
-    string firstArgument = args[1];
-    string secondArgument = args[2];
-    string thirdArgument = args[3];
 
-//    Flight info additional args:
-    string fourthArgument = args[4];
-    string fifthArgument = args[5];
-    string sixthArgument = args[6];
-    string seventhArgument = args[7];
+    cout << "id:" << args[0] << " arg 1: " << args[1] << endl;
+
 
     int flightIndex = airplaneDb.getIndex(std::stoi(flightId));
 
@@ -40,19 +34,19 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
 
     switch (code) {
         case changeAltitude:
-            flight->changeFlightElevation(std::stoi(firstArgument));
+            flight->changeFlightElevation(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " elevation changed to " << firstArgument << endl;
+            cout << "Aircraft #" << flightId << " elevation changed to " << args[1] << endl;
             break;
         case increaseSpeed:
-            flight->increaseSpeedBy(std::stoi(firstArgument));
+            flight->increaseSpeedBy(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " increased speed by " << firstArgument << endl;
+            cout << "Aircraft #" << flightId << " increased speed by " << args[1] << endl;
             break;
         case decreaseSpeed:
-            flight->decreaseSpeedBy(std::stoi(firstArgument));
+            flight->decreaseSpeedBy(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " decreased speed by " << firstArgument << endl;
+            cout << "Aircraft #" << flightId << " decreased speed by " << args[1] << endl;
             break;
         case changeDirection:
             flight->changeDirection();
@@ -97,13 +91,13 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
         case addAircraft:
         {
             int id = std::stoi(flightId);
-            int speedInX = std::stoi(firstArgument);
-            int speedInY = std::stoi(secondArgument);
-            int speedInZ = std::stoi(thirdArgument);
-            int positionInX = std::stoi(fourthArgument);
-            int positionInY = std::stoi(fifthArgument);
-            int positionInZ = std::stoi(sixthArgument);
-            int startTime = std::stoi(seventhArgument);
+            int speedInX = std::stoi(args[1]);
+            int speedInY = std::stoi(args[2]);
+            int speedInZ = std::stoi(args[3]);
+            int positionInX = std::stoi(args[4]);
+            int positionInY = std::stoi(args[5]);
+            int positionInZ = std::stoi(args[6]);
+            int startTime = std::stoi(args[7]);
 
             Flight *newFlight = new Flight(id, speedInX, speedInY, speedInZ, positionInX, positionInY, positionInZ,
                                            startTime);
@@ -120,30 +114,30 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
         }
             break;
         case setPosition:{
-            flight->changeFlightPosition(std::stoi(firstArgument), std::stoi(secondArgument));
+            flight->changeFlightPosition(std::stoi(args[1]), std::stoi(args[2]));
 
             cout << "Position (X,Y) set for Aircraft #" << flightId << endl;
-            cout << "Position X: " << firstArgument << endl;
-            cout << "Position Y: " << secondArgument << endl;
+            cout << "Position X: " << args[1] << endl;
+            cout << "Position Y: " << args[2] << endl;
         }
             break;
         case setElevation:{
-            flight->changeFlightElevation(std::stoi(firstArgument));
+            flight->changeFlightElevation(std::stoi(args[1]));
 
             cout << "Elevation set for Aircraft #" << flightId << endl;
-            cout << "Elevation set to: " << firstArgument << endl;
+            cout << "Elevation set to: " << args[1] << endl;
         }
             break;
         case setVelocity:{
 
-            flight->setSpeedX(std::stoi(firstArgument));
-            flight->setSpeedY(std::stoi(secondArgument));
-            flight->setSpeedZ(std::stoi(thirdArgument));
+            flight->setSpeedX(std::stoi(args[1]));
+            flight->setSpeedY(std::stoi(args[2]));
+            flight->setSpeedZ(std::stoi(args[3]));
 
             cout << "Velocity set for Aircraft #" << flightId << endl;
-            cout << "Velocity in X: " << firstArgument << endl;
-            cout << "Velocity in Y: " << secondArgument << endl;
-            cout << "Velocity in Z: " << thirdArgument << endl;
+            cout << "Velocity in X: " << args[1] << endl;
+            cout << "Velocity in Y: " << args[2] << endl;
+            cout << "Velocity in Z: " << args[3] << endl;
         }
 
             break;
