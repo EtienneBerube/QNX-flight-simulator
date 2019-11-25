@@ -5,6 +5,7 @@
  *      Author: Deano
  */
 #include <string>
+#include <stdlib.h>
 
 #ifndef SRC_FLIGHT_H_
 #define SRC_FLIGHT_H_
@@ -45,6 +46,7 @@ public:
 	void changeDirection();
 	void enterHoldingPattern();
 	void leaveHoldingPattern();
+	void generateId();
 
 	void changeFlightPosition(int, int);
 	void changeFlightElevation (int);

@@ -341,6 +341,10 @@ std::string Flight::getCurrentFlightStatus(){
 	return record;
 }
 
+void Flight::generateId(){
+	this->id = rand() % 10000;
+}
+
 
 Flight::~Flight() {
 	// TODO Auto-generated destructor stub

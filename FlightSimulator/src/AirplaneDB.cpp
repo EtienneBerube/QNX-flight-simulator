@@ -29,12 +29,20 @@ std::vector<Flight*> AirplaneDB::getPlanes(){
 }
 
 void AirplaneDB::lockDB(){
-	std::cout<<"LOCK MUTEX"<<std::endl;
 	pthread_mutex_lock( &mutex);
 }
 
+int AirplaneDB::getIndex(int id){
+	for(unsigned int i = 0 ; i < flights.size(); i++){
+		if(flights[i]->getId() == id){
+			return i;
+		}
+	}
+
+	return -1;
+}
+
 void AirplaneDB::unlockDB(){
-	std::cout<<"UNLOCK MUTEX"<<std::endl;
 	pthread_mutex_unlock( &mutex);
 }
 
