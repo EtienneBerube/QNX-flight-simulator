@@ -32,7 +32,7 @@ void Display::displayCurrentState(){
 
 	 this->planeDB->lockDB();
 
-	 for (auto& plane : planeDB->getPlanes()){
+	 for (auto& plane : *(planeDB->getPlanes())){
 		 t.add(plane->getIdString());
 		 t.add(std::to_string(plane->getPositionX()));
 		 t.add(std::to_string(plane->getPositionY()));

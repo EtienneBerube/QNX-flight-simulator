@@ -42,7 +42,7 @@ void Radar::executeRadar(){
 
 	this->airplaneDB->lockDB();
 
-	this->scanAirZone(this->airplaneDB->getPlanes());
+	this->scanAirZone(*(this->airplaneDB->getPlanes()));
 
 	this->airplaneDB->unlockDB();
 

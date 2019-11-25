@@ -1,0 +1,76 @@
+/*
+ * Simulation.cpp
+ *
+ *  Created on: Nov 24, 2019
+ *      Author: etienne
+ */
+
+#include "Simulation.h"
+
+Simulation::Simulation(AirplaneDB* airplaneDB){
+	this->airplaneDB = airplaneDB;
+	init();
+}
+
+void Simulation::init(){
+	const int totalNumberOfData = sizeof(TestCase::airplane_schedule)/sizeof(TestCase::airplane_schedule[0]);
+		const int TOTAL_NUMBER_INFO_PER_PLANE = 8;
+		const int ID = 0;
+		const int SPEED_X = 1;
+		const int SPEED_Y = 2;
+		const int SPEED_Z = 3;
+		const int POSITION_X = 4;
+		const int POSITION_Y = 5;
+		const int POSITION_Z = 6;
+		const int START_TIME = 7;
+		int id, speedx, speedy,speedz, positionx,positiony, positionz, enterTime;
+
+		for (int i = 0; i < totalNumberOfData ; i++){
+
+				switch (i % TOTAL_NUMBER_INFO_PER_PLANE){
+					case ID: id = TestCase::airplane_schedule[i]; break;
+					case SPEED_X : speedx = TestCase::airplane_schedule[i]; break;
+					case SPEED_Y : speedy = TestCase::airplane_schedule[i]; break;
+					case SPEED_Z : speedz = TestCase::airplane_schedule[i]; break;
+					case POSITION_X : positionx = TestCase::airplane_schedule[i]; break;
+					case POSITION_Y : positiony = TestCase::airplane_schedule[i]; break;
+					case POSITION_Z : positionz = TestCase::airplane_schedule[i]+ 15000; break;
+					case START_TIME : {
+					enterTime = TestCase::airplane_schedule[i];
+					Flight* newFlight = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
+
+					nextFlights.push(newFlight);
+					}
+					break;
+				}
+		}
+}
+
+void Simulation::run(){
+	airplaneDB->lockDB();
+	counter += 1;
+
+	//Get new planes
+
+	while(nextFlights.front()->getEntryTime() <= counter){
+		std::cout<<"Found one"<<std::endl;
+		std::vector<Flight*>* planes = airplaneDB->getPlanes();
+		std::cout<<"pushed"<<std::endl;
+		planes->push_back(nextFlights.front());
+		nextFlights.pop();
+	}
+
+	//Update
+//	std::cout<<"BEfore adding"<<std::endl;
+
+	for(Flight* &flight: *(airplaneDB->getPlanes())){
+		std::cout<<"Adding "<<std::endl;
+		flight->updateFlightPosition();
+	}
+
+	airplaneDB->unlockDB();
+
+
+}
+
+

@@ -15,7 +15,7 @@ public:
 	const static int FLIGHT_DIRECTION_RIGHT = 0;
 	const static int FLIGHT_DIRECTION_LEFT = 1;
 
-	const int timeInterval = 2;
+	const int timeInterval = 1;
 
 	Flight();
 	Flight(int, int,int,int,int,int,int,int);

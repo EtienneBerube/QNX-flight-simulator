@@ -65,7 +65,7 @@ void Flight::setSpeedY(int speedY) {
     speed_y = speedY;
 }
 
-void Flight::setSpeedX(int speedZ) {
+void Flight::setSpeedZ(int speedZ) {
     speed_z = speedZ;
 }
 
