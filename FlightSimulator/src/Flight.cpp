@@ -208,39 +208,34 @@ void Flight::updateFlightPosition(){
  *
  */
 void Flight::increaseSpeedBy(int amount){
+	if (amount < 0) amount *= -1;
+	double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+	double magnitudeSpeed = sqrt(total);
+	double multiplierOfSpeedChange = (amount/magnitudeSpeed) + 1;
 
-	if (this -> speed_x != 0){
-		this -> speed_x += amount;
-	}
+	this -> speed_x = (int) this->speed_x*multiplierOfSpeedChange;
+	this -> speed_y  = (int) this->speed_y*multiplierOfSpeedChange;
+	this -> speed_z  = (int) this->speed_z*multiplierOfSpeedChange;
 
-	if (this -> speed_y != 0){
-		this -> speed_y += amount;
-	}
-
-	if (this -> speed_z != 0){
-		this -> speed_z += amount;
-	}
 }
 
+//TODO : Rechange that comment
 /*
  * Decreases the velocity in every direction by n amount if and only if the speed in the direction is not 0
- * Meaning that if the plane is going in a straight line, it says in the straight line
+ * Meaning that if the plane is going in a straight line, it stays in the straight line
  * speed_x, speed_y and speed_z will change because speed_z is not just related to the altitude allegedly
  *
  */
 void Flight::decreaseSpeedBy(int amount){
+	if (amount < 0) amount *= -1;
 
-	if (this -> speed_x != 0){
-		this -> speed_x -= amount;
-	}
+	double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+	double magnitudeSpeed = sqrt(total);
+	double multiplierOfSpeedChange = (-amount/magnitudeSpeed) + 1;
 
-	if (this -> speed_y != 0){
-		this -> speed_y -= amount;
-	}
-
-	if (this -> speed_z != 0){
-		this -> speed_z -= amount;
-	}
+	this -> speed_x = (int) this->speed_x*multiplierOfSpeedChange;
+	this -> speed_y  = (int) this->speed_y*multiplierOfSpeedChange;
+	this -> speed_z  = (int) this->speed_z*multiplierOfSpeedChange;
 }
 
 /*
