@@ -24,7 +24,7 @@ Radar::Radar(AirplaneDB *airplaneDB){
 
 void Radar::scanAirZone(std::vector<Flight*> flights){
 	flightsInAirSpace.clear();
-	lostFlights.clear();
+
 
 	for (Flight* currentFlight : flights){
 		if (currentFlight->getPositionX() <= Radar::RADAR_WIDTH && currentFlight->getPositionY() <= Radar::RADAR_LENGTH && currentFlight->getPositionZ() >= Radar::MIN_RADAR_HEIGHT && currentFlight->getPositionZ() <= Radar::MAX_RADAR_HEIGHT) {
