@@ -10,13 +10,16 @@
 #include "AirplaneDB.h"
 
 
-void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &flight, AirplaneDB &airplaneDb) {
+void Operator::executeCommand(CommandCode, const vector <string> &args, AirplaneDB &airplaneDb) {
 
     firstArgument = args[0];
     secondArgument = args[1];
     thirdArgument = args[2];
+    flightId = args[3];
 
-    int flightId = flight.getId();
+    int flightIndex = airplaneDb.getFlightIndex(int(flightId));
+
+    Flight &flight = airplaneDb.getPlanes()[flightIndex];
 
     switch (commandCode) {
         case changeAltitude:
@@ -78,13 +81,6 @@ void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &
 
             return ;
         case deleteAircraft:
-
-            std::vector<Flight*> flights = airplaneDb.getPlanes();
-
-//            TODO: get flight index (in flight vector) from a flight id
-
-            int flightIndex = airplaneDb.getFlightIndex(int(flightId));
-
             flights.erase(flightIndex);
 
             cout << "Aircraft #" << flightId << " DESTROYED!!!" << endl;
