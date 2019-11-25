@@ -202,9 +202,8 @@ void Flight::updateFlightPosition(){
 }
 
 /*
- * Increases the velocity in every direction by n amount if and only if the speed in the direction is not 0
- * Meaning that if the plane is going in a straight line, it says in the straight line
- * speed_x, speed_y and speed_z will change because speed_z is not just related to the altitude allegedly
+ * Increases the velocity in every direction by n amount
+ * Uses mathematical vector arithmetic so the plane keeps its relative direction
  *
  */
 void Flight::increaseSpeedBy(int amount){
@@ -219,11 +218,10 @@ void Flight::increaseSpeedBy(int amount){
 
 }
 
-//TODO : Rechange that comment
+
 /*
- * Decreases the velocity in every direction by n amount if and only if the speed in the direction is not 0
- * Meaning that if the plane is going in a straight line, it stays in the straight line
- * speed_x, speed_y and speed_z will change because speed_z is not just related to the altitude allegedly
+ * Decreases the velocity in every direction by n amount
+ * uses mathematical vector arithmetic so the plane keeps its relative direction
  *
  */
 void Flight::decreaseSpeedBy(int amount){
