@@ -13,7 +13,7 @@ TestCase::TestCase() {
 }
 
 int TestCase::airplane_schedule[8] = {
-	  //id, pox, posy,posz, speedx, speed y, speed z, entry time
+	  //id, speedx, speed y, speed z, posx, posy, posz, entry time
 		0, -641, 283, 500, 95000, 101589, 10000, 13};//,
 //		1, -223, -630, -526, 71000, 100000, 13000, 16,
 //		-1, -180, -446, -186, 41000, 100000, 6000, 31,
