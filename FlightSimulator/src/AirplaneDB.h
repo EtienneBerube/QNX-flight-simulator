@@ -17,17 +17,19 @@
 class AirplaneDB{
 public:
 	AirplaneDB();
+	~AirplaneDB();
 	void init();
 	void lockDB();
 	void unlockDB();
 	void updateFlightsPosition();
 	std::vector<Flight*> getPlanes();
+	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 private:
 	std::vector<Flight*> flights;
 	void sortThePlanes();
 
-	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 };
 
 

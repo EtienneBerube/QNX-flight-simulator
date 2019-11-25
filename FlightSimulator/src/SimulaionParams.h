@@ -12,7 +12,4 @@
 #define AIRSPACE_LENGTH 25000
 #define AIRSPACE_HEIGHT 1000
 
-
-
-
 #endif /* SRC_SIMULAIONPARAMS_H_ */
