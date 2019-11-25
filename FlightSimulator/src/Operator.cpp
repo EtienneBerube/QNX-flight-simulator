@@ -155,6 +155,9 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
 
 CommandCode Operator::parseCommand(string userInput, AirplaneDB &airplaneDb) {
     string userInputCopy;
+
+    cout<<userInput << endl;
+
     userInputCopy = std::move(userInput);
     string delimiter = "|";
 
@@ -167,7 +170,7 @@ CommandCode Operator::parseCommand(string userInput, AirplaneDB &airplaneDb) {
 
     userInputCopy.erase(0, pos + delimiter.length());
 
-    string delimiter_args = " ";
+    string delimiter_args = ",";
     string substring;
 
     while ((pos = userInputCopy.find(delimiter_args)) != string::npos) {
@@ -203,31 +206,31 @@ Operator::getCommandQueue() {
 
 CommandCode Operator::hashIt(const string &command) {
 //    TODO: Lower command string before the comparison
-    if (command == "change altitude") {
+    if (command == "change_altitude") {
         return changeAltitude;
-    } else if (command == "increase speed") {
+    } else if (command == "increase_speed") {
         return increaseSpeed;
-    } else if (command == "decrease speed") {
+    } else if (command == "decrease_speed") {
         return decreaseSpeed;
-    } else if (command == "change direction") {
+    } else if (command == "change_direction") {
         return changeDirection;
-    } else if (command == "enter holding pattern") {
+    } else if (command == "enter_holding_pattern") {
         return enterHoldingPattern;
-    } else if (command == "leave holding pattern") {
+    } else if (command == "leave_holding_pattern") {
         return leaveHoldingPattern;
-    } else if (command == "report current position velocity") {
+    } else if (command == "report_current_position_velocity") {
         return reportCurrentPositionVelocity;
-    } else if (command == "add aircraft") {
+    } else if (command == "add_aircraft") {
         return addAircraft;
-    } else if (command == "delete aircraft") {
+    } else if (command == "delete_aircraft") {
         return deleteAircraft;
-    } else if (command == "set position") {
+    } else if (command == "set_position") {
         return setPosition;
-    } else if (command == "set elevation") {
+    } else if (command == "set_elevation") {
         return setElevation;
-    } else if (command == "set velocity") {
+    } else if (command == "set_velocity") {
         return setVelocity;
-    } else if (command == "report aircraft identification") {
+    } else if (command == "report_aircraft_identification") {
         return reportAircraftIdentification;
     }
 }

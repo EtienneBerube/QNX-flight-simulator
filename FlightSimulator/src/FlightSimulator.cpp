@@ -62,6 +62,8 @@ int main() {
 	cout << "Starting project" << endl;
 
 	pthread_mutex_init(&synchronizer, NULL);
+	std::ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
 
 	setupTimersAndThreads();
 
