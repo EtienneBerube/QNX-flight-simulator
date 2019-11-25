@@ -212,9 +212,9 @@ void Flight::increaseSpeedBy(int amount){
 	double magnitudeSpeed = sqrt(total);
 	double multiplierOfSpeedChange = (amount/magnitudeSpeed) + 1;
 
-	this -> speed_x = (int) this->speed_x*multiplierOfSpeedChange;
-	this -> speed_y  = (int) this->speed_y*multiplierOfSpeedChange;
-	this -> speed_z  = (int) this->speed_z*multiplierOfSpeedChange;
+	this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+	this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+	this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 
 }
 
@@ -231,9 +231,9 @@ void Flight::decreaseSpeedBy(int amount){
 	double magnitudeSpeed = sqrt(total);
 	double multiplierOfSpeedChange = (-amount/magnitudeSpeed) + 1;
 
-	this -> speed_x = (int) this->speed_x*multiplierOfSpeedChange;
-	this -> speed_y  = (int) this->speed_y*multiplierOfSpeedChange;
-	this -> speed_z  = (int) this->speed_z*multiplierOfSpeedChange;
+	this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+	this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+	this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 }
 
 /*
