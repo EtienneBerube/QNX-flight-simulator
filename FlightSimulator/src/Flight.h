@@ -31,6 +31,9 @@ public:
 	int getSpeedX();
 	int getSpeedY();
 	int getSpeedZ();
+	void setSpeedX(int);
+	void setSpeedY(int);
+	void setSpeedZ(int);
 	int getId();
 	std::string getIdString();
 	std::string getHoldingPatternStatus();

@@ -56,6 +56,18 @@ int Flight::getSpeedZ(){
 	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this->speed_z;
 }
 
+void Flight::setSpeedX(int speedX) {
+    speed_x = speedX;
+}
+
+void Flight::setSpeedY(int speedY) {
+    speed_y = speedY;
+}
+
+void Flight::setSpeedX(int speedZ) {
+    speed_z = speedZ;
+}
+
 int Flight::getId(){
 	return this->id;
 }

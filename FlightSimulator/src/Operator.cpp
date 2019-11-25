@@ -6,6 +6,121 @@
 #include <vector>
 #include <queue>
 #include "Operator.h"
+#include "Flight.h"
+#include "AirplaneDB.h"
+
+
+void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &flight, AirplaneDB &airplaneDb) {
+
+    firstArgument = args[0];
+    secondArgument = args[1];
+    thirdArgument = args[2];
+
+    int flightId = flight.getId();
+
+    switch (commandCode) {
+        case changeAltitude:
+            flight.changeFlightElevation(firstArgument);
+
+            cout << "Aircraft #" << flightId << " elevation changed to " << firstArgument << endl;
+            return ;
+        case increaseSpeed:
+            flight.increaseSpeedBy(firstArgument);
+
+            cout << "Aircraft #" << flightId << " increased speed by " << to_string(firstArgument) << endl;
+            return ;
+        case decreaseSpeed:
+            flight.decreaseSpeedBy(firstArgument);
+
+            cout << "Aircraft #" << flightId << " decreased speed by " << to_string(firstArgument) << endl;
+            return ;
+        case changeDirection:
+            flight.changeDirection();
+
+            cout << "Aircraft #" << flightId << " changed direction." << endl;
+            return ;
+        case enterHoldingPattern:
+            flight.enterHoldingPattern();
+
+            cout << "Aircraft #" << flightId << " entered holding pattern." << endl;
+            return ;
+        case leaveHoldingPattern:
+            flight.leaveHoldingPattern();
+
+            cout << "Aircraft #" << flightId << " left holding pattern." << endl;
+            return ;
+        case reportCurrentPositionVelocity:
+            int currentPositionX = flight.getPositionX();
+            int currentPositionY = flight.getPositionY();
+            int currentPositionZ = flight.getPositionZ();
+
+            float currentVelocityX = flight.getSpeedX();
+            float currentVelocityY = flight.getSpeedY();
+            float currentVelocityZ = flight.getSpeedZ();
+
+
+            cout << "Aircraft #" << flightId << ":" << endl;
+            cout << "Current position (X, Y, Z):" << endl;
+            cout << "X: " << currentPositionX << endl;
+            cout << "Y: " << currentPositionY << endl;
+            cout << "Z: " << currentPositionZ << endl;
+
+            cout << endl;
+
+            cout << "Current velocity (X, Y, Z):" << endl;
+            cout << "X: " << currentVelocityX << endl;
+            cout << "Y: " << currentVelocityY << endl;
+            cout << "Z: " << currentVelocityZ << endl;
+            return ;
+        case addAircraft:
+
+//            TODO: cin to ask user input for Aircraft
+
+            return ;
+        case deleteAircraft:
+
+            std::vector<Flight*> flights = airplaneDb.getPlanes();
+
+//            TODO: get flight index (in flight vector) from a flight id
+
+            int flightIndex = airplaneDb.getFlightIndex(int(flightId));
+
+            flights.erase(flightIndex);
+
+            cout << "Aircraft #" << flightId << " DESTROYED!!!" << endl;
+
+            return ;
+        case setPosition:
+            flight.changeFlightPosition(firstArgument, secondArgument);
+
+            cout << "Position (X,Y) set for Aircraft #" << flightId << endl;
+            cout << "Position X: " << firstArgument << endl;
+            cout << "Position Y: " << secondArgument << endl;
+            return ;
+        case setElevation:
+            flight.changeFlightElevation(firstArgument);
+
+            cout << "Elevation set for Aircraft #" << flightId << endl;
+            cout << "Elevation set to: " << to_string(firstArgument) << endl;
+            return ;
+        case setVelocity:
+
+            flight.setSpeedX(firstArgument);
+            flight.setSpeedY(secondArgument);
+            flight.setSpeedZ(thirdArgument);
+
+            cout << "Velocity set for Aircraft #" << flightId << endl;
+            cout << "Velocity in X: " << to_string(firstArgument) << endl;
+            cout << "Velocity in Y: " << to_string(secondArgument) << endl;
+            cout << "Velocity in Z: " << to_string(thirdArgument) << endl;
+
+            return ;
+        case reportAircraftIdentification:
+
+            cout << "Aircraft Identification: " << flightId << endl;
+            return ;
+    }
+}
 
 CommandCode Operator::parseCommand(string userInput) {
     string userInputCopy;

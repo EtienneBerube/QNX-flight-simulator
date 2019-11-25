@@ -16,11 +16,12 @@ using std::string;
 using std::vector;
 using std::queue;
 using std::pair;
+using std::to_string;
 
 
 enum CommandCode {
 //    Aircraft specific command
-            changeAltitude,
+    changeAltitude,
     increaseSpeed,
     decreaseSpeed,
     changeDirection,
@@ -28,7 +29,7 @@ enum CommandCode {
     leaveHoldingPattern,
     reportCurrentPositionVelocity,
 //    Internal system
-            addAircraft,
+    addAircraft,
     deleteAircraft,
     setPosition,
     setElevation,
@@ -36,7 +37,7 @@ enum CommandCode {
 
 //    Broadcoast
 //  Enter/Leave Holding
-            reportAircraftIdentification,
+    reportAircraftIdentification,
 };
 
 
@@ -50,6 +51,8 @@ public:
     queue<map<CommandCode, vector<string>>> getCommandQueue();
 
     void addCommandToQueue(CommandCode, const vector<string>&);
+
+    void executeCommand(CommandCode, const vector<string>&);
 
 private:
     queue<map<CommandCode, vector<string>>> commandQueue;
