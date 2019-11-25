@@ -37,8 +37,6 @@ void Radar::scanAirZone(std::vector<Flight*> flights){
 
 void Radar::executeRadar(){
 	std::cout << "***Executing radar***" << std::endl;
-	std::cout << &this->airplaneDB->mutex << std::endl;
-
 
 	this->airplaneDB->lockDB();
 

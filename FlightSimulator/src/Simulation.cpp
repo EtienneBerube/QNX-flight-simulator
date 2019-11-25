@@ -52,11 +52,10 @@ void Simulation::run(){
 
 	//Get new planes
 
-	while(nextFlights.front()->getEntryTime() <= counter){
-		std::cout<<"Found one"<<std::endl;
+	while(nextFlights.size() != 0 && nextFlights.front()->getEntryTime() <= counter){
 		std::vector<Flight*>* planes = airplaneDB->getPlanes();
-		std::cout<<"pushed"<<std::endl;
-		planes->push_back(nextFlights.front());
+		Flight* next = nextFlights.front();
+		planes->push_back(next);
 		nextFlights.pop();
 	}
 
@@ -64,7 +63,6 @@ void Simulation::run(){
 //	std::cout<<"BEfore adding"<<std::endl;
 
 	for(Flight* &flight: *(airplaneDB->getPlanes())){
-		std::cout<<"Adding "<<std::endl;
 		flight->updateFlightPosition();
 	}
 
