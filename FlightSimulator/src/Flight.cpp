@@ -57,6 +57,18 @@ int Flight::getSpeedZ(){
 	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this->speed_z;
 }
 
+void Flight::setSpeedX(int speedX) {
+    speed_x = speedX;
+}
+
+void Flight::setSpeedY(int speedY) {
+    speed_y = speedY;
+}
+
+void Flight::setSpeedZ(int speedZ) {
+    speed_z = speedZ;
+}
+
 int Flight::getId(){
 	return this->id;
 }
@@ -339,6 +351,10 @@ std::string Flight::getCurrentFlightStatus(){
 	}
 
 	return record;
+}
+
+void Flight::generateId(){
+	this->id = rand() % 10000;
 }
 
 

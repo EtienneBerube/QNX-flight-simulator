@@ -22,7 +22,8 @@ public:
 	void lockDB();
 	void unlockDB();
 	void updateFlightsPosition();
-	std::vector<Flight*> getPlanes();
+	int getIndex(int id);
+	std::vector<Flight*>* getPlanes();
 	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 private:

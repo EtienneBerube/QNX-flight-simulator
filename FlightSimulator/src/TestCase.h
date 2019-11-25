@@ -18,7 +18,7 @@
 class TestCase {
 public:
 	//each line is an airplane: ID, speed_x, speed_y, speed_z, x, y, z, entry time.
-	static int airplane_schedule[160];
+	static int airplane_schedule[8];
 
 	TestCase();
 };

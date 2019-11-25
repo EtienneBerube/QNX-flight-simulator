@@ -5,6 +5,7 @@
  *      Author: Deano
  */
 #include <string>
+#include <stdlib.h>
 
 #ifndef SRC_FLIGHT_H_
 #define SRC_FLIGHT_H_
@@ -14,7 +15,7 @@ public:
 	const static int FLIGHT_DIRECTION_RIGHT = 0;
 	const static int FLIGHT_DIRECTION_LEFT = 1;
 
-	const int timeInterval = 2;
+	const int timeInterval = 1;
 
 	Flight();
 	Flight(int, int,int,int,int,int,int,int);
@@ -31,6 +32,9 @@ public:
 	int getSpeedX();
 	int getSpeedY();
 	int getSpeedZ();
+	void setSpeedX(int);
+	void setSpeedY(int);
+	void setSpeedZ(int);
 	int getId();
 	std::string getIdString();
 	std::string getHoldingPatternStatus();
@@ -45,6 +49,7 @@ public:
 	void changeDirection();
 	void enterHoldingPattern();
 	void leaveHoldingPattern();
+	void generateId();
 
 	void changeFlightPosition(int, int);
 	void changeFlightElevation (int);
