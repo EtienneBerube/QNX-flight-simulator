@@ -45,6 +45,8 @@ class Operator {
 public:
     CommandCode parseCommand(string);
 
+    void executeCommand(CommandCode, const vector <string> &args, AirplaneDB &airplaneDb);
+
     static CommandCode hashIt(string const &);
 
 //    Command queue that holds a map of commandCode and its list of arguments
