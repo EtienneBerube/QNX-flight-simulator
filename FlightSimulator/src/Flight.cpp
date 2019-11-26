@@ -354,4 +354,3 @@ void Flight::generateId(){
 Flight::~Flight() {
 	// TODO Auto-generated destructor stub
 }
-
