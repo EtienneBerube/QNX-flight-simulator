@@ -7,16 +7,16 @@
 
 #include"Display.h"
 #include "TextTable.h"
+#include <iostream>
 
-Display::Display(AirplaneDB* head){
-	//ADD DB in Dependency injection
-}
-
-void Display::getThreadRunnable(void* context){
-	((Display *) context)->displayCurrentState();
+Display::Display(AirplaneDB* db){
+	this->planeDB = db;
 }
 
 void Display::displayCurrentState(){
+
+	std::cout << "***Executing display***" << std::endl;
+
 	 TextTable t( '-', '|', '+' );
 
 	 t.add("id");
@@ -30,7 +30,9 @@ void Display::displayCurrentState(){
 	 t.add("Entry time");
 	 t.endOfRow();
 
-	 for (auto& plane : planeDB->getPlanes()){
+	 this->planeDB->lockDB();
+
+	 for (auto& plane : *(planeDB->getPlanes())){
 		 t.add(plane->getIdString());
 		 t.add(std::to_string(plane->getPositionX()));
 		 t.add(std::to_string(plane->getPositionY()));
@@ -45,6 +47,8 @@ void Display::displayCurrentState(){
 
 	 t.setAlignment( 2, TextTable::Alignment::RIGHT );
 	 std::cout << t;
+
+	 this->planeDB->unlockDB();
 }
 
 

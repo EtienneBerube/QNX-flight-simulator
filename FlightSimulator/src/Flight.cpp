@@ -8,6 +8,7 @@
 #include "Flight.h"
 #include "math.h"
 #include <string>
+#include <iostream>
 
 Flight::Flight() {
 
@@ -45,15 +46,15 @@ int Flight::getPositionZ(){
 }
 
 int Flight::getSpeedX(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.x : this->speed_x;
+	return this->speed_x;
 }
 
 int Flight::getSpeedY(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.y : this->speed_y;
+	return  this->speed_y;
 }
 
 int Flight::getSpeedZ(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this->speed_z;
+	return this->speed_z;
 }
 
 void Flight::setSpeedX(int speedX) {
@@ -64,6 +65,9 @@ void Flight::setSpeedY(int speedY) {
     speed_y = speedY;
 }
 
+void Flight::setSpeedZ(int speedZ) {
+    speed_z = speedZ;
+}
 
 int Flight::getId(){
 	return this->id;
@@ -75,8 +79,6 @@ std::string Flight::getIdString(){
 }
 
 std::string Flight:: getHoldingPatternStatus(){
-//	if (inHoldingPattern) return "YES";
-//	else return "NO";
 	return (inHoldingPattern)? "YES": "NO";
 }
 
@@ -98,20 +100,19 @@ void Flight::calculateFlightDistanceFromOriginPoint(){
 }
 
 
-int Flight::calculateDistanceOnXYPlane(int x, int y){
+int Flight::calculateDistanceOnXYPlaneFrom(int x, int y){
 	int calculatedDistance;
 
 	if (inHoldingPattern){
 		int diffInX = x - this->inHoldingPatternPosition.x;
 		int diffInY = y - this->inHoldingPatternPosition.y;
-		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		long long int totalSquared = pow(diffInX,2) + pow(diffInY,2);
 		calculatedDistance = (int) sqrt(totalSquared);
 	}else {
 		int diffInX = x - this->position_x;
 		int diffInY = y - this->position_y;
-		int totalSquared = (diffInX * diffInX) + (diffInY * diffInY);
+		long long int totalSquared = pow(diffInX,2) + pow(diffInY,2);
 		calculatedDistance = (int) sqrt(totalSquared);
-
 	}
 
 	return calculatedDistance;
@@ -131,19 +132,19 @@ int Flight::calculateAltitudeBetweenPlanes(int z){
  * It uses the appropriate coordinated depending on whether the aircraft is in holding pattern or not
  *
  */
-int Flight::calculatateFlightDistanceFromAPoint(int x, int y, int z){
+bool Flight::scanFlightFromAPoint(int x, int y, int z){
+
 	if(inHoldingPattern){
-		int diff_x = x - this->inHoldingPatternPosition.x;
-		int diff_y = y - this->inHoldingPatternPosition.y;
-		int diff_z = z - this->inHoldingPatternPosition.z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
-		return (int) sqrt(totalSquared);
+
+		if( (this->inHoldingPatternPosition.x >= (x*5280) && this->inHoldingPatternPosition.x <= (x+100)*5280) && this->inHoldingPatternPosition.y <= (y +100)*5280 && this->inHoldingPatternPosition.y >= (y*5280) && this->inHoldingPatternPosition.z >= (z + 15000) && this->inHoldingPatternPosition.z >= (z + 40000))
+			return true;
+		else return false;
+
 	}else{
-		int diff_x = x - this->position_x;
-		int diff_y = y - this->position_y;
-		int diff_z = z - this->position_z;
-		int totalSquared = (diff_x * diff_x) + (diff_y * diff_y) + (diff_z*diff_z);
-		return (int) sqrt(totalSquared);
+
+		if( (this->position_x >= (x*5280) && this->position_x <= (x+100)*5280) && this->position_y <= (y +100)*5280 && this->position_y >= (y)*5280 && this->position_z >= (z + 15000) && this->position_z >= (z + 40000))
+				return true;
+			else return false;
 	}
 }
 
@@ -166,17 +167,17 @@ void Flight::updateFlightPosition(){
 
 	// inHoldingPattern follows this formula (x - h)^2 + (y - k)^2 = r^2
 	if (inHoldingPattern){
-		int relativeRadiusForward = this->position_x + this->inHoldingPatternPosition.radius;
-		int relativeRadiusBackwards = this->position_x - this->inHoldingPatternPosition.radius;
+		long long int relativeRadiusForward = this->position_x + this->inHoldingPatternPosition.radius;
+	long long int relativeRadiusBackwards = this->position_x - this->inHoldingPatternPosition.radius;
 
 		if(this->inHoldingPatternPosition.goingForward){
 
 			if(this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x) >= relativeRadiusForward){
 				this->inHoldingPatternPosition.goingForward = false;
 			}else{
-				this->inHoldingPatternPosition.x += this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x);
-				int difference = this->inHoldingPatternPosition.x - this->position_x;
-				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.x = this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x);
+				long long int difference = this->inHoldingPatternPosition.x - this->position_x;
+				long long int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
 				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
 			}
 
@@ -185,9 +186,9 @@ void Flight::updateFlightPosition(){
 			if(this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x) <= relativeRadiusBackwards){
 				this->inHoldingPatternPosition.goingForward = true;
 			}else{
-				this->inHoldingPatternPosition.x -= this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x);
-				int difference = this->inHoldingPatternPosition.x - this->position_x;
-				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.x = this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x);
+			long long int difference = this->inHoldingPatternPosition.x - this->position_x;
+				long long int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
 				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
 			}
 
@@ -201,45 +202,38 @@ void Flight::updateFlightPosition(){
 }
 
 /*
- * Increases the velocity in every direction by n amount if and only if the speed in the direction is not 0
- * Meaning that if the plane is going in a straight line, it says in the straight line
- * speed_x, speed_y and speed_z will change because speed_z is not just related to the altitude allegedly
+ * Increases the velocity in every direction by n amount
+ * Uses mathematical vector arithmetic so the plane keeps its relative direction
  *
  */
 void Flight::increaseSpeedBy(int amount){
+    if (amount < 0) amount *= -1;
+    double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+    double magnitudeSpeed = sqrt(total);
+    double multiplierOfSpeedChange = (amount/magnitudeSpeed) + 1;
 
-	if (this -> speed_x != 0){
-		this -> speed_x += amount;
-	}
+    this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+    this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+    this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 
-	if (this -> speed_y != 0){
-		this -> speed_y += amount;
-	}
-
-	if (this -> speed_z != 0){
-		this -> speed_z += amount;
-	}
 }
 
+
 /*
- * Decreases the velocity in every direction by n amount if and only if the speed in the direction is not 0
- * Meaning that if the plane is going in a straight line, it says in the straight line
- * speed_x, speed_y and speed_z will change because speed_z is not just related to the altitude allegedly
+ * Decreases the velocity in every direction by n amount
+ * uses mathematical vector arithmetic so the plane keeps its relative direction
  *
  */
 void Flight::decreaseSpeedBy(int amount){
+    if (amount < 0) amount *= -1;
 
-	if (this -> speed_x != 0){
-		this -> speed_x -= amount;
-	}
+    double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+    double magnitudeSpeed = sqrt(total);
+    double multiplierOfSpeedChange = (-amount/magnitudeSpeed) + 1;
 
-	if (this -> speed_y != 0){
-		this -> speed_y -= amount;
-	}
-
-	if (this -> speed_z != 0){
-		this -> speed_z -= amount;
-	}
+    this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+    this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+    this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 }
 
 /*
@@ -284,6 +278,7 @@ void Flight::leaveHoldingPattern(){
 void Flight::changeDirection(){
 	const int changeOfDirection = -1;
 	speed_y *= changeOfDirection;
+	speed_x *= changeOfDirection;
 }
 
 void Flight::changeFlightPosition(int position_x, int position_y){
@@ -333,21 +328,29 @@ std::string Flight::projectFlightPosition(int time){
  *
  */
 std::string Flight::getCurrentFlightStatus(){
-	std::string record;
+	std::string record = "";
 	if (inHoldingPattern){
-		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
-		record += "Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + ", ";
-		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "Flight ID: ";
+		record += (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id);
+		record += ", Position (x, y, z): (" + std::to_string(this->inHoldingPatternPosition.x) + ", " + std::to_string(this->inHoldingPatternPosition.y) + ", " +std::to_string(this->inHoldingPatternPosition.z) + "), ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + "), ";
 		record += "In Holding Pattern: Yes";
 
 	}else{
-		record = "Flight ID: " + (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id) + ", ";
-		record += "Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + ", ";
-		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + ", ";
+		record += "Flight ID: ";
+		record += (unidentifiedFlight)? "UNKNOWN" : std::to_string(this->id);
+		record += ", Position (x, y, z): (" + std::to_string(this->position_x) + ", " + std::to_string(this->position_y) + ", " +std::to_string(this->position_z) + "), ";
+		record += "Speed (x, y, z): (" + std::to_string(this -> speed_x) + ", "+ std::to_string(this -> speed_y) + ", "+ std::to_string(this -> speed_z) + "), ";
 		record += "In Holding Pattern: No";
 	}
 
 	return record;
+}
+
+void Flight::generateId(){
+	this->id = rand() % 9000+1000;
+	this->unidentifiedFlight = false;
+	std::cout <<"GENERATED ID: " <<this->id<< std::endl;
 }
 
 

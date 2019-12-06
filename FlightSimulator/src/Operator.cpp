@@ -6,57 +6,91 @@
 #include <vector>
 #include <queue>
 #include "Operator.h"
-#include "Flight.h"
-#include "AirplaneDB.h"
+#include <chrono>
+
+using namespace std::chrono;
 
 
-void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &flight, AirplaneDB &airplaneDb) {
+void Operator::run(AirplaneDB &airplaneDb){
+	while(true){
+		cout << "Enter Command: " << endl;
+		string commandString;
 
-    firstArgument = args[0];
-    secondArgument = args[1];
-    thirdArgument = args[2];
+		cin >> commandString;
 
-    int flightId = flight.getId();
+		milliseconds start = duration_cast< milliseconds >(
+		    system_clock::now().time_since_epoch()
+		);
+		CommandCode commandCode = parseCommand(commandString, airplaneDb);
 
-    switch (commandCode) {
+
+		milliseconds end = duration_cast< milliseconds >(
+		    system_clock::now().time_since_epoch()
+		);
+
+		cout<< "Command took: " << std::to_string(end.count() - start.count()) <<" ms" << endl;
+	}
+
+}
+
+
+void Operator::executeCommand(CommandCode code, const vector <string> &args, AirplaneDB &airplaneDb) {
+
+	airplaneDb.lockDB();
+
+	string flightId;
+	int flightIndex;
+	Flight *flight;
+
+	if ((code != reportAircraftIdentification) && (code != addAircraft) && (code != nuke)){
+		flightId = args[0];
+		flightIndex = airplaneDb.getIndex(std::stoi(flightId));
+		flight = airplaneDb.getPlanes()->data()[flightIndex];
+	}
+
+    cout.flush();
+
+    switch (code) {
         case changeAltitude:
-            flight.changeFlightElevation(firstArgument);
+            flight->changeFlightElevation(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " elevation changed to " << firstArgument << endl;
-            return ;
+
+            cout << "Aircraft #" << flightId << " elevation changed to " << args[1] << endl;
+            break;
         case increaseSpeed:
-            flight.increaseSpeedBy(firstArgument);
+            flight->increaseSpeedBy(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " increased speed by " << to_string(firstArgument) << endl;
-            return ;
+            cout << "Aircraft #" << flightId << " increased speed by " << args[1] << endl;
+            break;
         case decreaseSpeed:
-            flight.decreaseSpeedBy(firstArgument);
+            flight->decreaseSpeedBy(std::stoi(args[1]));
 
-            cout << "Aircraft #" << flightId << " decreased speed by " << to_string(firstArgument) << endl;
-            return ;
+            cout << "Aircraft #" << flightId << " decreased speed by " << args[1] << endl;
+            break;
         case changeDirection:
-            flight.changeDirection();
+            flight->changeDirection();
 
             cout << "Aircraft #" << flightId << " changed direction." << endl;
-            return ;
+            break;
         case enterHoldingPattern:
-            flight.enterHoldingPattern();
+            flight->enterHoldingPattern();
 
             cout << "Aircraft #" << flightId << " entered holding pattern." << endl;
-            return ;
+            break;
         case leaveHoldingPattern:
-            flight.leaveHoldingPattern();
+            flight->leaveHoldingPattern();
 
             cout << "Aircraft #" << flightId << " left holding pattern." << endl;
-            return ;
+            break;
         case reportCurrentPositionVelocity:
-            int currentPositionX = flight.getPositionX();
-            int currentPositionY = flight.getPositionY();
-            int currentPositionZ = flight.getPositionZ();
+        {
+            int currentPositionX = flight->getPositionX();
+            int currentPositionY = flight->getPositionY();
+            int currentPositionZ = flight->getPositionZ();
 
-            float currentVelocityX = flight.getSpeedX();
-            float currentVelocityY = flight.getSpeedY();
-            float currentVelocityZ = flight.getSpeedZ();
+            float currentVelocityX = flight->getSpeedX();
+            float currentVelocityY = flight->getSpeedY();
+            float currentVelocityZ = flight->getSpeedZ();
 
 
             cout << "Aircraft #" << flightId << ":" << endl;
@@ -71,72 +105,112 @@ void Operator::executeCommand(CommandCode, const vector <string> &args, Flight &
             cout << "X: " << currentVelocityX << endl;
             cout << "Y: " << currentVelocityY << endl;
             cout << "Z: " << currentVelocityZ << endl;
-            return ;
+        }
+            break;
         case addAircraft:
+        {
+            int id = std::stoi(args[0]);
+            int speedInX = std::stoi(args[1]);
+            int speedInY = std::stoi(args[2]);
+            int speedInZ = std::stoi(args[3]);
+            int positionInX = std::stoi(args[4]);
+            int positionInY = std::stoi(args[5]);
+            int positionInZ = std::stoi(args[6]);
+            int startTime = std::stoi(args[7]);
 
-//            TODO: cin to ask user input for Aircraft
+            Flight *newFlight = new Flight(id, speedInX, speedInY, speedInZ, positionInX, positionInY, positionInZ,
+                                           startTime);
 
-            return ;
-        case deleteAircraft:
+            cout << "Aircraft created." << endl;
 
-            std::vector<Flight*> flights = airplaneDb.getPlanes();
+            airplaneDb.getPlanes()->push_back(newFlight);
 
-//            TODO: get flight index (in flight vector) from a flight id
-
-            int flightIndex = airplaneDb.getFlightIndex(int(flightId));
-
-            flights.erase(flightIndex);
+            cout << "New Aircraft #" << flightId << " created." << endl;
+        }
+            break;
+        case deleteAircraft:{
+        	airplaneDb.getPlanes()->erase(airplaneDb.getPlanes()->begin() + flightIndex);
 
             cout << "Aircraft #" << flightId << " DESTROYED!!!" << endl;
-
-            return ;
-        case setPosition:
-            flight.changeFlightPosition(firstArgument, secondArgument);
+        }
+            break;
+        case setPosition:{
+            flight->changeFlightPosition(std::stoi(args[1]), std::stoi(args[2]));
 
             cout << "Position (X,Y) set for Aircraft #" << flightId << endl;
-            cout << "Position X: " << firstArgument << endl;
-            cout << "Position Y: " << secondArgument << endl;
-            return ;
-        case setElevation:
-            flight.changeFlightElevation(firstArgument);
+            cout << "Position X: " << args[1] << endl;
+            cout << "Position Y: " << args[2] << endl;
+        }
+            break;
+        case setElevation:{
+            flight->changeFlightElevation(std::stoi(args[1]));
 
             cout << "Elevation set for Aircraft #" << flightId << endl;
-            cout << "Elevation set to: " << to_string(firstArgument) << endl;
-            return ;
-        case setVelocity:
+            cout << "Elevation set to: " << args[1] << endl;
+        }
+            break;
+        case setVelocity:{
 
-            flight.setSpeedX(firstArgument);
-            flight.setSpeedY(secondArgument);
-            flight.setSpeedZ(thirdArgument);
+            flight->setSpeedX(std::stoi(args[1]));
+            flight->setSpeedY(std::stoi(args[2]));
+            flight->setSpeedZ(std::stoi(args[3]));
 
             cout << "Velocity set for Aircraft #" << flightId << endl;
-            cout << "Velocity in X: " << to_string(firstArgument) << endl;
-            cout << "Velocity in Y: " << to_string(secondArgument) << endl;
-            cout << "Velocity in Z: " << to_string(thirdArgument) << endl;
+            cout << "Velocity in X: " << args[1] << endl;
+            cout << "Velocity in Y: " << args[2] << endl;
+            cout << "Velocity in Z: " << args[3] << endl;
+        }
 
-            return ;
-        case reportAircraftIdentification:
+            break;
+        case reportAircraftIdentification:{
 
-            cout << "Aircraft Identification: " << flightId << endl;
-            return ;
+            for (auto &flight : *airplaneDb.getPlanes()) {
+            	if(flight->getId() == -1){
+            		flight->generateId();
+            	}
+                cout << "Aircraft Identification: " << flight->getIdString() << endl;
+            }
+        }
+            break;
+
+        case nuke:{
+        	airplaneDb.getPlanes()->clear();
+        	string one = "            _ ._  _ , _ ._\n";
+        	string two = "          (_ ' ( `  )_  .__)\n";
+        	string three = "        ( (  (    )   `)  ) _)\n";
+        	string four = "       (__ (_   (_ . _) _) ,__)\n";
+        	string five = "           `~~`\\ ' . /`~~`\n";
+        	string six = "                ;   ;\n";
+        	string seven = "                /   \\\n";
+        	string eight = "  _____________/_ __ \\_____________";
+
+        	cout << one << two << three << four << five << six << seven << eight << endl;
+        }
+        break;
     }
+
+    cout.flush();
+    airplaneDb.unlockDB();
 }
 
-CommandCode Operator::parseCommand(string userInput) {
+CommandCode Operator::parseCommand(string userInput, AirplaneDB &airplaneDb) {
     string userInputCopy;
+
+    cout<<userInput << endl;
+
     userInputCopy = std::move(userInput);
     string delimiter = "|";
 
     size_t pos = userInputCopy.find(delimiter);
 
     string commands;
-    vector<string> args;
+    vector <string> args;
 
     commands = userInputCopy.substr(0, pos);
 
     userInputCopy.erase(0, pos + delimiter.length());
 
-    string delimiter_args = " ";
+    string delimiter_args = ",";
     string substring;
 
     while ((pos = userInputCopy.find(delimiter_args)) != string::npos) {
@@ -151,50 +225,52 @@ CommandCode Operator::parseCommand(string userInput) {
 
     CommandCode commandCode = hashIt(commands);
 
-    addCommandToQueue(commandCode, args);
+    executeCommand(commandCode, args, airplaneDb);
 
     return commandCode;
 }
 
-void Operator::addCommandToQueue(CommandCode command, const vector<string>& args) {
-    map<CommandCode, vector<string>> commandArgumentsPair;
+void Operator::addCommandToQueue(CommandCode command, const vector <string> &args) {
+    map <CommandCode, vector<string>> commandArgumentsPair;
 
-    commandArgumentsPair.insert(pair<CommandCode, vector<string >>(command, args));
+    commandArgumentsPair.insert(pair < CommandCode, vector < string >> (command, args));
 
     commandQueue.push(commandArgumentsPair);
 }
 
-queue<map<CommandCode, vector<string>>> Operator::getCommandQueue() {
+queue <map<CommandCode, vector < string>>> Operator::getCommandQueue() {
     return commandQueue;
 }
 
 CommandCode Operator::hashIt(const string &command) {
 //    TODO: Lower command string before the comparison
-    if (command == "change altitude") {
+    if (command == "change_altitude") {
         return changeAltitude;
-    } else if (command == "increase speed") {
+    } else if (command == "increase_speed") {
         return increaseSpeed;
-    } else if (command == "decrease speed") {
+    } else if (command == "decrease_speed") {
         return decreaseSpeed;
-    } else if (command == "change direction") {
+    } else if (command == "change_direction") {
         return changeDirection;
-    } else if (command == "enter holding pattern") {
+    } else if (command == "enter_holding_pattern") {
         return enterHoldingPattern;
-    } else if (command == "leave holding pattern") {
+    } else if (command == "leave_holding_pattern") {
         return leaveHoldingPattern;
-    } else if (command == "report current position velocity") {
+    } else if (command == "report_current_position_velocity") {
         return reportCurrentPositionVelocity;
-    } else if (command == "add aircraft") {
+    } else if (command == "add_aircraft") {
         return addAircraft;
-    } else if (command == "delete aircraft") {
+    } else if (command == "delete_aircraft") {
         return deleteAircraft;
-    } else if (command == "set position") {
+    } else if (command == "set_position") {
         return setPosition;
-    } else if (command == "set elevation") {
+    } else if (command == "set_elevation") {
         return setElevation;
-    } else if (command == "set velocity") {
+    } else if (command == "set_velocity") {
         return setVelocity;
-    } else if (command == "report aircraft identification") {
+    } else if (command == "report_aircraft_identification") {
         return reportAircraftIdentification;
+    } else if  (command == "nuke"){
+    	return nuke;
     }
 }

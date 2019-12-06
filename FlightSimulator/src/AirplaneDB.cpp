@@ -6,17 +6,40 @@
  */
 #include "AirplaneDB.h"
 #include "TestCase.h"
+#include <iostream>
 
 AirplaneDB::AirplaneDB(){
+	pthread_mutexattr_t attr;
+	pthread_mutexattr_init(&attr);
+	pthread_mutexattr_setpshared(&attr, PTHREAD_PROCESS_SHARED);
+	pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
+
+	pthread_mutex_init(&this->mutex, &attr);
 	init();
 }
 
-std::vector<Flight*> AirplaneDB::getPlanes(){
-	return flights;
+AirplaneDB::~AirplaneDB(){
+	for(auto &plane: this->flights){
+		delete(plane);
+	}
+}
+
+std::vector<Flight*>* AirplaneDB::getPlanes(){
+	return &flights;
 }
 
 void AirplaneDB::lockDB(){
 	pthread_mutex_lock( &mutex);
+}
+
+int AirplaneDB::getIndex(int id){
+	for(unsigned int i = 0 ; i < flights.size(); i++){
+		if(flights[i]->getId() == id){
+			return i;
+		}
+	}
+
+	return -1;
 }
 
 void AirplaneDB::unlockDB(){
@@ -30,37 +53,6 @@ void AirplaneDB::unlockDB(){
  *
  */
 void AirplaneDB::init(){
-
-	const int totalNumberOfData = sizeof(TestCase::airplane_schedule);
-	const int TOTAL_NUMBER_INFO_PER_PLANE = 7;
-	const int ID = 0;
-	const int SPEED_X = 1;
-	const int SPEED_Y = 2;
-	const int SPEED_Z = 3;
-	const int POSITION_X = 4;
-	const int POSITION_Y = 5;
-	const int POSITION_Z = 6;
-	const int START_TIME = 7;
-	int id, speedx, speedy,speedz, positionx,positiony, positionz, enterTime;
-
-	for (int i = 0; i < totalNumberOfData ; i++){
-
-			switch (i % TOTAL_NUMBER_INFO_PER_PLANE){
-				case ID: id = TestCase::airplane_schedule[i]; break;
-				case SPEED_X : speedx = TestCase::airplane_schedule[i]; break;
-				case SPEED_Y : speedy = TestCase::airplane_schedule[i]; break;
-				case SPEED_Z : speedz = TestCase::airplane_schedule[i]; break;
-				case POSITION_X : positionx = TestCase::airplane_schedule[i]; break;
-				case POSITION_Y : positiony = TestCase::airplane_schedule[i]; break;
-				case POSITION_Z : positionz = TestCase::airplane_schedule[i]; break;
-				case START_TIME : {
-				enterTime = TestCase::airplane_schedule[i];
-				Flight* newFlight = new Flight (id, speedx, speedy,speedz,positionx,positiony,positionz,enterTime);
-				flights.push_back(newFlight);
-				}
-				break;
-			}
-	}
 
 	sortThePlanes();
 }
@@ -84,6 +76,7 @@ void AirplaneDB::sortThePlanes(){
 	std::sort(flights.begin(),flights.end(), flightSorting);
 }
 
+
 /*
  * Function which will run every 2 seconds, to update the position of all the planes.
  */
@@ -91,4 +84,12 @@ void AirplaneDB::updateFlightsPosition(){
 	//LAMBDA EXPRESSION
 	auto updatePlanePosition = [](Flight* n) {n->updateFlightPosition();};
 	std::for_each(flights.begin(),flights.end(), updatePlanePosition);
+}
+
+void AirplaneDB::createNumberOfPlanes(int numberOfPlanes){
+    this->flights.clear();
+    
+    for (int index = 0; index < numberOfPlanes; index++){
+        this->flights.push_back (new Flight(index +1, 100, 100, 100, 1000, 1000, 1000, 0));
+    }
 }

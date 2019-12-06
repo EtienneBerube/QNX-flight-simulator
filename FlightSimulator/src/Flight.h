@@ -5,6 +5,7 @@
  *      Author: Deano
  */
 #include <string>
+#include <stdlib.h>
 
 #ifndef SRC_FLIGHT_H_
 #define SRC_FLIGHT_H_
@@ -14,15 +15,15 @@ public:
 	const static int FLIGHT_DIRECTION_RIGHT = 0;
 	const static int FLIGHT_DIRECTION_LEFT = 1;
 
-	const int timeInterval = 2;
+	const int timeInterval = 1;
 
 	Flight();
 	Flight(int, int,int,int,int,int,int,int);
 
 	void updateFlightPosition();
 	void calculateFlightDistanceFromOriginPoint();
-	int calculatateFlightDistanceFromAPoint(int, int, int);
-	int calculateDistanceOnXYPlane(int, int);
+	bool scanFlightFromAPoint(int, int, int);
+	int calculateDistanceOnXYPlaneFrom(int, int);
 	int calculateAltitudeBetweenPlanes(int);
 
 	int getPositionX();
@@ -48,6 +49,7 @@ public:
 	void changeDirection();
 	void enterHoldingPattern();
 	void leaveHoldingPattern();
+	void generateId();
 
 	void changeFlightPosition(int, int);
 	void changeFlightElevation (int);
@@ -60,12 +62,12 @@ public:
 
 
 private:
-	int id, speed_x, speed_y, speed_z, position_x, position_y, position_z, entryTime, distance;
-
+	long long int speed_x, speed_y, speed_z, position_x, position_y, position_z,  distance;
+	int id, entryTime;
 	bool inHoldingPattern = false;
 	bool unidentifiedFlight = false;
 	struct Positions {
-		int x, y, z;
+		 long long int x, y, z;
 		int radius = 1000;
 		bool goingForward = true;
 	}inHoldingPatternPosition;
