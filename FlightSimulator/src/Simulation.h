@@ -16,15 +16,15 @@ using std::queue;
 class Simulation{
 public:
 	Simulation(AirplaneDB*);
-<<<<<<< HEAD
+
     Simulation(AirplaneDB*, int);
 	void init();
 	void run();
     void init(int);
-=======
+
 	void init();
 	void run();
->>>>>>> Operator_kevyn
+
 
 private:
 	std::queue<Flight*> nextFlights;

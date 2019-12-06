@@ -7,32 +7,7 @@ string getCommandString(CommandCode commandCode);
 
 using namespace std;
 
-<<<<<<< HEAD
-=======
-//int main() {
-//    auto* anOperator = new Operator();
-//    queue<map<CommandCode, vector<string>>> commandQueue;
-//    map<CommandCode, vector<string>>::iterator itr;
-//
-//    string commandString = "change altitude|24 434 34";
-//
-//    CommandCode commandCode = anOperator->parseCommand(commandString);
-//
-//    commandQueue = anOperator->getCommandQueue();
-//
-//    map<CommandCode, vector<string>> item = commandQueue.front();
-//
-//    vector<string> args;
-//
-//    for (itr = item.begin(); itr != item.end(); ++itr) {
-//        printCommandArgsPair(itr->first, itr->second);
-//    }
-//    cout << endl;
-//
-//    return 0;
-//}
 
->>>>>>> Operator_kevyn
 void printCommandArgsPair(CommandCode commandCode, vector<string> args){
     string command = getCommandString(commandCode);
     string pair = "Command issued: ";

@@ -111,8 +111,6 @@ void Radar::displayPlanesAboutToCrash(){
 }
 
 
-<<<<<<< HEAD
-=======
 /*
  * For debugging purposes
  */
@@ -145,7 +143,6 @@ void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
 
 
 
->>>>>>> Operator_kevyn
 Radar::~Radar() {
 	// TODO Auto-generated destructor stub
 }

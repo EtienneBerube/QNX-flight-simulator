@@ -348,13 +348,11 @@ std::string Flight::getCurrentFlightStatus(){
 }
 
 void Flight::generateId(){
-<<<<<<< HEAD
+
 	this->id = rand() % 9000+1000;
 	this->unidentifiedFlight = false;
 	std::cout <<"GENERATED ID: " <<this->id<< std::endl;
-=======
-	this->id = rand() % 10000;
->>>>>>> Operator_kevyn
+
 }
 
 

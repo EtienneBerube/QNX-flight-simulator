@@ -12,8 +12,8 @@ Simulation::Simulation(AirplaneDB* airplaneDB){
 	init();
 }
 
-<<<<<<< HEAD
-imulation::Simulation(AirplaneDB* airplaneDB, int numberOfPlanes){
+
+Simulation::Simulation(AirplaneDB* airplaneDB, int numberOfPlanes){
     this->airplaneDB = airplaneDB;
     init(numberOfPlanes);
 }
@@ -26,8 +26,7 @@ void Simulation::init(int numberOfPlanes){
 }
 
 
-=======
->>>>>>> Operator_kevyn
+
 void Simulation::init(){
 	const int totalNumberOfData = sizeof(TestCase::airplane_schedule)/sizeof(TestCase::airplane_schedule[0]);
 		const int TOTAL_NUMBER_INFO_PER_PLANE = 8;
@@ -75,22 +74,12 @@ void Simulation::run(){
 		nextFlights.pop();
 	}
 
-<<<<<<< HEAD
-=======
-	//Update
-//	std::cout<<"BEfore adding"<<std::endl;
-
->>>>>>> Operator_kevyn
 	for(Flight* &flight: *(airplaneDB->getPlanes())){
 		flight->updateFlightPosition();
 	}
 
 	airplaneDB->unlockDB();
-<<<<<<< HEAD
-=======
 
-
->>>>>>> Operator_kevyn
 }
 
 

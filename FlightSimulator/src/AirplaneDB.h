@@ -25,11 +25,7 @@ public:
 	int getIndex(int id);
 	std::vector<Flight*>* getPlanes();
 	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-<<<<<<< HEAD
-    void createNumberOfPlanes(int);
-=======
 
->>>>>>> Operator_kevyn
 private:
 	std::vector<Flight*> flights;
 	void sortThePlanes();
