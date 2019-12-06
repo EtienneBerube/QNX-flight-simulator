@@ -46,15 +46,15 @@ int Flight::getPositionZ(){
 }
 
 int Flight::getSpeedX(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.x : this->speed_x;
+	return this->speed_x;
 }
 
 int Flight::getSpeedY(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.y : this->speed_y;
+	return  this->speed_y;
 }
 
 int Flight::getSpeedZ(){
-	return (inHoldingPattern) ? this->inHoldingPatternPosition.z : this->speed_z;
+	return this->speed_z;
 }
 
 void Flight::setSpeedX(int speedX) {
@@ -167,17 +167,17 @@ void Flight::updateFlightPosition(){
 
 	// inHoldingPattern follows this formula (x - h)^2 + (y - k)^2 = r^2
 	if (inHoldingPattern){
-		int relativeRadiusForward = this->position_x + this->inHoldingPatternPosition.radius;
-		int relativeRadiusBackwards = this->position_x - this->inHoldingPatternPosition.radius;
+		long long int relativeRadiusForward = this->position_x + this->inHoldingPatternPosition.radius;
+	long long int relativeRadiusBackwards = this->position_x - this->inHoldingPatternPosition.radius;
 
 		if(this->inHoldingPatternPosition.goingForward){
 
 			if(this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x) >= relativeRadiusForward){
 				this->inHoldingPatternPosition.goingForward = false;
 			}else{
-				this->inHoldingPatternPosition.x += this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x);
-				int difference = this->inHoldingPatternPosition.x - this->position_x;
-				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.x = this->inHoldingPatternPosition.x + (this->timeInterval* this->speed_x);
+				long long int difference = this->inHoldingPatternPosition.x - this->position_x;
+				long long int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
 				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
 			}
 
@@ -186,9 +186,9 @@ void Flight::updateFlightPosition(){
 			if(this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x) <= relativeRadiusBackwards){
 				this->inHoldingPatternPosition.goingForward = true;
 			}else{
-				this->inHoldingPatternPosition.x -= this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x);
-				int difference = this->inHoldingPatternPosition.x - this->position_x;
-				int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
+				this->inHoldingPatternPosition.x = this->inHoldingPatternPosition.x - (this->timeInterval* this->speed_x);
+			long long int difference = this->inHoldingPatternPosition.x - this->position_x;
+				long long int sumOfPowers = pow(this->inHoldingPatternPosition.radius,2) + pow(difference,2);
 				this->inHoldingPatternPosition.y = sqrt(sumOfPowers) + position_y;
 			}
 
@@ -207,14 +207,14 @@ void Flight::updateFlightPosition(){
  *
  */
 void Flight::increaseSpeedBy(int amount){
-	if (amount < 0) amount *= -1;
-	double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
-	double magnitudeSpeed = sqrt(total);
-	double multiplierOfSpeedChange = (amount/magnitudeSpeed) + 1;
+    if (amount < 0) amount *= -1;
+    double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+    double magnitudeSpeed = sqrt(total);
+    double multiplierOfSpeedChange = (amount/magnitudeSpeed) + 1;
 
-	this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
-	this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
-	this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
+    this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+    this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+    this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 
 }
 
@@ -225,15 +225,15 @@ void Flight::increaseSpeedBy(int amount){
  *
  */
 void Flight::decreaseSpeedBy(int amount){
-	if (amount < 0) amount *= -1;
+    if (amount < 0) amount *= -1;
 
-	double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
-	double magnitudeSpeed = sqrt(total);
-	double multiplierOfSpeedChange = (-amount/magnitudeSpeed) + 1;
+    double total = pow(this->speed_x, 2)+ pow(this->speed_y, 2) + pow(this->speed_z, 2);
+    double magnitudeSpeed = sqrt(total);
+    double multiplierOfSpeedChange = (-amount/magnitudeSpeed) + 1;
 
-	this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
-	this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
-	this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
+    this -> speed_x = (int) (this->speed_x*multiplierOfSpeedChange);
+    this -> speed_y  = (int) (this->speed_y*multiplierOfSpeedChange);
+    this -> speed_z  = (int) (this->speed_z*multiplierOfSpeedChange);
 }
 
 /*
@@ -278,6 +278,7 @@ void Flight::leaveHoldingPattern(){
 void Flight::changeDirection(){
 	const int changeOfDirection = -1;
 	speed_y *= changeOfDirection;
+	speed_x *= changeOfDirection;
 }
 
 void Flight::changeFlightPosition(int position_x, int position_y){
@@ -347,7 +348,13 @@ std::string Flight::getCurrentFlightStatus(){
 }
 
 void Flight::generateId(){
+<<<<<<< HEAD
+	this->id = rand() % 9000+1000;
+	this->unidentifiedFlight = false;
+	std::cout <<"GENERATED ID: " <<this->id<< std::endl;
+=======
 	this->id = rand() % 10000;
+>>>>>>> Operator_kevyn
 }
 
 

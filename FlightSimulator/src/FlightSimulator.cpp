@@ -7,8 +7,13 @@
 #include "History.h"
 #include "Simulation.h"
 #include "Operator.h"
+<<<<<<< HEAD
+#include <chrono>
+=======
+>>>>>>> Operator_kevyn
 
 using namespace std;
+using namespace std::chrono;
 #define MY_PULSE_CODE 0x01
 
 //Function initialization
@@ -42,10 +47,36 @@ timer_t history_timer;
 struct sigevent history_event;
 struct itimerspec history_itime;
 
+<<<<<<< HEAD
+//Simulation simulation(&airplaneDB);
+Simulation Simulation (&airplaneDB, 100); // Change this number to change the number of planes in the simulation
+=======
 Simulation simulation(&airplaneDB);
+>>>>>>> Operator_kevyn
 timer_t simulation_timer;
 struct sigevent simulation_event;
 struct itimerspec simulation_itime;
+
+void printCuteStuff(){
+	cout<<"#############################################################"<<endl;
+		cout<<"#                    _                                      #"<<endl;
+		cout<<"#                  -=\\`\\                                    #"<<endl;
+		cout<<"#              |\\ ____\\_\\__                                 #"<<endl;
+		cout<<"#            -=\\c`\"\"\"\"\"\"\" \"`)                               #"<<endl;
+		cout<<"#               `~~~~~/ /~~`\                                #"<<endl;
+		cout<<"#                 -==/ /                                    #"<<endl;
+		cout<<"#                   '-'                                     #"<<endl;
+		cout<<"#                  _  _                                     #"<<endl;
+		cout<<"#                 ( `   )_                                  #"<<endl;
+		cout<<"#                (    )    `)                               #"<<endl;
+		cout<<"#              (_   (_ .  _) _)                             #"<<endl;
+		cout<<"#                                             _             #"<<endl;
+		cout<<"#                                            (  )           #"<<endl;
+		cout<<"#             _ .                         ( `  ) . )        #"<<endl;
+		cout<<"#           (  _ )_                      (_, _(  ,_)_)      #"<<endl;
+		cout<<"#         (_  _(_ ,)                                        #"<<endl;
+		cout<<"#############################################################"<<endl;
+}
 
 
 //Startup routine
@@ -61,6 +92,11 @@ int main() {
 
 	cout << "Starting project" << endl;
 
+<<<<<<< HEAD
+	printCuteStuff();
+
+=======
+>>>>>>> Operator_kevyn
 	pthread_mutex_init(&synchronizer, NULL);
 	std::ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
@@ -103,7 +139,22 @@ void setupDisplay(){
 
 void runRadar(sigval value){
 	pthread_mutex_lock( &synchronizer);
+<<<<<<< HEAD
+    milliseconds start = duration_cast< milliseconds >(
+            system_clock::now().time_since_epoch()
+    );
+
+    radar.executeRadar();
+
+    milliseconds end = duration_cast< milliseconds >(
+            system_clock::now().time_since_epoch()
+    );
+
+    cout<< "Radar took: " << std::to_string(end.count() - start.count()) <<" ms to execute" << endl;
+
+=======
 	radar.executeRadar();
+>>>>>>> Operator_kevyn
 	pthread_mutex_unlock( &synchronizer);
 }
 
@@ -113,8 +164,13 @@ void setupRadar(){
 
 	timer_create(CLOCK_REALTIME, &radar_event, &radar_timer);
 
+<<<<<<< HEAD
+	radar_itime.it_value.tv_sec = 10;
+	radar_itime.it_interval.tv_sec = 10;
+=======
 	radar_itime.it_value.tv_sec = 15;
 	radar_itime.it_interval.tv_sec = 15;
+>>>>>>> Operator_kevyn
 }
 
 void runHistory(sigval value){
@@ -128,8 +184,13 @@ void setupHistory(){
 
 	timer_create(CLOCK_REALTIME, &history_event, &history_timer);
 
+<<<<<<< HEAD
+	history_itime.it_value.tv_sec = 15;
+	history_itime.it_interval.tv_sec = 15;
+=======
 	history_itime.it_value.tv_sec = 60;
 	history_itime.it_interval.tv_sec = 60;
+>>>>>>> Operator_kevyn
 }
 
 void runSimulation(sigval value){

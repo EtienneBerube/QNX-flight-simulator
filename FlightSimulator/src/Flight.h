@@ -62,12 +62,12 @@ public:
 
 
 private:
-	int id, speed_x, speed_y, speed_z, position_x, position_y, position_z, entryTime, distance;
-
+	long long int speed_x, speed_y, speed_z, position_x, position_y, position_z,  distance;
+	int id, entryTime;
 	bool inHoldingPattern = false;
 	bool unidentifiedFlight = false;
 	struct Positions {
-		int x, y, z;
+		 long long int x, y, z;
 		int radius = 1000;
 		bool goingForward = true;
 	}inHoldingPatternPosition;

@@ -12,7 +12,11 @@
 
 class Display{
 public:
+<<<<<<< HEAD
+	Display(AirplaneDB*); 
+=======
 	Display(AirplaneDB*); //TODO add planeDB
+>>>>>>> Operator_kevyn
 	void displayCurrentState();
 private:
 	AirplaneDB *planeDB;

@@ -47,6 +47,12 @@ void Radar::executeRadar(){
 	this->displayPlanesAboutToCrash();
 	this->displayPlanesFlyingTooLow();
 
+	std::cout << "List of flights in airspace: " << std::endl;
+
+	for (auto &flight : flightsInAirSpace){
+		std::cout <<"ID: "<< flight->getIdString() << ", Position(" << std::to_string(flight->getPositionX()) << ","<< std::to_string(flight->getPositionY()) << "," <<std::to_string(flight->getPositionZ()) << ")" <<std::endl ;
+	}
+
 }
 
 
@@ -105,6 +111,8 @@ void Radar::displayPlanesAboutToCrash(){
 }
 
 
+<<<<<<< HEAD
+=======
 /*
  * For debugging purposes
  */
@@ -137,6 +145,7 @@ void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
 
 
 
+>>>>>>> Operator_kevyn
 Radar::~Radar() {
 	// TODO Auto-generated destructor stub
 }

@@ -7,6 +7,8 @@ string getCommandString(CommandCode commandCode);
 
 using namespace std;
 
+<<<<<<< HEAD
+=======
 //int main() {
 //    auto* anOperator = new Operator();
 //    queue<map<CommandCode, vector<string>>> commandQueue;
@@ -30,6 +32,7 @@ using namespace std;
 //    return 0;
 //}
 
+>>>>>>> Operator_kevyn
 void printCommandArgsPair(CommandCode commandCode, vector<string> args){
     string command = getCommandString(commandCode);
     string pair = "Command issued: ";

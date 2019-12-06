@@ -39,6 +39,7 @@ enum CommandCode {
     setPosition,
     setElevation,
     setVelocity,
+	nuke,
 
 //    Broadcoast
 //  Enter/Leave Holding

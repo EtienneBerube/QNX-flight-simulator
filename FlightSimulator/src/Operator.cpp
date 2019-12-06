@@ -6,8 +6,36 @@
 #include <vector>
 #include <queue>
 #include "Operator.h"
+<<<<<<< HEAD
+#include <chrono>
+=======
+>>>>>>> Operator_kevyn
+
+using namespace std::chrono;
+
+<<<<<<< HEAD
+
+void Operator::run(AirplaneDB &airplaneDb){
+	while(true){
+		cout << "Enter Command: " << endl;
+		string commandString;
+
+		cin >> commandString;
+
+		milliseconds start = duration_cast< milliseconds >(
+		    system_clock::now().time_since_epoch()
+		);
+		CommandCode commandCode = parseCommand(commandString, airplaneDb);
 
 
+		milliseconds end = duration_cast< milliseconds >(
+		    system_clock::now().time_since_epoch()
+		);
+
+		cout<< "Command took: " << std::to_string(end.count() - start.count()) <<" ms" << endl;
+	}
+
+=======
 void Operator::run(AirplaneDB &airplaneDb){
 	cout << "Enter Command: " << endl;
 	string commandString;
@@ -16,6 +44,7 @@ void Operator::run(AirplaneDB &airplaneDb){
 
 	CommandCode commandCode = parseCommand(commandString, airplaneDb);
 
+>>>>>>> Operator_kevyn
 }
 
 
@@ -23,6 +52,19 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
 
 	airplaneDb.lockDB();
 
+<<<<<<< HEAD
+	string flightId;
+	int flightIndex;
+	Flight *flight;
+
+	if ((code != reportAircraftIdentification) && (code != addAircraft) && (code != nuke)){
+		flightId = args[0];
+		flightIndex = airplaneDb.getIndex(std::stoi(flightId));
+		flight = airplaneDb.getPlanes()->data()[flightIndex];
+	}
+
+    cout.flush();
+=======
     string flightId = args[0];
 
     cout << "id:" << args[0] << " arg 1: " << args[1] << endl;
@@ -31,10 +73,15 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
     int flightIndex = airplaneDb.getIndex(std::stoi(flightId));
 
     Flight *flight = airplaneDb.getPlanes()->data()[flightIndex];
+>>>>>>> Operator_kevyn
 
     switch (code) {
         case changeAltitude:
             flight->changeFlightElevation(std::stoi(args[1]));
+<<<<<<< HEAD
+
+=======
+>>>>>>> Operator_kevyn
 
             cout << "Aircraft #" << flightId << " elevation changed to " << args[1] << endl;
             break;
@@ -90,7 +137,11 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
             break;
         case addAircraft:
         {
+<<<<<<< HEAD
+            int id = std::stoi(args[0]);
+=======
             int id = std::stoi(flightId);
+>>>>>>> Operator_kevyn
             int speedInX = std::stoi(args[1]);
             int speedInY = std::stoi(args[2]);
             int speedInZ = std::stoi(args[3]);
@@ -102,6 +153,11 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
             Flight *newFlight = new Flight(id, speedInX, speedInY, speedInZ, positionInX, positionInY, positionInZ,
                                            startTime);
 
+<<<<<<< HEAD
+            cout << "Aircraft created." << endl;
+
+=======
+>>>>>>> Operator_kevyn
             airplaneDb.getPlanes()->push_back(newFlight);
 
             cout << "New Aircraft #" << flightId << " created." << endl;
@@ -144,12 +200,39 @@ void Operator::executeCommand(CommandCode code, const vector <string> &args, Air
         case reportAircraftIdentification:{
 
             for (auto &flight : *airplaneDb.getPlanes()) {
+<<<<<<< HEAD
+            	if(flight->getId() == -1){
+            		flight->generateId();
+            	}
+=======
+>>>>>>> Operator_kevyn
                 cout << "Aircraft Identification: " << flight->getIdString() << endl;
             }
         }
             break;
+<<<<<<< HEAD
+
+        case nuke:{
+        	airplaneDb.getPlanes()->clear();
+        	string one = "            _ ._  _ , _ ._\n";
+        	string two = "          (_ ' ( `  )_  .__)\n";
+        	string three = "        ( (  (    )   `)  ) _)\n";
+        	string four = "       (__ (_   (_ . _) _) ,__)\n";
+        	string five = "           `~~`\\ ' . /`~~`\n";
+        	string six = "                ;   ;\n";
+        	string seven = "                /   \\\n";
+        	string eight = "  _____________/_ __ \\_____________";
+
+        	cout << one << two << three << four << five << six << seven << eight << endl;
+        }
+        break;
     }
 
+    cout.flush();
+=======
+    }
+
+>>>>>>> Operator_kevyn
     airplaneDb.unlockDB();
 }
 
@@ -198,9 +281,13 @@ void Operator::addCommandToQueue(CommandCode command, const vector <string> &arg
     commandQueue.push(commandArgumentsPair);
 }
 
+<<<<<<< HEAD
+queue <map<CommandCode, vector < string>>> Operator::getCommandQueue() {
+=======
 queue <map<CommandCode, vector < string>>>
 
 Operator::getCommandQueue() {
+>>>>>>> Operator_kevyn
     return commandQueue;
 }
 
@@ -232,5 +319,7 @@ CommandCode Operator::hashIt(const string &command) {
         return setVelocity;
     } else if (command == "report_aircraft_identification") {
         return reportAircraftIdentification;
+    } else if  (command == "nuke"){
+    	return nuke;
     }
 }

@@ -85,3 +85,11 @@ void AirplaneDB::updateFlightsPosition(){
 	auto updatePlanePosition = [](Flight* n) {n->updateFlightPosition();};
 	std::for_each(flights.begin(),flights.end(), updatePlanePosition);
 }
+
+void AirplaneDB::createNumberOfPlanes(int numberOfPlanes){
+    this->flights.clear();
+    
+    for (int index = 0; index < numberOfPlanes; index++){
+        this->flights.push_back (new Flight(index +1, 100, 100, 100, 1000, 1000, 1000, 0));
+    }
+}
