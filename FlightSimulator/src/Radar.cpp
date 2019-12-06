@@ -111,6 +111,41 @@ void Radar::displayPlanesAboutToCrash(){
 }
 
 
+<<<<<<< HEAD
+=======
+/*
+ * For debugging purposes
+ */
+void Radar::displayPlanesAboutToCrash(std::vector<Flight*> fuckingFlights){
+
+    for (Flight* firstFlight : fuckingFlights){
+        int xPositionFirstFlight = firstFlight->getPositionX();
+        int yPositionFirstFlight = firstFlight->getPositionY();
+        int altitudeFirstFlight = firstFlight->getPositionZ();
+
+
+        for (Flight* secondFlight: fuckingFlights){
+            int distanceBetweenTwoPlanes = secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight);
+
+            if(firstFlight == secondFlight) continue;
+
+            else if(secondFlight->calculateDistanceOnXYPlaneFrom(xPositionFirstFlight, yPositionFirstFlight) <= Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES){
+                if(secondFlight->calculateAltitudeBetweenPlanes(altitudeFirstFlight) <= Radar::MIN_VERTICAL_DISTANCE_BETWEEN_PLANES ){
+
+                    std::cout << "\nPlane with id " << firstFlight->getIdString() << " will crash with plane id "<< secondFlight->getIdString() << std::endl;
+                    std::cout << "Distance between the two planes are " << distanceBetweenTwoPlanes << std::endl;
+                    std::cout << "min Distance between the two planes required is  " << Radar::MIN_HORIZONTAL_DISTANCE_BETWEEN_PLANES << std::endl;
+
+                }else continue;
+            }
+
+        }
+    }
+}
+
+
+
+>>>>>>> Operator_kevyn
 Radar::~Radar() {
 	// TODO Auto-generated destructor stub
 }

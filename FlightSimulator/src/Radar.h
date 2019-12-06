@@ -27,7 +27,12 @@ public:
 	std::vector<Flight*> scanFromAPoint(int, int, int, std::vector<Flight*>);
 	void displayPlanesAboutToCrash();
 	void displayPlanesFlyingTooLow();
+<<<<<<< HEAD
 	
+=======
+	void displayPlanesAboutToCrash(std::vector<Flight*>); // TODO : To remove, this was used for debugging purposes only
+
+>>>>>>> Operator_kevyn
 
 	std::vector<Flight*> flightsInAirSpace;
 	const int static RADAR_WIDTH = 100 * 5280;

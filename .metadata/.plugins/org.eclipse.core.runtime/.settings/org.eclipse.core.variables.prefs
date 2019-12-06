@@ -1,2 +1,0 @@
-eclipse.preferences.version=1
-org.eclipse.core.variables.valueVariables=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<valueVariables>\n<valueVariable description\="" name\="CC" readOnly\="false" value\="gcc"/>\n<valueVariable description\="" name\="CXX" readOnly\="false" value\="g++"/>\n</valueVariables>\n

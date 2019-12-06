@@ -18,7 +18,11 @@
 class TestCase {
 public:
 	//each line is an airplane: ID, speed_x, speed_y, speed_z, x, y, z, entry time.
+<<<<<<< HEAD
 	static int airplane_schedule[40];
+=======
+	static int airplane_schedule[8];
+>>>>>>> Operator_kevyn
 
 	TestCase();
 };
